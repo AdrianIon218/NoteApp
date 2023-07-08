@@ -1,34 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { Route, Routes } from "react-router-dom"
+import Layout from "./components/layout/Layout"
+import NoteComp from "./components/notes/NoteComp"
+import ContactForm from "./components/Contact/ContactForm"
+import Settings from "./components/settings/Settings"
 
 function App() {
-  const [count, setCount] = useState(0)
+  type route = {path:string; component:JSX.Element;}
 
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+  const paths:route[] = [
+    {path:'/', component:<NoteComp />}, {path:'/notes', component:<NoteComp />},
+    {path:'/settings', component:<Settings></Settings>}, 
+    {path:'/support', component: <ContactForm></ContactForm>}];
+
+  return (<Layout>
+    <Routes>
+    {paths.map((path,index)=>(<Route path={path.path} element={path.component} key={index} />))}
+    </Routes>
+  </Layout>);
 }
 
 export default App

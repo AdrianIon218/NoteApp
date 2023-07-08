@@ -1,0 +1,9 @@
+.field{
+  position:relative;
+  display: flex;
+  flex-direction: row;
+  column-gap: .8rem;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}

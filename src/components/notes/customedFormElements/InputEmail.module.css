@@ -1,0 +1,25 @@
+.email{
+  border: 2px solid rgb(237, 113, 5);
+  padding: 3px;
+  border-radius: 5px;
+  color:rgb(237, 113, 5);
+  font-weight: 600;
+}
+
+.label::after {
+  content:'*';
+  color:rgb(220, 86, 52);
+}
+
+.email:focus{
+  outline: none;
+  -moz-box-shadow: 0 0 5px rgb(237, 113, 5);
+  -webkit-box-shadow: 0 0 5px rgb(237, 113, 5);
+  -o-box-shadow: 0 0 5px rgb(237, 113, 5);
+  -ms-box-shadow: 0 0 5px rgb(237, 113, 5);
+  box-shadow: 0 0 5px rgb(237, 113, 5);
+}
+
+.email::placeholder{
+  color:rgba(129, 127, 127, .7);
+}
