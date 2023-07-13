@@ -5,14 +5,18 @@
   left: 0;
   right: 0;
   padding: 8px;
-  background-color: rgb(236, 189, 87);
-  box-shadow: 0 3px 10px 3px #777;
+  background-color: $color-blue;
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 2em;
   border-bottom-left-radius: 5%;
   border-bottom-right-radius: 5%;
+  transition: box-shadow .7s;
+}
+
+.nav:hover{
+  box-shadow: 0 3px 10px 3px #777;
 }
 
 .logo {
@@ -32,17 +36,17 @@
   font-size: 1.5em;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 700;
-  color: rgb(182, 123, 29);
+  color: white;
   text-decoration: none;
   cursor: pointer;
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  transition: font-size 0.1s;
+  transition: text-shadow .5s;
 }
 
 .nav > div > .nav_element:hover {
-  font-size: 1.63em;
+  text-shadow: 3px 3px 1px rgba(128, 0, 0, 1);
   text-decoration: underline 3px;
   text-decoration-style: dashed;
   text-underline-position: under;
@@ -53,7 +57,7 @@
 .nav > div > .nav_element.nav_selected:hover {
   font-size: 1.8em;
   text-decoration: none;
-  text-shadow: 1px 2px rgb(243, 179, 100);
+  text-shadow: none;
   cursor: default;
 }
 

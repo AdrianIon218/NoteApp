@@ -1,4 +1,4 @@
-.footer{
+.footer {
   background-color: rgb(135, 134, 134);
   border-top-left-radius: 10%;
   border-top-right-radius: 10%;
@@ -11,7 +11,7 @@
   align-items: center;
 }
 
-.logo{
+.logo {
   border-radius: 20%;
   height: 3em;
   width: 60px;
@@ -20,7 +20,7 @@
   user-select: none;
 }
 
-.logo-name{
+.logo-name {
   font-size: 1.7em;
   -webkit-user-select: none;
   -ms-user-select: none;

@@ -1,11 +1,11 @@
-.delete-form{
+.delete-form {
   position: absolute;
   top: 20%;
   left: 25%;
   right: 25%;
   height: 40vh;
   border-radius: 20px;
-  color:rgb(237, 113, 5);
+  color: rgb(237, 113, 5);
   border: 10px double;
   background-color: rgb(248, 209, 151);
   opacity: 0;
@@ -20,7 +20,7 @@
   padding: 1em;
 }
 
-.delete-form > h2{
+.delete-form > h2 {
   text-align: center;
   font-weight: 900;
 }
@@ -43,9 +43,9 @@
   }
 }
 
-.close-btn{
+.close-btn {
   position: absolute;
-  top:-2.5rem;
+  top: -2.5rem;
   right: -2rem;
   width: 2rem;
   height: 2rem;
@@ -58,16 +58,17 @@
   transition: text-shadow 0.5s;
 }
 
-.close-btn:hover{
-  text-shadow: 3px 3px 20px orangered,
+.close-btn:hover {
+  text-shadow:
+    3px 3px 20px orangered,
     -2px 1px 30px red;
 }
 
-.close-btn:active{
-  color:orangered;
+.close-btn:active {
+  color: orangered;
 }
 
-.anim-line-down{
+.anim-line-down {
   animation: anim-lineDown 0.5s ease-out 0s 1 normal forwards;
   -moz-animation: anim-lineDown 0.5s ease-out 0s 1 normal forwards;
   -webkit-animation: anim-lineDown 0.5s ease-out 0s 1 normal forwards;
@@ -89,40 +90,42 @@
   }
 }
 
-div:has(>.btn){
-  display:flex;
+div:has(> .btn) {
+  display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 
-.btn{
+.btn {
   padding: 0.4em;
   font-size: 24px;
   border-radius: 10px;
   cursor: pointer;
-  color:rgb(91, 149, 4);
+  color: rgb(91, 149, 4);
   font-weight: 700;
   background-color: rgb(134, 211, 19);
   border: 4px double rgb(102, 166, 6);
   transition: box-shadow 0.7s;
 }
 
-.btn:hover{
-  box-shadow: 3px 3px 20px rgb(134, 211, 19),
+.btn:hover {
+  box-shadow:
+    3px 3px 20px rgb(134, 211, 19),
     -2px 1px 30px rgb(102, 166, 6);
 }
 
-.btn:active{
+.btn:active {
   border-style: solid;
 }
 
-.btn-no{
-  color:rgb(211, 64, 10);
+.btn-no {
+  color: rgb(211, 64, 10);
   background-color: rgb(255, 127, 30);
   border: 4px double rgb(250, 85, 25);
 }
 
-.btn-no:hover{
-  box-shadow: 3px 3px 20px rgb(250, 85, 25),
+.btn-no:hover {
+  box-shadow:
+    3px 3px 20px rgb(250, 85, 25),
     -2px 1px 30px rgb(255, 127, 30);
 }

@@ -1,50 +1,67 @@
-:root{
+:root {
   --display-time: 2s;
   --color: rgb(13, 159, 111);
 }
 
-.notification{
+.notification {
   position: fixed;
-  top:25%;
-  left:45%;
+  top: 25%;
+  left: 45%;
   background-color: rgb(24, 224, 157);
-  color:var(--color);
+  color: var(--color);
   font-size: larger;
   font-weight: 800;
   border: 4px solid;
   border-radius: 10px;
   padding: 1rem;
   opacity: 0;
-  z-index:30;
-  animation: fade-in 0.7s linear 0s 1 normal forwards, fade-out 0.7s linear var(--display-time) 1 normal forwards;
+  z-index: 30;
+  animation:
+    fade-in 0.7s linear 0s 1 normal forwards,
+    fade-out 0.7s linear var(--display-time) 1 normal forwards;
 
-  -moz-animation: fade-in 0.7s linear 0s 1 normal forwards, fade-out 0.7s linear var(--display-time) 1 normal forwards;
+  -moz-animation:
+    fade-in 0.7s linear 0s 1 normal forwards,
+    fade-out 0.7s linear var(--display-time) 1 normal forwards;
 
-  -webkit-animation: fade-in 0.7s linear 0s 1 normal forwards, fade-out 0.7s linear var(--display-time) 1 normal forwards;
+  -webkit-animation:
+    fade-in 0.7s linear 0s 1 normal forwards,
+    fade-out 0.7s linear var(--display-time) 1 normal forwards;
 
-  -ms-animation: fade-in 0.7s linear 0s 1 normal forwards, fade-out 0.7s linear var(--display-time) 1 normal forwards;
+  -ms-animation:
+    fade-in 0.7s linear 0s 1 normal forwards,
+    fade-out 0.7s linear var(--display-time) 1 normal forwards;
 
-  -o-animation: fade-in 0.7s linear 0s 1 normal forwards, fade-out 0.7s linear var(--display-time) 1 normal forwards;
+  -o-animation:
+    fade-in 0.7s linear 0s 1 normal forwards,
+    fade-out 0.7s linear var(--display-time) 1 normal forwards;
 }
 
-
-#rednotification{
+#rednotification {
   background-color: rgb(240, 118, 62);
-  color:rgb(214, 57, 10);
+  color: rgb(214, 57, 10);
 }
 
 @keyframes fade-in {
-  from{opacity: 0;}
-  to{opacity: 1;}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-@keyframes fade-out{
-  from{opacity: 1;}
-  to{opacity: 0;}
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 @media only screen and (max-width: 700px) {
-  .notification{
-    left:35%;
+  .notification {
+    left: 35%;
   }
 }

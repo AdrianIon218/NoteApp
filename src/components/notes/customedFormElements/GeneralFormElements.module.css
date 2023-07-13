@@ -1,8 +1,8 @@
-.field{
-  position:relative;
+.field {
+  position: relative;
   display: flex;
   flex-direction: row;
-  column-gap: .8rem;
+  column-gap: 0.8rem;
   align-items: center;
   margin-top: 10px;
   margin-bottom: 5px;

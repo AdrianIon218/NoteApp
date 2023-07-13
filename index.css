@@ -1,10 +1,14 @@
-html{
+* {
+  box-sizing: border-box;
+}
+
+html {
   padding: 0;
   margin: 0;
   height: 100%;
 }
 
-body{
+body {
   padding: 0;
   margin: 0;
   height: 100%;
@@ -12,26 +16,31 @@ body{
   background-color: #777;
 }
 
-#root{
+#root {
   min-height: 100vh;
   height: auto;
   margin: 0px;
-  display:flex; 
-  flex-direction:column; 
-  justify-content:space-between;
-  gap:40px;
-  background-color: rgb(243, 235, 149);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+  background: rgb(255, 255, 255);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
 }
 
 body::-webkit-scrollbar {
   padding: 5px;
   width: 15px;
   border-radius: 50px;
-  background-color: #e7e4e4; 
+  background-color: #e7e4e4;
 }
 
 body::-webkit-scrollbar-thumb {
-  border:3px rgb(243, 201, 110) solid;
-  border-radius: 10px;
-  background-color: rgb(236, 189, 87); 
+  border: 2px rgb(67, 154, 204) solid;
+  border-radius: 14px;
+  background-color: rgb(22, 114, 167);
 }

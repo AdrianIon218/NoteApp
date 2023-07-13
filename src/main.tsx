@@ -1,18 +1,19 @@
-import ReactDOM from 'react-dom/client'
-import App from './App'
-import {HashRouter} from 'react-router-dom';
-import NotesContextProvider from './components/contexts/NotesContext';
-import CategoryContextProvider from './components/contexts/CategoryContext';
-import { StrictMode } from 'react';
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import { HashRouter } from "react-router-dom";
+import NotesContextProvider from "./components/contexts/NotesContext";
+import CategoryContextProvider from "./components/contexts/CategoryContext";
+import { StrictMode } from "react";
+import "./styles/index.scss";
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <NotesContextProvider>
     <CategoryContextProvider>
       <StrictMode>
-      <HashRouter>
-      <App />
-      </HashRouter>
+        <HashRouter>
+          <App />
+        </HashRouter>
       </StrictMode>
     </CategoryContextProvider>
-  </NotesContextProvider>
-)
+  </NotesContextProvider>,
+);

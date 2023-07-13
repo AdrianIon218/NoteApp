@@ -1,14 +1,14 @@
-import classes from './CreateNote/CreateNote.module.css'
-import { useRef, useContext, useState } from 'react'
-import DropDownBtn from './customedFormElements/DropDownBtn'
-import TextArea from './customedFormElements/TextArea'
-import InputText from './customedFormElements/InputText'
-import { NotesContext } from '../contexts/NotesContext'
-import { IDropDownMethods } from '../stylingStructures'
-import TemporalNotification from '../notifications/TemporalNotification'
-import { nanoid } from 'nanoid'
+import classes from "./CreateNote/CreateNote.module.css";
+import { useRef, useContext, useState } from "react";
+import DropDownBtn from "./customedFormElements/DropDownBtn";
+import TextArea from "./customedFormElements/TextArea";
+import InputText from "./customedFormElements/InputText";
+import { NotesContext } from "../contexts/NotesContext";
+import { IDropDownMethods } from "../stylingStructures";
+import TemporalNotification from "../notifications/TemporalNotification";
+import { nanoid } from "nanoid";
 
-function CreateNote(){
+function CreateNote() {
   const [showMessage, setShowMessage] = useState(false);
   const notesCtx = useContext(NotesContext);
 
@@ -16,14 +16,14 @@ function CreateNote(){
   const btnSelectRef = useRef<IDropDownMethods>();
   const textNote = useRef<HTMLTextAreaElement>(null);
 
-  function resetInputs(){
-    titleNote.current!.value='';
-    (textNote.current as HTMLTextAreaElement).value='';
+  function resetInputs() {
+    titleNote.current!.value = "";
+    (textNote.current as HTMLTextAreaElement).value = "";
     btnSelectRef.current!.resetSelectValue();
   }
 
-  function submit(event:React.FormEvent<HTMLFormElement>){
-    if(!showMessage){
+  function submit(event: React.FormEvent<HTMLFormElement>) {
+    if (!showMessage) {
       event.preventDefault();
       const titleNoteVal = titleNote.current!.value;
       const btnSelectedVal = btnSelectRef.current!.getSelectValue();
@@ -33,35 +33,53 @@ function CreateNote(){
         title: titleNoteVal,
         categorySelected: btnSelectedVal,
         text: textNoteVal,
-        id:nanoid()
-      }
-    
+        id: nanoid(),
+      };
+
       notesCtx.addNote(noteObj);
       resetInputs();
       setShowMessage(true);
     }
   }
 
-  function hideMessage(){
+  function hideMessage() {
     setShowMessage(false);
   }
 
-  return <div className={classes['create-note-container']}>
-    {showMessage && (<TemporalNotification hideMessage={hideMessage}>Note added !</TemporalNotification>)}
-    <h1>Create a note </h1>
-    <form onSubmit={submit}>
-      <InputText ref={titleNote} text='Title' customText='Insert a title between 3 and 30 characters' minLength={3} maxLength={30} />
-      
-      <DropDownBtn labelMessage='Choose a category : ' ref={btnSelectRef} />
-      
-      <TextArea name='textNote' ref={textNote} />
+  return (
+    <div className={classes["create-note-container"]}>
+      {showMessage && (
+        <TemporalNotification hideMessage={hideMessage}>
+          Note added !
+        </TemporalNotification>
+      )}
+      <h1>Create a note </h1>
+      <form onSubmit={submit}>
+        <InputText
+          ref={titleNote}
+          text="Title"
+          customText="Insert a title between 3 and 30 characters"
+          minLength={3}
+          maxLength={30}
+        />
 
-      <div className={classes.field}>
-        <button type='submit' className={classes.btn}> Save </button>
-        <button type='button' className={classes.btn} onClick={resetInputs}> Discard </button>
-      </div>
-    </form>
-  </div>
+        <DropDownBtn labelMessage="Choose a category : " ref={btnSelectRef} />
+
+        <TextArea name="textNote" ref={textNote} />
+
+        <div className={classes.field}>
+          <button type="submit" className={classes.btn}>
+            {" "}
+            Save{" "}
+          </button>
+          <button type="button" className={classes.btn} onClick={resetInputs}>
+            {" "}
+            Discard{" "}
+          </button>
+        </div>
+      </form>
+    </div>
+  );
 }
 
 export default CreateNote;
