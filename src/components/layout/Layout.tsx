@@ -1,6 +1,6 @@
 import Content from "../content/Content";
 import Navcomp from "../navcomp/NavComp";
-import Footer from "../footer/Footer";
+import Footer from "./Footer";
 
 export default function Layout(props: any) {
   return (

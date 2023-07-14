@@ -5,7 +5,6 @@ export default function Footer() {
     <footer className="footer">
       <img src={noteLogo} alt="Note" className="footer__logo" />
       <div className="footer__logo_name">Notes</div>
-      
     </footer>
   );
 }
