@@ -1,4 +1,3 @@
-import classes from "./ViewNotes.module.css";
 import { NoteStructure } from "../../stylingStructures";
 import React, { useRef } from "react";
 
@@ -28,12 +27,12 @@ export default function NoteDisplay(props: IProps) {
   return (
     <div className="backdrop">
       <div className="note-centered" ref={noteRef}>
-        <label>{categorySelected}</label>
+        {categorySelected ?  <label>{categorySelected}</label> : <></> }
         <button className="close-btn" onClick={closeNote}>
           &times;
         </button>
         <h2 title={title}>{title}</h2>
-        <div className={classes["note-text"]}>{textWithNewLines}</div>
+        <div className="note-text">{textWithNewLines}</div>
       </div>
     </div>
   );

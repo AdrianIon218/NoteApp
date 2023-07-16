@@ -222,11 +222,20 @@ div.field:has(> .btn) {
     }
 
     & > label {
-      font-size: 14px;
-      color: rgb(18, 181, 18);
+      font-size: 1rem;
+      color: $color-green-dark;
+      background-color: rgba($color-green-fade, 75%);
       font-weight: 700;
       align-self: center;
+      border: 1px solid;
+      border-radius: 20px;
+      text-align: center;
       cursor: pointer;
+      text-indent: 5px;
+      width: 80%;
+      overflow: hidden; /* make sure it hides the content that overflows */
+      white-space: nowrap; /* don't break the line */
+      text-overflow: ellipsis; /* give the beautiful '...' effect */
     }
 
     & > div {
@@ -239,7 +248,7 @@ div.field:has(> .btn) {
   .note-item::after {
     content: "view";
     position: absolute;
-    bottom: 45%;
+    bottom: 5%;
     left: 35%;
     background-color: $color-gray-2;
     padding: 5px;
@@ -303,9 +312,9 @@ div.field:has(> .btn) {
     position: absolute;
     top: 1rem;
     left: 1rem;
-    background-color: rgb(133, 228, 133);
-    color: rgb(5, 141, 5);
-    border: 4px double;
+    background-color: $color-green-fade;
+    color: $color-green-dark;
+    border: 3px dashed;
     font-size: small;
     border-radius: 10px;
     padding: 3px;
@@ -374,5 +383,28 @@ div.field:has(> .btn) {
 
   &:active {
     color: orangered;
+  }
+}
+
+.note-text {
+  background-color: rgba(white, 0.75);
+  width: 100%;
+  height: 100%;
+  border: 3px solid $color-blue;
+  border-radius: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 4px;
+
+  &::-webkit-scrollbar {
+    padding: 5px;
+    width: 15px;
+    background-color: transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    border: 3px $color-blue-dark solid;
+    border-radius: 10px;
+    background-color: rgba($color-blue, 0.75);
   }
 }
