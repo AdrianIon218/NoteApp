@@ -1,5 +1,4 @@
 import { ButtonSelected } from "./NoteNav";
-import classes from "./Note.module.css";
 import CreateNote from "./CreateNote";
 import ViewNote from "./ViewNotes/ViewNotes";
 import EditNote from "./EditNotes/EditNote";
@@ -20,7 +19,7 @@ export default function NoteContainer({ currentStatus }: IProps) {
   )[0];
 
   return (
-    <section className={classes.noteContainer}>
+    <section className="noteContainer">
       {compSelected.component}
     </section>
   );

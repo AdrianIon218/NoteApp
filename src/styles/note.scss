@@ -8,10 +8,10 @@
 }
 
 .noteComp > section.noteContainer {
-  flex-basis: 70%;
+  flex-basis: 80%;
   height: 50rem;
-  background-color: rgba(249, 220, 186, 0.85);
-  color: rgb(214, 149, 8);
+  background-color: rgba($color-blue-fade, 0.75);
+  color: $color-blue-dark;
   border: 10px double;
   border-radius: 20px;
   padding: 10px;
