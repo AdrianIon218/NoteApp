@@ -1,0 +1,149 @@
+.noteComp {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.noteComp > section.noteContainer {
+  flex-basis: 70%;
+  height: 50rem;
+  background-color: rgba(249, 220, 186, 0.85);
+  color: rgb(214, 149, 8);
+  border: 10px double;
+  border-radius: 20px;
+  padding: 10px;
+  font-size: larger;
+  font-weight: 600;
+}
+
+.noteComp > section.noteContainer::-webkit-scrollbar {
+  padding: 5px;
+  width: 15px;
+  border-radius: 50px;
+  background-color: #e7e4e4;
+}
+
+.noteComp > section.noteContainer::-webkit-scrollbar-thumb {
+  border: 3px rgb(243, 201, 110) solid;
+  border-radius: 10px;
+  background-color: rgb(236, 189, 87);
+}
+
+.note__nav {
+  margin: 1.2em;
+  padding: 2em;
+  background-color: rgba($color-blue-fade, 0.85);
+  border: 6px solid $color-blue;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 1.2em;
+  align-self: flex-start;
+
+  & > button {
+    padding: 0.25em;
+    color:white;
+    font-size: 1.4em;
+    font-weight: 700;
+    background-color: $color-blue;
+    border: 2px solid;
+    border-radius: 13px;
+    cursor: pointer;
+    transition: border-radius 0.5s;
+    -webkit-transition: border-radius 0.5s;
+    -moz-transition: border-radius 0.5s;
+    -ms-transition: border-radius 0.5s;
+    -o-transition: border-radius 0.5s;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+  }
+}
+
+.note__nav > button:hover {
+  color:$color-blue;
+  background-color: white;
+  border-radius: 7px;
+}
+
+.note__nav > button.note__nav__selected {
+  border-color: rgba($color-blue-fade, 0.85) !important;
+  color:$color-blue;
+  background-color: white;
+  border-radius: 7px !important;
+  position:relative;
+  &::before, &::after{
+    position: absolute;
+    color: $color-blue;
+  }
+
+  &::before{
+    left: -15px;
+    content: '-';
+  }
+
+  &::after{
+    right:-15px;
+    content: '-';
+  }
+
+  &:hover {
+    border-radius: 13px;
+  }
+}
+
+.create-note-container > h1 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.create-note-container > form > .field {
+  display: flex;
+  flex-direction: row;
+  column-gap: 1.2rem;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+div.field:has(> .btn) {
+  margin-top: 2em;
+}
+
+.btn {
+  color: rgb(237, 113, 5);
+  font-size: large;
+  font-weight: 600;
+  padding: 4px;
+  border: 3px solid rgb(237, 113, 5);
+  border-radius: 5px;
+  background-color: rgb(248, 210, 165);
+  cursor: pointer;
+  transition:
+    box-shadow 0.6s,
+    text-shadow 0.6s;
+}
+
+.btn:hover {
+  text-shadow: 0 0 1.3px #777;
+  box-shadow:
+    rgba(0, 0, 0, 0.07) 0px 1px 2px,
+    rgba(0, 0, 0, 0.07) 0px 2px 4px,
+    rgba(0, 0, 0, 0.07) 0px 4px 8px,
+    rgba(0, 0, 0, 0.07) 0px 8px 16px,
+    rgba(0, 0, 0, 0.07) 0px 16px 32px,
+    rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+@media all and (max-width: 600px) {
+  .noteComp > section.noteContainer {
+    flex-basis: 100%;
+  }
+}

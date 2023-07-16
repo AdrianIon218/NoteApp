@@ -1,4 +1,3 @@
-import classes from "./Note.module.css";
 import { useState } from "react";
 import React from "react";
 
@@ -31,8 +30,8 @@ function NoteNav(props: any) {
     <button
       className={
         btnSelected === item.btnValue
-          ? classes.selected
-          : classes["not-selected"]
+          ? "note__nav__selected"
+          : ""
       }
       name={item.btnValue.toString()}
       onClick={onChange}
@@ -42,7 +41,7 @@ function NoteNav(props: any) {
     </button>
   ));
 
-  return <section className={classes.nav}>{sideBar}</section>;
+  return <section className="note__nav">{sideBar}</section>;
 }
 
 export default NoteNav;

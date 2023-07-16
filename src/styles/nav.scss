@@ -12,10 +12,10 @@
   gap: 2em;
   border-bottom-left-radius: 5%;
   border-bottom-right-radius: 5%;
-  transition: box-shadow .7s;
+  transition: box-shadow 0.7s;
 }
 
-.nav:hover{
+.nav:hover {
   box-shadow: 0 3px 10px 3px #777;
 }
 
@@ -42,7 +42,7 @@
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  transition: text-shadow .5s;
+  transition: text-shadow 0.5s;
 }
 
 .nav > div > .nav_element:hover {

@@ -1,5 +1,4 @@
 import NoteNav from "./NoteNav";
-import classes from "./Note.module.css";
 import { ButtonSelected } from "./NoteNav";
 import { useState } from "react";
 import NoteContainer from "./NoteContainer";
@@ -17,7 +16,7 @@ export default function NoteComp() {
   }
 
   return (
-    <article className={classes.noteComp}>
+    <article className="noteComp">
       <NoteNav setNavNotesState={setNavNotesState} />
       {notesCtx.navNotesState !== ButtonSelected.none && (
         <NoteContainer currentStatus={notesCtx.navNotesState} />
