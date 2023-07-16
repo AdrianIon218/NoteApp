@@ -260,3 +260,119 @@ div.field:has(> .btn) {
       rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
   }
 }
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: rgba(100, 99, 99, 0.6);
+}
+
+.note-centered {
+  position: absolute;
+  top: 2rem;
+  left: 5%;
+  right: 5%;
+  bottom: .5rem;
+  border-radius: 12px;
+  color: $color-blue-dark;
+  border: 10px double;
+  background-color: rgba($color-blue-fade, 0.85);
+  opacity: 0;
+  animation: anim-lineUp 1.5s ease-out 0s 1 normal forwards;
+  -moz-animation: anim-lineUp 1.5s ease-out 0s 1 normal forwards;
+  -webkit-animation: anim-lineUp 1.5s ease-out 0s 1 normal forwards;
+  -o-animation: anim-lineUp 1.5s ease-out 0s 1 normal forwards;
+  -ms-animation: anim-lineUp 1.5s ease-out 0s 1 normal forwards;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+
+  & > h2 {
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  & > label {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: rgb(133, 228, 133);
+    color: rgb(5, 141, 5);
+    border: 4px double;
+    font-size: small;
+    border-radius: 10px;
+    padding: 3px;
+  }
+}
+
+@keyframes anim-lineUp {
+  0% {
+    opacity: 0;
+    transform: translateY(80%);
+  }
+  20% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+.anim-line-down {
+  animation: anim-lineDown 0.6s ease-out 0s 1 normal forwards;
+  -moz-animation: anim-lineDown 0.6s ease-out 0s 1 normal forwards;
+  -webkit-animation: anim-lineDown 0.6s ease-out 0s 1 normal forwards;
+  -o-animation: anim-lineDown 0.6s ease-out 0s 1 normal forwards;
+  -ms-animation: anim-lineDown 0.6s ease-out 0s 1 normal forwards;
+}
+
+@keyframes anim-lineDown {
+  0% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  45% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(90%);
+  }
+}
+
+.close-btn {
+  position: absolute;
+  top: -2rem;
+  right: -2.2rem;
+  width: 2rem;
+  height: 2rem;
+  font-size: 32px;
+  color: rgb(62, 60, 60);
+  font-weight: 800;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: text-shadow 0.3s;
+
+  &:hover {
+    text-shadow:
+      3px 3px 20px orangered,
+      -2px 1px 30px red;
+  }
+
+  &:active {
+    color: orangered;
+  }
+}
