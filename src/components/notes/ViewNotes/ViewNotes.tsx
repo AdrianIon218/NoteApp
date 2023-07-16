@@ -1,4 +1,3 @@
-import classes from "./ViewNotes.module.css";
 import NoteItem from "./NoteItem";
 import useSortNotes from "../../CustomedComponents/useSortNotes";
 import { useContext } from "react";
@@ -20,7 +19,7 @@ export default function ViewNote() {
   });
 
   return (
-    <div className={classes["view-note"]}>
+    <div className="viewNote">
       <h2>
         {allNotes.length === 0
           ? "You don't have any notes"
@@ -28,9 +27,9 @@ export default function ViewNote() {
           ? "You have only 1 note"
           : "You have " + allNotes.length.toString() + " notes"}
       </h2>
-      {allNotes.length > 0 && (
-        <div className={classes["note-container"]}>{notesElements}</div>
-      )}
+      {
+        allNotes.length > 0 && <div className="viewNote__container">{notesElements}</div>
+      }
     </div>
   );
 }

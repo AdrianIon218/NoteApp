@@ -3,8 +3,8 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .noteComp > section.noteContainer {
@@ -17,19 +17,24 @@
   padding: 10px;
   font-size: larger;
   font-weight: 600;
-}
+  justify-content: flex-end;
 
-.noteComp > section.noteContainer::-webkit-scrollbar {
-  padding: 5px;
-  width: 15px;
-  border-radius: 50px;
-  background-color: #e7e4e4;
-}
+  &::-webkit-scrollbar {
+    padding: 5px;
+    width: 15px;
+    border-radius: 50px;
+    background-color: #e7e4e4;
+  }
 
-.noteComp > section.noteContainer::-webkit-scrollbar-thumb {
-  border: 3px rgb(243, 201, 110) solid;
-  border-radius: 10px;
-  background-color: rgb(236, 189, 87);
+  &::-webkit-scrollbar-thumb {
+    border: 3px $color-blue-fade solid;
+    border-radius: 10px;
+    background-color: $color-blue;
+  }
+
+  @media only screen and (max-width: 700px) {
+    flex-basis:100%;
+  }
 }
 
 .note__nav {
@@ -142,8 +147,116 @@ div.field:has(> .btn) {
     rgba(0, 0, 0, 0.07) 0px 32px 64px;
 }
 
-@media all and (max-width: 600px) {
-  .noteComp > section.noteContainer {
-    flex-basis: 100%;
+.viewNote {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 1em;
+  padding-left: 0em;
+
+  & > h1 {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 2em;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  &__container{
+    background-color: $color-blue-white;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.3rem;
+    align-content: flex-start;
+    width: 100%;
+    height: 33em;
+    border: 3px solid $color-blue;
+    border-radius: 10px;
+    padding: 0.6rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      padding: 5px;
+      width: 15px;
+      border-radius: 50px;
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border: 3px $color-blue-dark solid;
+      border-radius: 10px;
+      background-color: rgba($color-blue, 0.75);
+    }
+  }
+
+  .note-item {
+    position: relative;
+    background-color: $color-blue-fade;
+    border: 4px solid $color-blue;
+    border-radius: 10px;
+    height: 170px;
+    width: 170px;
+    display: grid;
+    padding: 3px;
+    padding-left: 5px;
+    gap: 5px;
+    grid-template-columns: 80% 18%;
+    grid-template-rows: 30% 20% 48%;
+    cursor: pointer;
+    transition: all 0.5s;
+    overflow: hidden;
+
+    &:hover {
+      background-color: $color-blue;
+      color:white;
+      box-shadow:
+        rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+        rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    }
+
+    & > h2 {
+      align-self: center;
+      text-align: center;
+      grid-column: span 2;
+    }
+
+    & > label {
+      font-size: 14px;
+      color: rgb(18, 181, 18);
+      font-weight: 700;
+      align-self: center;
+      cursor: pointer;
+    }
+
+    & > div {
+      text-align: justify;
+      grid-column: 1/-1;
+      grid-row: 3/-1;
+    }
+  }
+
+  .note-item::after {
+    content: "view";
+    position: absolute;
+    bottom: 45%;
+    left: 35%;
+    background-color: $color-gray-2;
+    padding: 5px;
+    border: 1px solid $color-gray-1;
+    border-radius: 8px;
+    color: aliceblue;
+    visibility: hidden;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    opacity: 0;
+    transition: opacity 1s;
+  }
+  
+  .note-item:hover::after {
+    opacity: 1;
+    visibility: visible;
+    box-shadow:
+      rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset,
+      rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
   }
 }
