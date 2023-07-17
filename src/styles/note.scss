@@ -121,7 +121,7 @@
 div.field:has(> .btn) {
   margin-top: 2em;
 }
-
+/*
 .btn {
   color: rgb(237, 113, 5);
   font-size: large;
@@ -146,7 +146,7 @@ div.field:has(> .btn) {
     rgba(0, 0, 0, 0.07) 0px 16px 32px,
     rgba(0, 0, 0, 0.07) 0px 32px 64px;
 }
-
+*/
 .viewNote {
   display: flex;
   flex-direction: column;
@@ -408,3 +408,20 @@ div.field:has(> .btn) {
     background-color: rgba($color-blue, 0.75);
   }
 }
+
+.create-note-container{
+  & > h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  & > form > .field {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1.2rem;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+} 

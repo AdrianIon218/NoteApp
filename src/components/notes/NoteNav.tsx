@@ -1,5 +1,4 @@
-import { useState } from "react";
-import React from "react";
+import React, { useState } from "react";
 
 export const enum ButtonSelected {
   none,
@@ -14,8 +13,13 @@ const sideBarElements = [
   { btnValue: ButtonSelected.editNote, navTitle: "Edit Note" },
 ];
 
-function NoteNav(props: any) {
-  const [btnSelected, setBtnSelected] = useState(() => ButtonSelected.none);
+interface IProps{
+  initialNavState: ButtonSelected,
+  setNavNotesState: (state:ButtonSelected) => void
+}
+
+function NoteNav(props: IProps) {
+  const [btnSelected, setBtnSelected] = useState(() => props.initialNavState);
 
   function onChange(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     const { currentTarget: target } = event;
@@ -28,11 +32,7 @@ function NoteNav(props: any) {
 
   const sideBar = sideBarElements.map((item, index) => (
     <button
-      className={
-        btnSelected === item.btnValue
-          ? "note__nav__selected"
-          : ""
-      }
+      className={ btnSelected === item.btnValue ? "note__nav__selected" : "" }
       name={item.btnValue.toString()}
       onClick={onChange}
       key={index}
