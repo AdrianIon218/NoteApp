@@ -1,4 +1,3 @@
-import generalcls from "./GeneralFormElements.module.css";
 import { useId, forwardRef } from "react";
 import classes from "./InputEmail.module.css";
 
@@ -6,7 +5,7 @@ function InputEmail(props: any, ref: any) {
   const emailId = useId();
 
   return (
-    <div className={generalcls.field}>
+    <div className='field'>
       <label htmlFor={emailId} className={classes.label}>
         Email address
       </label>

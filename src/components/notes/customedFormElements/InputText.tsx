@@ -1,4 +1,3 @@
-import generalcls from "./GeneralFormElements.module.css";
 import inputcls from "./inputText.module.css";
 import { forwardRef, useId } from "react";
 declare module "react" {
@@ -19,7 +18,7 @@ interface IProps {
 function InputText(props: IProps, ref: any) {
   const titleId = `${useId()}-idNoteTitle`;
   return (
-    <div className={`${generalcls.field} ${inputcls.inputDiv}`}>
+    <div className={`field ${inputcls.inputDiv}`}>
       <label htmlFor={titleId}>{props.text}</label>
       <input
         type="text"
