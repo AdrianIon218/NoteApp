@@ -1,19 +1,18 @@
 import { useId, forwardRef } from "react";
-import classes from "./InputEmail.module.css";
 
 function InputEmail(props: any, ref: any) {
   const emailId = useId();
 
   return (
     <div className='field'>
-      <label htmlFor={emailId} className={classes.label}>
+      <label htmlFor={emailId} className="label-email">
         Email address
       </label>
       <input
         type="email"
         id={emailId}
         ref={ref}
-        className={classes.email}
+        className="email-input"
         required
         placeholder="ex:name@yahoo.com"
         title=""

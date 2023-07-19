@@ -44,5 +44,33 @@
     border-radius: 10px;
     background-color: $color-blue-fade;
   }
+}
+
+.email-input{
+  border: 2px solid $color-blue-dark;
+  padding: 3px;
+  border-radius: 5px;
+  color: $color-blue;
+  font-weight: 600;
+
+  &:focus {
+    outline: none;
+    -moz-box-shadow: 0 0 5px $color-blue;
+    -webkit-box-shadow: 0 0 5px $color-blue;
+    -o-box-shadow: 0 0 5px $color-blue;
+    -ms-box-shadow: 0 0 5px $color-blue;
+    box-shadow: 0 0 5px $color-blue;
+  }
   
+  &::placeholder {
+    color: rgba($color-gray-1, 0.7);
+  }
+}
+
+.label-email {
+  color: $color-blue-dark;
+  &::after {
+    content: "*";
+    color: rgb(220, 86, 52);
+  }
 }
