@@ -1,4 +1,3 @@
-import inputcls from "./inputText.module.css";
 import { forwardRef, useId } from "react";
 declare module "react" {
   interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
@@ -18,7 +17,7 @@ interface IProps {
 function InputText(props: IProps, ref: any) {
   const titleId = `${useId()}-idNoteTitle`;
   return (
-    <div className={`field ${inputcls.inputDiv}`}>
+    <div className="field inputDiv">
       <label htmlFor={titleId}>{props.text}</label>
       <input
         type="text"

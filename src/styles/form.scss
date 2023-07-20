@@ -74,3 +74,56 @@
     color: rgb(220, 86, 52);
   }
 }
+
+.inputDiv {
+  & > input[type="text"] {
+    position: relative;
+    border: 2px solid $color-blue-dark;
+    padding: 3px;
+    border-radius: 5px;
+    color: $color-blue;
+    font-weight: 600;
+
+    & ~ label[custom] {
+      position: relative;
+    }
+
+    & ~ label[custom]::after {
+      content: attr(custom);
+      position: absolute;
+      top: -3.2em;
+      left: -16.5em;
+      width: max-content;
+      padding: 2px;
+      font-size: 12px;
+      z-index: 1;
+      background-color: $color-blue-dark;
+      color: white;
+      border-radius: 5px;
+      border: 2px solid;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 1.5s;
+      font-weight: 800;
+    }
+  }
+
+  & > input[type="text"]:hover ~ label[custom]::after {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  & > input[type="text"]:focus {
+    outline: none;
+    -moz-box-shadow: 0 0 5px $color-blue;
+    -webkit-box-shadow: 0 0 5px $color-blue;
+    -o-box-shadow: 0 0 5px $color-blue;
+    -ms-box-shadow: 0 0 5px $color-blue;
+    box-shadow: 0 0 5px $color-blue;
+  }
+
+  & > label:has(+ input[required])::after {
+    content: "*";
+    color: rgb(220, 86, 52);
+  }
+} 
