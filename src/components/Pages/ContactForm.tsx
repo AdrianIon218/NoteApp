@@ -1,4 +1,3 @@
-import classes from "./ContactForm.module.css";
 import TemporalNotification from "../notifications/TemporalNotification";
 import InputText from "../notes/customedFormElements/InputText";
 import TextArea from "../notes/customedFormElements/TextArea";
@@ -46,13 +45,13 @@ function ContactForm() {
           Message sent !
         </TemporalNotification>
       )}
-      <form className={classes["contact-form"]} onSubmit={submit}>
+      <form className="contact-form" onSubmit={submit}>
         <h2>Fill out the form for support </h2>
         <InputText ref={userName} text="Name" />
         <InputEmail ref={inputEmail} />
         <TextArea name="textNote" ref={textMessage} />
-        <button className={classes.btn}>Send</button>
-      </form>{" "}
+        <button className="btn">Send</button>
+      </form>
     </>
   );
 }

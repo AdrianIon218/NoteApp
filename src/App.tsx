@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import NoteComp from "./components/notes/NoteComp";
-import ContactForm from "./components/Contact/ContactForm";
+import ContactForm from "./components/Pages/ContactForm";
 import Settings from "./components/settings/Settings";
 
 function App() {

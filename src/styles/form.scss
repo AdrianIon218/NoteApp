@@ -50,7 +50,7 @@
   border: 2px solid $color-blue-dark;
   padding: 3px;
   border-radius: 5px;
-  color: $color-blue;
+  color: $color-gray-2;
   font-weight: 600;
 
   &:focus {
@@ -68,7 +68,6 @@
 }
 
 .label-email {
-  color: $color-blue-dark;
   &::after {
     content: "*";
     color: rgb(220, 86, 52);
@@ -81,7 +80,7 @@
     border: 2px solid $color-blue-dark;
     padding: 3px;
     border-radius: 5px;
-    color: $color-blue;
+    color: $color-gray-2;
     font-weight: 600;
 
     & ~ label[custom] {
@@ -127,3 +126,54 @@
     color: rgb(220, 86, 52);
   }
 } 
+
+.contact-form {
+  margin-left: 5em;
+  margin-right: 5em;
+  min-height: 40em;
+  border-radius: 12px;
+  color: $color-blue-dark;
+  border: 10px double;
+  background-color: rgba($color-blue-fade, 0.85);
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1em;
+  font-size: larger;
+  font-weight: 600;
+
+  & > h2 {
+    text-align: center;
+  }
+
+  .btn {
+    text-align: center;
+    border-radius: 7px;
+    background-color: $color-green-fade;
+    color: $color-green-dark;
+    padding: 8px 20px 8px;
+    font-weight: 800;
+    border: 2px double;
+    letter-spacing: 1px;
+    cursor: pointer;
+    display: inline-block;
+    max-width: fit-content;
+    transition: all .2s;
+
+    &:hover {
+      color: $color-green-fade;
+      background-color: $color-green-dark;
+    }
+
+    &:active {
+      transform: translateY(10px);
+    }
+  }
+
+  @media all and (max-width: 700px) {
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+  }
+}
