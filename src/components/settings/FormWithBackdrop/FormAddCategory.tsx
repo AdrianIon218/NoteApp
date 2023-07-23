@@ -41,7 +41,7 @@ export default function FormAddCategory() {
           maxLength={30}
         />
         <ListCategories />
-        <button type="submit" className={classes["btn-green"]}>
+        <button type="submit" className="btn-green">
           Add category
         </button>
       </form>
