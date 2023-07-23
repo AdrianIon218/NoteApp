@@ -49,23 +49,23 @@ export default function Settings() {
   return (
     <>
       {form}
-      <div className={classes["settings-panel"]}>
-        <div className={classes["forms-panel"]}>
+      <div className="settings-panel">
+        <div className="forms-panel">
           <h2>Categories settings</h2>
           <button
-            className={classes["btn-to-form"]}
+            className="btn-to-form"
             onClick={() => showCorespondingPanel(CategoryBtnState.Add)}
           >
             Add a new category
           </button>
           <button
-            className={classes["btn-to-form"]}
+            className="btn-to-form"
             onClick={() => showCorespondingPanel(CategoryBtnState.Delete)}
           >
             Delete a category
           </button>
           <button
-            className={classes["btn-to-form"]}
+            className="btn-to-form"
             onClick={() => showCorespondingPanel(CategoryBtnState.Modify)}
           >
             Modify a category

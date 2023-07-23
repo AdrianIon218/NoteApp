@@ -221,21 +221,29 @@ div.field:has(> .btn) {
       grid-column: span 2;
     }
 
-    & > label {
+    & > label { 
       font-size: 1rem;
       color: $color-green-dark;
       background-color: rgba($color-green-fade, 75%);
       font-weight: 700;
       align-self: center;
       border: 1px solid;
-      border-radius: 20px;
+      border-radius:5px;
       text-align: center;
+      font-weight: 800;
       cursor: pointer;
       text-indent: 5px;
-      width: 80%;
+      max-width: 80%;
       overflow: hidden; /* make sure it hides the content that overflows */
       white-space: nowrap; /* don't break the line */
       text-overflow: ellipsis; /* give the beautiful '...' effect */
+      transition: all .5s;
+    }
+
+    &:hover > label{
+      color: white;
+      border-color:  $color-green-dark;
+      background-color: $color-green-dark;
     }
 
     & > div {
@@ -314,10 +322,10 @@ div.field:has(> .btn) {
     left: 1rem;
     background-color: $color-green-fade;
     color: $color-green-dark;
-    border: 3px dashed;
+    border: 2px dashed;
     font-size: small;
-    border-radius: 10px;
-    padding: 3px;
+    border-radius: 2px;
+    padding: 5px;
   }
 }
 

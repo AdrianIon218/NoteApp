@@ -11,17 +11,17 @@ export default function FormWithBackdrop(props: IProps) {
   const formPanel = useRef<HTMLDivElement>(null);
 
   function exitForm() {
-    formPanel.current?.classList.add(classes["anim-line-down"]);
+    formPanel.current?.classList.add("anim-line-down");
     setTimeout(() => {
       props.closePanel();
     }, 600);
   }
 
   return (
-    <div className={classes.backdrop} ref={backdropPanel}>
-      <div className={classes["form-container"]} ref={formPanel}>
+    <div className="backdrop" ref={backdropPanel} onClick={exitForm}>
+      <div className="form-container" ref={formPanel} onClick={(event)=>event.stopPropagation()}>
         {props.children}
-        <button className={classes["close-btn"]} onClick={exitForm}>
+        <button className="close-btn" onClick={exitForm}>
           &times;
         </button>
       </div>
