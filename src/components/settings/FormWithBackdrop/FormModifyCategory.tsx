@@ -65,7 +65,7 @@ export default function FormModifyCategory() {
         <DropDownBtn labelMessage="Select category*" ref={categorySelected} />
         <InputText
           text="Insert a name"
-          customText="The category must be between 3 and 30 characters"
+          customText="The category must be between 3 and 30 characters !"
           ref={inputRef}
           minLength={3}
           maxLength={30}

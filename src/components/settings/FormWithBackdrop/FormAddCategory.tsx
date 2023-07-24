@@ -1,4 +1,3 @@
-import classes from "./FormWithBackdrop.module.css";
 import { useRef, useContext, useState } from "react";
 import InputText from "../../notes/customedFormElements/InputText";
 import { CategoryContext } from "../../contexts/CategoryContext";
@@ -31,11 +30,11 @@ export default function FormAddCategory() {
   return (
     <>
       {showNotification}
-      <form onSubmit={submit} className={classes["form-display-flex"]}>
+      <form onSubmit={submit} className="form-display-flex">
         <h2>Add a new category</h2>
         <InputText
           text="Insert a new category"
-          customText="The category must be unique, between 3 and 30 characters"
+          customText="The category must be unique and between 3 and 30 characters !"
           ref={inputRef}
           minLength={3}
           maxLength={30}

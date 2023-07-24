@@ -66,7 +66,7 @@ export default function FormModifyNote({ note, closeEditMode }: IProps) {
         <InputText
           ref={titleNote}
           text="Title"
-          customText="The title must be between 3 and 30 characters"
+          customText="The title must be between 3 and 30 characters !"
           minLength={3}
           maxLength={30}
           value={note.title}
