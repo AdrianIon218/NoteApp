@@ -17,7 +17,7 @@ export default function CategoryContextProvider(props: IProps) {
   const categories: {
     value: string[];
     setValue: (categories: string[]) => void;
-  } = useLocalStorage("categories", []);
+  } = useLocalStorage("categories", ["none","important"]);
 
   useEffect(() => {
     categories.value.push(...categoryValues);

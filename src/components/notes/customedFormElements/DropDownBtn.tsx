@@ -103,19 +103,19 @@ function DropDownBtn({ labelMessage, valueDefault }: IProps, ref: any) {
   const btnId = useId();
 
   return (
-    <div className={dropdowncls.field}>
-      <label htmlFor={btnId} className={dropdowncls["label-dropdown"]}>
+    <div className="field">
+      <label htmlFor={btnId} className="label-dropdown">
         {labelMessage}
       </label>
-      <div className={dropdowncls.btnWithDropDown} onBlur={() => noFocus()}>
+      <div className="btnWithDropDown" onBlur={() => noFocus()}>
         <button
           type="button"
           id={btnId}
           ref={listCategoriesBtn}
           name={valueDefault || categoryValues[0]}
-          className={`${dropdowncls["btn-category"]} ${
+          className={`btn-category ${
             showDropDown === "animation-go-down"
-              ? dropdowncls["btn-category-active"]
+              ? "btn-category-active"
               : ""
           }`}
           onClick={() => toggleCategories()}
@@ -123,7 +123,7 @@ function DropDownBtn({ labelMessage, valueDefault }: IProps, ref: any) {
           {valueDefault}
         </button>
 
-        <div className={`${dropdowncls.dropdown} ${dropdowncls[showDropDown]}`}>
+        <div className={`dropdown ${showDropDown}`}>
           {categoriesElements}
         </div>
       </div>

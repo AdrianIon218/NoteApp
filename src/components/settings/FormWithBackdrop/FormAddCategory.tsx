@@ -31,7 +31,7 @@ export default function FormAddCategory() {
     <>
       {showNotification}
       <form onSubmit={submit} className="form-display-flex">
-        <h2>Add a new category</h2>
+        <h2 className="txt-center">Add a new category</h2>
         <InputText
           text="Insert a new category"
           customText="The category must be unique and between 3 and 30 characters !"

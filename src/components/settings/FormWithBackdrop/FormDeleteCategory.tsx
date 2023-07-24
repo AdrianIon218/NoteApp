@@ -1,11 +1,9 @@
 import DropDownBtn from "../../notes/customedFormElements/DropDownBtn";
-import classes from "./FormWithBackdrop.module.css";
 import { useRef, useContext, useState, useLayoutEffect } from "react";
 import { CategoryContext } from "../../contexts/CategoryContext";
 import { IDropDownMethods, categoryValues } from "../../stylingStructures";
 import { NotesContext } from "../../contexts/NotesContext";
 import TemporalNotification from "../../notifications/TemporalNotification";
-import ListCategories from "./ListCategories";
 
 export default function FormDeleteCategory() {
   const categorySelected = useRef<IDropDownMethods>();
@@ -49,23 +47,22 @@ export default function FormDeleteCategory() {
   return (
     <>
       {showNotification}
-      <div className={classes["form-display-flex"]}>
-        <h2>Select a category to be deleted</h2>
+      <div className="form-display-flex">
+        <h2 className="small-margin txt-center">Select a category to delete</h2>
         <form onSubmit={submit}>
           <DropDownBtn labelMessage="Select category" ref={categorySelected} />
-          <h3>Rules :</h3>
-          <ol>
-            <li>You cannot delete the "none" or "important" category .</li>
+          <h3 style={{marginBottom:'5px'}}>Rules :</h3>
+          <ol className="small-margin">
+            <li>You cannot delete the "none" or "important" category.</li>
             <li>
               Category "none" will be associated for cards whose category is
-              deleted .
+              deleted.
             </li>
           </ol>
-          <button type="submit" className={classes["btn-red"]}>
+          <button type="submit" className={`btn-red ${categorySelected.current?.getSelectValue() === '' && "btn-red--invalid" }`}>
             Delete category
           </button>
         </form>
-        <ListCategories />
       </div>
     </>
   );
