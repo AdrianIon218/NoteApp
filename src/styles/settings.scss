@@ -205,12 +205,12 @@
   }
 
   &.btn-red--invalid{
-    opacity: .7;
+    opacity: .4;
     cursor: default;
 
     &:hover{
       border-color: rgb(255, 85, 0);
-      box-shadow: none
+      box-shadow: none;
     }
   }
 }

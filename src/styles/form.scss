@@ -187,7 +187,7 @@
   pointer-events: none;
   max-width: 46%;
   width: fit-content;
-  font-weight: 800;
+  font-weight: 900;
 }
 
 .btnWithDropDown {
@@ -221,17 +221,17 @@
     -ms-box-shadow: 0 0 5px $color-blue-dark;
     box-shadow: 0 0 5px $color-blue-dark;
   }
-}
 
-.btn-category::after {
-  content: "\25be"; // arrow down
-  color: $color-blue-dark;
-  font-weight: 900;
-  font-size: larger;
-  position: absolute;
-  right: 2px;
-  top: -4px;
-  transition: transform 0.5s;
+  &::after {
+    content: "\25be"; // arrow down
+    color: $color-blue-dark;
+    font-weight: 900;
+    font-size: larger;
+    position: absolute;
+    right: 2px;
+    top: -4px;
+    transition: transform 0.5s;
+  }
 }
 
 .btn-category-active.btn-category::after {
@@ -240,55 +240,59 @@
 
 .dropdown {
   position: absolute;
-  top: 1.3em;
+  top: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: rgba($color-blue-fade, 0.65);
   border-radius: 5px;
   border: 2px solid $color-blue-dark;
-  min-width: 5em;
+  min-width: 7rem;
+  max-width: 14rem;
   z-index: 1;
-}
 
-.no-display {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.dropdown > button {
-  font-weight: 700;
-  color: $color-blue-dark;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  transition: text-shadow 0.6s;
-  align-self: stretch;
-
-  &:hover {
-    text-shadow: 0 0 2.8px $color-blue;
+  @media all and (max-width: 330px) {
+    top:2.2rem;
   }
-}
 
-.dropdown > button:nth-child(2n) {
-  background-color: rgba($color-blue, 0.65);
-  color:white;
+  & > button {
+    font-weight: 700;
+    color: $color-blue-dark;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: text-shadow 0.6s;
+    align-self: stretch;
+  
+    &:hover {
+      text-shadow: 0 0 2.8px $color-blue;
+    }
+  }
 
-  &:hover {
-    text-shadow: 0 0 2.8px white;
+  & > button:nth-child(2n) {
+    background-color: rgba($color-blue, 0.65);
+    color:white;
+  
+    &:hover {
+      text-shadow: 0 0 2.8px white;
+    }
   }
 }
 
 .dropdown > button.btn-blocked {
   text-decoration: line-through;
   text-decoration-style: solid;
-  text-decoration-color: orangered;
-  text-decoration-thickness: 0.1rem;
+  text-decoration-color: red;
+  text-decoration-thickness: 0.08rem;
   cursor: default;
+  &:hover {
+    text-shadow: none;
+  }
 }
 
-.dropdown > button.btn-blocked:hover {
-  text-shadow: none;
+.no-display {
+  opacity: 0;
+  visibility: hidden;
 }
 
 .animation-go-down {
@@ -323,9 +327,5 @@
 @media all and (max-width: 600px) {
   .label-dropdown {
     overflow-wrap: break-word;
-  }
-
-  .dropdown {
-    top: 1.8em;
   }
 }

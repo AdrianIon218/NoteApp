@@ -1,4 +1,3 @@
-import dropdowncls from "./dropDownBtn.module.css";
 import { CategoryContext } from "../../contexts/CategoryContext";
 import {
   useMemo,
@@ -59,7 +58,7 @@ function DropDownBtn({ labelMessage, valueDefault }: IProps, ref: any) {
             <button
               type="button"
               key={index}
-              className={dropdowncls["btn-blocked"]}
+              className="btn-blocked"
             >
               {" "}
               {item}{" "}

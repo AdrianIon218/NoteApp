@@ -1,5 +1,5 @@
 import DropDownBtn from "../../notes/customedFormElements/DropDownBtn";
-import { useRef, useContext, useState, useLayoutEffect } from "react";
+import { useRef, useContext, useState, useLayoutEffect, useEffect } from "react";
 import { CategoryContext } from "../../contexts/CategoryContext";
 import { IDropDownMethods, categoryValues } from "../../stylingStructures";
 import { NotesContext } from "../../contexts/NotesContext";
@@ -16,6 +16,10 @@ export default function FormDeleteCategory() {
   useLayoutEffect(() => {
     categorySelected.current!.blockCategories(categoryValues);
   }, []);
+
+  useEffect(()=>{
+    console.log(categorySelected.current?.getSelectValue() === 'none');
+  },[])
 
   function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -48,7 +52,7 @@ export default function FormDeleteCategory() {
     <>
       {showNotification}
       <div className="form-display-flex">
-        <h2 className="small-margin txt-center">Select a category to delete</h2>
+        <h2 className="txt-center">Select a category to delete</h2>
         <form onSubmit={submit}>
           <DropDownBtn labelMessage="Select category" ref={categorySelected} />
           <h3 style={{marginBottom:'5px'}}>Rules :</h3>
@@ -59,7 +63,7 @@ export default function FormDeleteCategory() {
               deleted.
             </li>
           </ol>
-          <button type="submit" className={`btn-red ${categorySelected.current?.getSelectValue() === '' && "btn-red--invalid" }`}>
+          <button type="submit" className={`btn-red }`} disabled={categoryValues.includes(categorySelected.current?.getSelectValue()!)}>
             Delete category
           </button>
         </form>
