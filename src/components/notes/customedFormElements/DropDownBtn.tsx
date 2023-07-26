@@ -1,21 +1,14 @@
 import { CategoryContext } from "../../contexts/CategoryContext";
-import {
-  useMemo,
-  useRef,
-  useState,
-  forwardRef,
-  useImperativeHandle,
-  useId,
-  useContext,
-} from "react";
+import { useMemo, useRef, useState, forwardRef, useImperativeHandle, useId, useContext } from "react";
 import { categoryValues } from "../../stylingStructures";
 
 interface IProps {
   labelMessage: string;
   valueDefault?: string;
+  isNeccessary?: boolean;
 }
 
-function DropDownBtn({ labelMessage, valueDefault }: IProps, ref: any) {
+function DropDownBtn({ labelMessage, valueDefault, isNeccessary }: IProps, ref: any) {
   const categories = useContext(CategoryContext);
   const [updateCat, setUpdateCat] = useState(true);
   const [blockedCategories, setBlockedCategories] = useState<string[]>([]);
@@ -104,7 +97,7 @@ function DropDownBtn({ labelMessage, valueDefault }: IProps, ref: any) {
   return (
     <div className="field">
       <label htmlFor={btnId} className="label-dropdown">
-        {labelMessage}
+        {labelMessage}{isNeccessary ? <span style={{color:"red"}}>*</span> :'' }
       </label>
       <div className="btnWithDropDown" onBlur={() => noFocus()}>
         <button
@@ -117,7 +110,7 @@ function DropDownBtn({ labelMessage, valueDefault }: IProps, ref: any) {
               ? "btn-category-active"
               : ""
           }`}
-          onClick={() => toggleCategories()}
+          onClick={ toggleCategories}
         >
           {valueDefault}
         </button>

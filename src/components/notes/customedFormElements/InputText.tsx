@@ -18,7 +18,7 @@ function InputText(props: IProps, ref: any) {
   const titleId = `${useId()}-idNoteTitle`;
   return (
     <div className="field inputDiv">
-      <label htmlFor={titleId}>{props.text}</label>
+      <label htmlFor={titleId} className="txt-bold">{props.text}</label>
       <input
         type="text"
         id={titleId}

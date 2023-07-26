@@ -83,6 +83,10 @@
     color: $color-gray-2;
     font-weight: 600;
 
+    @media all and (max-width:340px) {
+      max-width: 70%;
+    }
+
     & ~ label[custom] {
       position: relative;
     }
@@ -192,6 +196,7 @@
 
 .btnWithDropDown {
   display: flex;
+  width: 100%;
   flex-direction: column;
   justify-content: space-between;
 }
@@ -240,7 +245,7 @@
 
 .dropdown {
   position: absolute;
-  top: 1.5rem;
+  top: 2.2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -250,10 +255,6 @@
   min-width: 7rem;
   max-width: 14rem;
   z-index: 1;
-
-  @media all and (max-width: 330px) {
-    top:2.2rem;
-  }
 
   & > button {
     font-weight: 700;

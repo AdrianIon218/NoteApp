@@ -53,16 +53,16 @@ export default function FormModifyCategory() {
   }
 
   return (
-    <div className={classes["form-display-flex"]}>
+    <div className="form-display-flex">
       {showNotification}
-      <h2>Select a category to be modified</h2>
+      <h2 className="txt-center">Select a category to modify</h2>
       <form onSubmit={submit}>
-        <h3>Rules :</h3>
+        <h3 className="small-margin">Rules :</h3>
         <ol>
           <li>You cannot modify the "none" or "important" category .</li>
           <li>There cannot be two categories with the same name .</li>
         </ol>
-        <DropDownBtn labelMessage="Select category*" ref={categorySelected} />
+        <DropDownBtn labelMessage="Select category" ref={categorySelected} isNeccessary={true}/>
         <InputText
           text="Insert a name"
           customText="The category must be between 3 and 30 characters !"
@@ -70,7 +70,7 @@ export default function FormModifyCategory() {
           minLength={3}
           maxLength={30}
         />
-        <button type="submit" className={classes["btn-green"]}>
+        <button type="submit" className="btn-green">
           Save
         </button>
       </form>

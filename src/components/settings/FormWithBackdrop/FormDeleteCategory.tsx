@@ -17,10 +17,6 @@ export default function FormDeleteCategory() {
     categorySelected.current!.blockCategories(categoryValues);
   }, []);
 
-  useEffect(()=>{
-    console.log(categorySelected.current?.getSelectValue() === 'none');
-  },[])
-
   function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const selectedCategory = categorySelected.current!.getSelectValue();
@@ -54,7 +50,7 @@ export default function FormDeleteCategory() {
       <div className="form-display-flex">
         <h2 className="txt-center">Select a category to delete</h2>
         <form onSubmit={submit}>
-          <DropDownBtn labelMessage="Select category" ref={categorySelected} />
+          <DropDownBtn labelMessage="Select category" ref={categorySelected} isNeccessary={true}/>
           <h3 style={{marginBottom:'5px'}}>Rules :</h3>
           <ol className="small-margin">
             <li>You cannot delete the "none" or "important" category.</li>
@@ -63,7 +59,7 @@ export default function FormDeleteCategory() {
               deleted.
             </li>
           </ol>
-          <button type="submit" className={`btn-red }`} disabled={categoryValues.includes(categorySelected.current?.getSelectValue()!)}>
+          <button type="submit" className="btn-red" disabled={categoryValues.includes(categorySelected.current?.getSelectValue()!)}>
             Delete category
           </button>
         </form>
