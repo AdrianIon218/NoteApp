@@ -67,12 +67,12 @@ function CreateNote() {
 
         <TextArea name="textNote" ref={textNote} />
 
-        <div className={classes.field}>
-          <button type="submit" className={classes.btn}>
+        <div className="field">
+          <button type="submit" className="btn-blue">
             {" "}
             Save{" "}
           </button>
-          <button type="button" className={classes.btn} onClick={resetInputs}>
+          <button type="button" className="btn-blue" onClick={resetInputs}>
             {" "}
             Discard{" "}
           </button>
