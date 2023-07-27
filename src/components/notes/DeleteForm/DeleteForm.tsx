@@ -7,7 +7,7 @@ interface Iprops {
   id: string;
 }
 
-export default function DeleteForm(props: Iprops) {
+export default function DeleteForm(props: Iprops){
   const deleteForm = useRef<HTMLDivElement>(null);
   const notesContext = useContext(NotesContext);
 
@@ -22,8 +22,8 @@ export default function DeleteForm(props: Iprops) {
     setTimeout(props.closeDeleteForm, 550);
   }
 
-  return (
-    <div className={classes["delete-form"]} ref={deleteForm}>
+  return (<div className="backdrop" onClick={closeForm}>
+    <div className={classes["delete-form"]} ref={deleteForm} onClick={(event)=>event.stopPropagation()}>
       <button className={classes["close-btn"]} onClick={closeForm}>
         &times;
       </button>
@@ -40,5 +40,5 @@ export default function DeleteForm(props: Iprops) {
         </button>
       </div>
     </div>
-  );
+  </div>);
 }

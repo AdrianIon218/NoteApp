@@ -55,7 +55,8 @@ export default function FormModifyNote({ note, closeEditMode }: IProps) {
   }
 
   return (
-    <div className={classes["form-centered"]} ref={panel}>
+    <div className="backdrop" onClick={closePanel}>
+    <div className={classes["form-centered"]} ref={panel} onClick={(event)=>event.stopPropagation()}>
       {showMessage && (
         <TemporalNotification hideMessage={hideMessage} durationSeconds={2.2}>
           Note changed !
@@ -92,5 +93,5 @@ export default function FormModifyNote({ note, closeEditMode }: IProps) {
         &times;
       </button>
     </div>
-  );
+    </div>);
 }

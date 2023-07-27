@@ -1,4 +1,3 @@
-import classes from "./CreateNote/CreateNote.module.css";
 import { useRef, useContext, useState } from "react";
 import DropDownBtn from "./customedFormElements/DropDownBtn";
 import TextArea from "./customedFormElements/TextArea";
@@ -47,7 +46,7 @@ function CreateNote() {
   }
 
   return (
-    <div className={classes["create-note-container"]}>
+    <div className="create-note-container">
       {showMessage && (
         <TemporalNotification hideMessage={hideMessage}>
           Note added !
@@ -63,7 +62,7 @@ function CreateNote() {
           maxLength={30}
         />
 
-        <DropDownBtn labelMessage="Choose a category : " ref={btnSelectRef} />
+        <DropDownBtn labelMessage="Choose a category" ref={btnSelectRef} />
 
         <TextArea name="textNote" ref={textNote} />
 
