@@ -1,0 +1,73 @@
+.delete-form {
+    position: absolute;
+    top:20%;
+    min-width: 60%;
+    height: 50%;
+    border-radius: 20px;
+    color: $color-blue-dark;
+    border: 10px double;
+    background-color: rgba($color-blue-fade, 85%);
+    opacity: 0;
+    animation: anim-lineUp 1s ease-out 0s 1 normal forwards;
+    -moz-animation: anim-lineUp 1s ease-out 0s 1 normal forwards;
+    -webkit-animation: anim-lineUp 1s ease-out 0s 1 normal forwards;
+    -o-animation: anim-lineUp 1s ease-out 0s 1 normal forwards;
+    -ms-animation: anim-lineUp 1s ease-out 0s 1 normal forwards;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+
+    @media all and (max-width:600px) {
+      min-width: 80%;
+    }
+
+    & > h2 {
+      text-align: center;
+      font-weight: 900;
+    }
+  }
+  
+  .anim-line-down-del {
+    animation: anim-lineDown 0.5s ease-out 0s 1 normal forwards;
+    -moz-animation: anim-lineDown 0.5s ease-out 0s 1 normal forwards;
+    -webkit-animation: anim-lineDown 0.5s ease-out 0s 1 normal forwards;
+    -o-animation: anim-lineDown 0.5s ease-out 0s 1 normal forwards;
+    -ms-animation: anim-lineDown 0.5s ease-out 0s 1 normal forwards;
+  }
+  
+  div:has(> .del-btn) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  
+  .del-btn {
+    padding: 0.4em;
+    font-size: 24px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: $color-green;
+    font-weight: 700;
+    background-color: rgba($color-green-fade, .85);
+    border: 4px double $color-green;
+    transition: box-shadow 0.7s, transform .5s;
+
+    &:hover {
+      box-shadow:
+        3px 3px 20px $color-green-fade,
+        -2px 1px 30px $color-green;
+    }
+  }
+  
+  .btn-no {
+    color: $color-red;
+    background-color: $color-orange-fade;
+    border: 4px double;
+
+    &:hover {
+      box-shadow:
+        3px 3px 20px $color-red,
+        -2px 1px 30px $color-orange-fade;
+    }
+  }

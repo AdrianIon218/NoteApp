@@ -252,17 +252,3 @@
   -o-animation: anim-lineDown 0.5s ease-out 0s 1 normal forwards;
   -ms-animation: anim-lineDown 0.5s ease-out 0s 1 normal forwards;
 }
-
-@keyframes anim-lineDown {
-  0% {
-    opacity: 1;
-    transform: translateY(0%);
-  }
-  45% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(90%);
-  }
-}

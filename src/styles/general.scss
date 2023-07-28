@@ -9,3 +9,17 @@
 .txt-bold{
     font-weight: bolder;
 }
+
+@keyframes anim-lineDown {
+    0% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+    45% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(90%);
+    }
+  }

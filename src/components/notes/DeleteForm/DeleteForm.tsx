@@ -12,28 +12,28 @@ export default function DeleteForm(props: Iprops){
   const notesContext = useContext(NotesContext);
 
   function closeForm() {
-    deleteForm.current!.classList.add(classes["anim-line-down"]);
+    deleteForm.current!.classList.add("anim-line-down-del");
     setTimeout(props.closeDeleteForm, 550);
   }
 
   function deleteItem() {
     notesContext.deleteNoteById(props.id);
-    deleteForm.current!.classList.add(classes["anim-line-down"]);
+    deleteForm.current!.classList.add("anim-line-down-del");
     setTimeout(props.closeDeleteForm, 550);
   }
 
   return (<div className="backdrop" onClick={closeForm}>
-    <div className={classes["delete-form"]} ref={deleteForm} onClick={(event)=>event.stopPropagation()}>
-      <button className={classes["close-btn"]} onClick={closeForm}>
+    <div className="delete-form" ref={deleteForm} onClick={(event) => event.stopPropagation()}>
+      <button className="close-btn" onClick={closeForm}>
         &times;
       </button>
       <h2>Are you sure ?</h2>
       <div>
-        <button className={classes.btn} onClick={deleteItem}>
+        <button className="del-btn" onClick={deleteItem}>
           Yes
         </button>
         <button
-          className={`${classes.btn} ${classes["btn-no"]}`}
+          className="del-btn btn-no"
           onClick={closeForm}
         >
           No
