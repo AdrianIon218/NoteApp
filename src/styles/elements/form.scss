@@ -196,7 +196,6 @@
 
 .btnWithDropDown {
   display: flex;
-  width: 100%;
   flex-direction: column;
   justify-content: space-between;
 }
@@ -245,16 +244,20 @@
 
 .dropdown {
   position: absolute;
-  top: 2.2rem;
+  top: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba($color-blue-fade, 0.65);
+  background-color: rgba($color-blue-fade, 0.75);
   border-radius: 5px;
   border: 2px solid $color-blue-dark;
   min-width: 7rem;
   max-width: 14rem;
   z-index: 1;
+
+  @media all and (max-width:400px) {
+    top:2.2rem;
+  }
 
   & > button {
     font-weight: 700;

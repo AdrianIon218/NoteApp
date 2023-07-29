@@ -1,4 +1,3 @@
-import classes from "./FormModifyNote.module.css";
 import { NoteStructure, IDropDownMethods } from "../../stylingStructures";
 import { useRef, useContext, useState } from "react";
 import InputText from "../customedFormElements/InputText";
@@ -50,13 +49,13 @@ export default function FormModifyNote({ note, closeEditMode }: IProps) {
   }
 
   function closePanel() {
-    panel.current!.classList.add(classes["anim-line-down"]);
+    panel.current!.classList.add("anim-line-down-modify");
     setTimeout(() => closeEditMode!(), 600);
   }
 
   return (
     <div className="backdrop" onClick={closePanel}>
-    <div className={classes["form-centered"]} ref={panel} onClick={(event)=>event.stopPropagation()}>
+    <div className="note-modify" ref={panel} onClick={(event)=>event.stopPropagation()}>
       {showMessage && (
         <TemporalNotification hideMessage={hideMessage} durationSeconds={2.2}>
           Note changed !
@@ -73,23 +72,24 @@ export default function FormModifyNote({ note, closeEditMode }: IProps) {
           value={note.title}
         />
         <DropDownBtn
-          labelMessage="Choose a category : "
+          labelMessage="Change the category"
           ref={btnSelectRef}
           valueDefault={note.categorySelected}
         />
         <TextArea name="textNote" ref={textNote} value={note.text} />
-        <div className={classes["buttons"]}>
+        <div className="modify-buttons">
           <button>Save</button>
           <button
             type="button"
             onClick={resetNote}
+            className="red"
             title="Reset to the last saved content"
           >
             Discard changes
           </button>
         </div>
       </form>
-      <button className={classes["close-btn"]} onClick={closePanel}>
+      <button className="close-btn" onClick={closePanel}>
         &times;
       </button>
     </div>

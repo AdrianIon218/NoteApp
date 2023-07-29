@@ -1,17 +1,21 @@
 @import "./variables.scss";
 
+@import "./mixin.scss";
+
 @import "./general.scss";
 
-@import "./nav.scss";
+@import "./elements/nav.scss";
 
-@import "./footer.scss";
+@import "./elements/footer.scss";
 
-@import "./note.scss";
+@import "./note/note.scss";
 
-@import "./form.scss";
+@import "./elements/form.scss";
 
-@import "./settings.scss";
+@import "./elements/settings.scss";
 
-@import "./edit_note.scss";
+@import "./note/edit_note.scss";
 
-@import "./delete_note.scss";
+@import "./note/delete_note.scss";
+
+@import "./note//modify_note.scss";

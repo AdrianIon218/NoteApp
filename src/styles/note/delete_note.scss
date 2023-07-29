@@ -8,15 +8,11 @@
     border: 10px double;
     background-color: rgba($color-blue-fade, 85%);
     opacity: 0;
-    animation: anim-lineUp 1s ease-out 0s 1 normal forwards;
-    -moz-animation: anim-lineUp 1s ease-out 0s 1 normal forwards;
-    -webkit-animation: anim-lineUp 1s ease-out 0s 1 normal forwards;
-    -o-animation: anim-lineUp 1s ease-out 0s 1 normal forwards;
-    -ms-animation: anim-lineUp 1s ease-out 0s 1 normal forwards;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 1rem;
+    @include animation(anim-lineUp 1s ease-out 0s 1 normal forwards);
 
     @media all and (max-width:600px) {
       min-width: 80%;
@@ -29,11 +25,7 @@
   }
   
   .anim-line-down-del {
-    animation: anim-lineDown 0.5s ease-out 0s 1 normal forwards;
-    -moz-animation: anim-lineDown 0.5s ease-out 0s 1 normal forwards;
-    -webkit-animation: anim-lineDown 0.5s ease-out 0s 1 normal forwards;
-    -o-animation: anim-lineDown 0.5s ease-out 0s 1 normal forwards;
-    -ms-animation: anim-lineDown 0.5s ease-out 0s 1 normal forwards;
+    @include animation(anim-lineDown 0.5s ease-out 0s 1 normal forwards);
   }
   
   div:has(> .del-btn) {
