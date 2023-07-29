@@ -10,6 +10,11 @@
     font-weight: bolder;
 }
 
+.div-scroll-Y{
+  height: 100%;
+  overflow-y: auto;
+}
+
 @keyframes anim-lineDown {
   0% {
     opacity: 1;

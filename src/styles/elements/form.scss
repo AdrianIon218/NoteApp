@@ -300,8 +300,7 @@
 }
 
 .animation-go-down {
-  animation: go-down 0.5s linear 0s 1 normal;
-  animation-fill-mode: forwards;
+  @include animation(go-down 0.5s linear 0s 1 normal forwards);
 }
 
 @keyframes go-down {
@@ -314,8 +313,7 @@
 }
 
 .animation-go-up {
-  animation: go-up 0.5s linear 0s 1 normal;
-  animation-fill-mode: forwards;
+  @include animation(go-up 0.5s linear 0s 1 normal forwards);
 }
 
 @keyframes go-up {

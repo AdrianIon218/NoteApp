@@ -11,9 +11,11 @@ export default function ListCategories(props: IProps) {
   return (
     <fieldset className="categories-group">
       <legend>{props.title ?? "Current categories"}</legend>
-      {categoryContext.getCategories().map((item, index) => (
-        <div key={index}>{item}</div>
-      ))}
+      <div className="categories-flex">
+       {categoryContext.getCategories().map((item, index) => (
+         <div key={index}>{item}</div>
+       ))}
+      </div>
     </fieldset>
   );
 }

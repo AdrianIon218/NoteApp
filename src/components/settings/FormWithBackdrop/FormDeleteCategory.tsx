@@ -4,6 +4,7 @@ import { CategoryContext } from "../../contexts/CategoryContext";
 import { IDropDownMethods, categoryValues } from "../../stylingStructures";
 import { NotesContext } from "../../contexts/NotesContext";
 import TemporalNotification from "../../notifications/TemporalNotification";
+import ListCategories from "./ListCategories";
 
 export default function FormDeleteCategory() {
   const categorySelected = useRef<IDropDownMethods>();
@@ -47,22 +48,24 @@ export default function FormDeleteCategory() {
   return (
     <>
       {showNotification}
-      <div className="form-display-flex">
-        <h2 className="txt-center">Select a category to delete</h2>
-        <form onSubmit={submit}>
-          <DropDownBtn labelMessage="Select category" ref={categorySelected} isNeccessary={true}/>
-          <h3 style={{marginBottom:'5px'}}>Rules :</h3>
-          <ol className="small-margin">
-            <li>You cannot delete the "none" or "important" category.</li>
-            <li>
-              Category "none" will be associated for cards whose category is
-              deleted.
-            </li>
-          </ol>
-          <button type="submit" className="btn-red" disabled={categoryValues.includes(categorySelected.current?.getSelectValue()!)}>
-            Delete category
-          </button>
-        </form>
+      <div className="div-scroll-Y">
+        <div className="form-display-flex">
+          <h2 className="txt-center">Select a category to delete</h2>
+          <form onSubmit={submit}>
+            <DropDownBtn labelMessage="Select category" ref={categorySelected} isNeccessary={true}/>
+            <h3 style={{marginBottom:'5px'}}>Rules :</h3>
+            <ol className="small-margin">
+              <li>You cannot delete the "none" or "important" category.</li>
+              <li>
+                Category "none" will be associated for cards whose category is deleted.
+              </li>
+            </ol>
+            <button type="submit" className="btn-red" disabled={categoryValues.includes(categorySelected.current?.getSelectValue()!)}>
+              Delete category
+            </button>
+            <ListCategories />
+          </form>
+        </div>
       </div>
     </>
   );
