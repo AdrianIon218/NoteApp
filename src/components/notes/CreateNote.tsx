@@ -71,7 +71,7 @@ function CreateNote() {
             {" "}
             Save{" "}
           </button>
-          <button type="button" className="btn-blue" onClick={resetInputs}>
+          <button type="button" className="btn-blue red" onClick={resetInputs}>
             {" "}
             Discard{" "}
           </button>
