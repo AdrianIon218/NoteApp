@@ -248,12 +248,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba($color-blue-fade, 0.75);
+  background-color: rgba($color-blue-fade, 0.85);
   border-radius: 5px;
   border: 2px solid $color-blue-dark;
   min-width: 7rem;
   max-width: 14rem;
   z-index: 1;
+  max-height: 7rem;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    padding: 5px;
+    width: 15px;
+    border-radius: 50px;
+    background-color: rgba($color-blue-white, 0.75);
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    border: 3px $color-blue-dark solid;
+    border-radius: 10px;
+    background-color: $color-blue;
+  }
 
   @media all and (max-width:400px) {
     top:2.2rem;

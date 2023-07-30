@@ -45,7 +45,8 @@ export default function CategoryContextProvider(props: IProps) {
 
   function replaceCategory(categoryName: string, newCategoryName: string) {
     const index = categories.value.indexOf(categoryName);
-    if (index === -1 || categoryName === newCategoryName) {
+    const isNewCategoryInList = categories.value.indexOf(categoryName);
+    if (index === -1 || categoryName === newCategoryName || isNewCategoryInList !== -1) {
       return false;
     }
     categories.value = categories.value.map((item) => {
