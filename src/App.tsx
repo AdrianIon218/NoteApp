@@ -3,6 +3,7 @@ import Layout from "./components/layout/Layout";
 import NoteComp from "./components/notes/NoteComp";
 import ContactForm from "./components/Pages/ContactForm";
 import Settings from "./components/settings/Settings";
+import NoPage from "./components/Pages/NoPage";
 
 function App() {
   type route = { path: string; component: JSX.Element };
@@ -12,6 +13,7 @@ function App() {
     { path: "/notes", component: <NoteComp /> },
     { path: "/settings", component: <Settings></Settings> },
     { path: "/support", component: <ContactForm></ContactForm> },
+    { path: "*", component:<NoPage />}
   ];
 
   return (

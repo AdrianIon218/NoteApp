@@ -1,4 +1,3 @@
-import classes from "./Settings.module.css";
 import { useState } from "react";
 import FormWithBackdrop from "./FormWithBackdrop/FormWithBackdrop";
 import FormAddCategory from "./FormWithBackdrop/FormAddCategory";

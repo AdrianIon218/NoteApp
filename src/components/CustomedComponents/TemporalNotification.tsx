@@ -1,4 +1,3 @@
-import classes from "./TemporalNotification.module.css";
 import { useEffect } from "react";
 
 interface IProps {

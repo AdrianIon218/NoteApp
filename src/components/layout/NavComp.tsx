@@ -1,5 +1,4 @@
-//import classes from './NavComp.module.css'
-import logo from "../../images/note-logo-header.png";
+
 import { Link, useLocation } from "react-router-dom";
 
 export default function Navcomp() {
@@ -27,7 +26,7 @@ export default function Navcomp() {
 
   return (
     <nav className="nav">
-      <img src={logo} className="logo" alt="Note" />
+      <img src="./note-logo-header.png" className="logo" alt="Note" />
       {navElements}
     </nav>
   );

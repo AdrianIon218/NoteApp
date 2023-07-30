@@ -1,4 +1,3 @@
-import classes from "./DeleteForm.module.css";
 import { useRef, useContext } from "react";
 import { NotesContext } from "../../contexts/NotesContext";
 

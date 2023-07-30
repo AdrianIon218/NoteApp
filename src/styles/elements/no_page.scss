@@ -1,0 +1,33 @@
+.no-page-ctn{
+  display: flex;
+  justify-content: center;
+  
+  .no-page{
+    background-color: rgba($color-blue-white, 85%);
+    color:$color-blue-dark;
+    border: 3px solid;
+    border-radius: 10px;
+    height: 30em;
+    width: 60%;
+    padding: 0.6rem;
+
+    @media all and (max-width:800px) {
+      width: 80%;
+    }
+
+    & h1{
+      margin-top: 20%;
+      text-align: center;
+
+      span.red{
+        color:$color-red;
+      }
+    }
+
+    .emoji{
+      font-size: 4rem;
+      text-align: center;
+    }
+  }
+}
+
