@@ -1,4 +1,4 @@
-import TemporalNotification from "../notifications/TemporalNotification";
+import TemporalNotification from "../CustomedComponents/TemporalNotification";
 import InputText from "../notes/customedFormElements/InputText";
 import TextArea from "../notes/customedFormElements/TextArea";
 import InputEmail from "../notes/customedFormElements/InputEmail";

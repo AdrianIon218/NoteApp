@@ -6,7 +6,7 @@ import { categoryValues } from "../../stylingStructures";
 import InputText from "../../notes/customedFormElements/InputText";
 import { CategoryContext } from "../../contexts/CategoryContext";
 import { NotesContext } from "../../contexts/NotesContext";
-import TemporalNotification from "../../notifications/TemporalNotification";
+import TemporalNotification from "../../CustomedComponents/TemporalNotification";
 
 export default function FormModifyCategory() {
   const categorySelected = useRef<IDropDownMethods>();

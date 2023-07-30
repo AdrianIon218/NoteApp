@@ -28,13 +28,13 @@ function TemporalNotification(props: IProps) {
 
   return props.durationSeconds ? (
     <div
-      className={classes.notification}
+      className="notification"
       style={divStyleDuration(props.durationSeconds)}
     >
       {props.children}
     </div>
   ) : (
-    <div className={classes.notification}>{props.children}</div>
+    <div className="notification">{props.children}</div>
   );
 }
 

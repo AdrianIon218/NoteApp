@@ -4,7 +4,7 @@ import TextArea from "./customedFormElements/TextArea";
 import InputText from "./customedFormElements/InputText";
 import { NotesContext } from "../contexts/NotesContext";
 import { IDropDownMethods } from "../stylingStructures";
-import TemporalNotification from "../notifications/TemporalNotification";
+import TemporalNotification from "../CustomedComponents/TemporalNotification";
 import { nanoid } from "nanoid";
 
 function CreateNote() {

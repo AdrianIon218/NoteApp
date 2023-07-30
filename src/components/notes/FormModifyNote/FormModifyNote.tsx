@@ -4,7 +4,7 @@ import InputText from "../customedFormElements/InputText";
 import DropDownBtn from "../customedFormElements/DropDownBtn";
 import TextArea from "../customedFormElements/TextArea";
 import { NotesContext } from "../../contexts/NotesContext";
-import TemporalNotification from "../../notifications/TemporalNotification";
+import TemporalNotification from "../../CustomedComponents/TemporalNotification";
 
 interface IProps {
   note: NoteStructure;

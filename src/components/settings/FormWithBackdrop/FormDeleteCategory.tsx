@@ -3,7 +3,7 @@ import { useRef, useContext, useState, useLayoutEffect, useEffect } from "react"
 import { CategoryContext } from "../../contexts/CategoryContext";
 import { IDropDownMethods, categoryValues } from "../../stylingStructures";
 import { NotesContext } from "../../contexts/NotesContext";
-import TemporalNotification from "../../notifications/TemporalNotification";
+import TemporalNotification from "../../CustomedComponents/TemporalNotification";
 import ListCategories from "./ListCategories";
 
 export default function FormDeleteCategory() {
