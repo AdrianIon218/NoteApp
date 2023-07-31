@@ -10,7 +10,7 @@
   background-color: $color-blue-fade;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   padding: 1em;
   padding-top: 20px;
 
@@ -19,7 +19,7 @@
 
   & > h2 {
     text-align: center;
-    margin-bottom: 0.1em;
+    margin-bottom: 1rem;
   }
 }
 
