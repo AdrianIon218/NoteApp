@@ -1,11 +1,11 @@
-import DropDownBtn from "../../notes/customedFormElements/DropDownBtn";
-import { IDropDownMethods } from "../../stylingStructures";
+import DropDownBtn from "../CustomedComponents/FormElements/DropDownBtn";
+import { IDropDownMethods } from "../stylingStructures";
 import { useRef, useLayoutEffect, useContext, useState } from "react";
-import { categoryValues } from "../../stylingStructures";
-import InputText from "../../notes/customedFormElements/InputText";
-import { CategoryContext } from "../../contexts/CategoryContext";
-import { NotesContext } from "../../contexts/NotesContext";
-import TemporalNotification from "../../CustomedComponents/TemporalNotification";
+import { categoryValues } from "../stylingStructures";
+import InputText from "../CustomedComponents/FormElements/InputText";
+import { CategoryContext } from "../Contexts/CategoryContext";
+import { NotesContext } from "../Contexts/NotesContext";
+import TemporalNotification from "../CustomedComponents/TemporalNotification";
 
 export default function FormModifyCategory() {
   const categorySelected = useRef<IDropDownMethods>();
@@ -54,14 +54,23 @@ export default function FormModifyCategory() {
   return (
     <div className="form-display-flex">
       {showNotification}
-      <h2 className="txt-center">Select a category to modify</h2>
+      <h2 className="txt-center">Change the name of a category</h2>
       <form onSubmit={submit}>
-        <h3 className="small-margin">Rules :</h3>
-        <ol>
+        <DropDownBtn
+          labelMessage="Select category"
+          ref={categorySelected}
+          isNeccessary={true}
+        />
+        <h3
+          className="txt-red"
+          style={{ marginLeft: "0px", marginBottom: "5px" }}
+        >
+          Rules :
+        </h3>
+        <ol className="small-margin medium-margin-bot">
           <li>You cannot modify the "none" or "important" category .</li>
           <li>There cannot be two categories with the same name .</li>
         </ol>
-        <DropDownBtn labelMessage="Select category" ref={categorySelected} isNeccessary={true}/>
         <InputText
           text="Insert a name"
           customText="The category must be between 3 and 30 characters !"

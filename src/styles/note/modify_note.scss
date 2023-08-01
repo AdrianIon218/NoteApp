@@ -74,20 +74,20 @@
     font-weight: 700;
     background-color: $color-blue-white;
     border: 4px double;
-    transition: all .7s;
+    transition: all 0.7s;
 
     &:hover {
       box-shadow:
         3px 1px 8px $color-blue-fade,
         -2px 1px 20px $color-blue-dark;
-    }    
+    }
 
     &:active {
       transform: translateY(5px);
       border-style: solid;
     }
 
-    &.red{
+    &.red {
       color: $color-red;
       background-color: lighten($color-red-fade, 10%);
 
@@ -95,7 +95,7 @@
         box-shadow:
           3px 1px 8px $color-red-fade,
           -2px 1px 20px $color-red;
-      }    
+      }
     }
   }
 }

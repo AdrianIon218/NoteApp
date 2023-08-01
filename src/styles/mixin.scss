@@ -1,20 +1,19 @@
-@mixin animation($value){
+@mixin animation($value) {
   animation: $value;
-  -moz-animation:$value;
-  -webkit-animation:$value;
-  -o-animation:$value;
-  -ms-animation:$value;
+  -moz-animation: $value;
+  -webkit-animation: $value;
+  -o-animation: $value;
+  -ms-animation: $value;
 }
 
-
-@mixin scroll-Y(){
+@mixin scroll-Y() {
   &::-webkit-scrollbar {
     padding: 5px;
     width: 15px;
     border-radius: 50px;
     background-color: transparent;
   }
-  
+
   &::-webkit-scrollbar-thumb {
     border: 3px $color-blue-dark solid;
     border-radius: 10px;

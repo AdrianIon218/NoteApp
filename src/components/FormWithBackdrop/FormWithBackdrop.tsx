@@ -18,7 +18,11 @@ export default function FormWithBackdrop(props: IProps) {
 
   return (
     <div className="backdrop" ref={backdropPanel} onClick={exitForm}>
-      <div className="form-container" ref={formPanel} onClick={(event)=>event.stopPropagation()}>
+      <div
+        className="form-container"
+        ref={formPanel}
+        onClick={(event) => event.stopPropagation()}
+      >
         {props.children}
         <button className="close-btn" onClick={exitForm}>
           &times;

@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: .5rem;
+  padding: 0.5rem;
 }
 
 .notes-container {
@@ -20,7 +20,7 @@
   overflow-x: hidden;
   overflow-y: auto;
 
-  @media all and (max-width:600) {
+  @media all and (max-width: 600) {
     width: 100%;
   }
 
@@ -53,8 +53,8 @@
   transition: box-shadow 0.5s;
   overflow: hidden;
   cursor: default;
-  transition: box-shadow  0.5s;
-  
+  transition: box-shadow 0.5s;
+
   &:hover {
     box-shadow:
       rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
@@ -84,22 +84,22 @@
     grid-row: 3/-1;
 
     & > button {
-       position: relative;
-       top: 20%;
-       left: 23%;
-       background-color: rgba($color-blue-white, 65%);
-       padding: 5px;
-       border: 2px solid $color-blue-dark;
-       border-radius: 8px;
-       color: $color-blue-dark;
-       cursor: pointer;
-       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-       font-weight: 700;
-       transition: box-shadow 1s;
+      position: relative;
+      top: 20%;
+      left: 23%;
+      background-color: rgba($color-blue-white, 65%);
+      padding: 5px;
+      border: 2px solid $color-blue-dark;
+      border-radius: 8px;
+      color: $color-blue-dark;
+      cursor: pointer;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      font-weight: 700;
+      transition: box-shadow 1s;
 
-       &:hover {
+      &:hover {
         box-shadow: $color-blue-dark 0px 5px 15px 0px !important;
-       }
+      }
     }
   }
 
@@ -108,7 +108,7 @@
     background-color: $color-red-fade;
     color: $color-red;
   }
-  
+
   .edit-btn > button.delete:hover {
     box-shadow: $color-red 0px 5px 15px 0px !important;
   }
@@ -117,4 +117,3 @@
 .note-item-edit:hover > .edit-btn > button {
   box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px 0px;
 }
-  

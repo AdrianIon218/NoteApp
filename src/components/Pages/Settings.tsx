@@ -1,8 +1,8 @@
 import { useState } from "react";
-import FormWithBackdrop from "./FormWithBackdrop/FormWithBackdrop";
-import FormAddCategory from "./FormWithBackdrop/FormAddCategory";
-import FormDeleteCategory from "./FormWithBackdrop/FormDeleteCategory";
-import FormModifyCategory from "./FormWithBackdrop/FormModifyCategory";
+import FormWithBackdrop from "../FormWithBackdrop/FormWithBackdrop";
+import FormAddCategory from "../FormWithBackdrop/FormAddCategory";
+import FormDeleteCategory from "../FormWithBackdrop/FormDeleteCategory";
+import FormModifyCategory from "../FormWithBackdrop/FormModifyCategory";
 
 enum CategoryBtnState {
   none,

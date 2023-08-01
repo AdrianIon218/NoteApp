@@ -2,7 +2,7 @@
   position: fixed;
   top: 25%;
   left: 50%;
-  transform:translateX(-50%);
+  transform: translateX(-50%);
   background-color: $color-green-2-fade;
   color: $color-green-2;
   text-align: center;
@@ -15,7 +15,9 @@
   opacity: 0;
   z-index: 30;
 
-  $animation-value:fade-in 0.7s linear 0s 1 normal forwards, fade-out 0.7s linear var(--display-time) 1 normal forwards;
+  $animation-value:
+    fade-in 0.7s linear 0s 1 normal forwards,
+    fade-out 0.7s linear var(--display-time) 1 normal forwards;
 
   @include animation($animation-value);
 }

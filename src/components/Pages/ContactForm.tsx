@@ -1,7 +1,7 @@
 import TemporalNotification from "../CustomedComponents/TemporalNotification";
-import InputText from "../notes/customedFormElements/InputText";
-import TextArea from "../notes/customedFormElements/TextArea";
-import InputEmail from "../notes/customedFormElements/InputEmail";
+import InputText from "../CustomedComponents/FormElements/InputText";
+import TextArea from "../CustomedComponents/FormElements/TextArea";
+import InputEmail from "../CustomedComponents/FormElements/InputEmail";
 import { useState, useRef } from "react";
 import axios from "axios";
 

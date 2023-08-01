@@ -1,7 +1,7 @@
 import { useRef, useContext, useState } from "react";
-import InputText from "../../notes/customedFormElements/InputText";
-import { CategoryContext } from "../../contexts/CategoryContext";
-import TemporalNotification from "../../CustomedComponents/TemporalNotification";
+import InputText from "../CustomedComponents/FormElements/InputText";
+import { CategoryContext } from "../Contexts/CategoryContext";
+import TemporalNotification from "../CustomedComponents/TemporalNotification";
 import ListCategories from "./ListCategories";
 
 export default function FormAddCategory() {

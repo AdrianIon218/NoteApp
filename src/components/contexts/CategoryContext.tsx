@@ -17,7 +17,7 @@ export default function CategoryContextProvider(props: IProps) {
   const categories: {
     value: string[];
     setValue: (categories: string[]) => void;
-  } = useLocalStorage("categories", ["none","important"]);
+  } = useLocalStorage("categories", ["none", "important"]);
 
   useEffect(() => {
     categories.value.push(...categoryValues);
@@ -45,8 +45,12 @@ export default function CategoryContextProvider(props: IProps) {
 
   function replaceCategory(categoryName: string, newCategoryName: string) {
     const index = categories.value.indexOf(categoryName);
-    const isNewCategoryInList = categories.value.indexOf(categoryName);
-    if (index === -1 || categoryName === newCategoryName || isNewCategoryInList !== -1) {
+    const isNewCategoryInList = categories.value.indexOf(newCategoryName);
+    if (
+      index === -1 ||
+      categoryName === newCategoryName ||
+      isNewCategoryInList !== -1
+    ) {
       return false;
     }
     categories.value = categories.value.map((item) => {

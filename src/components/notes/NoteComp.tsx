@@ -17,7 +17,10 @@ export default function NoteComp() {
 
   return (
     <article className="noteComp">
-      <NoteNav initialNavState={notesCtx.navNotesState} setNavNotesState={setNavNotesState} />
+      <NoteNav
+        initialNavState={notesCtx.navNotesState}
+        setNavNotesState={setNavNotesState}
+      />
       {notesCtx.navNotesState !== ButtonSelected.none && (
         <NoteContainer currentStatus={notesCtx.navNotesState} />
       )}

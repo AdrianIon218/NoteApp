@@ -1,8 +1,8 @@
 import { useRef, useContext, useState } from "react";
-import DropDownBtn from "./customedFormElements/DropDownBtn";
-import TextArea from "./customedFormElements/TextArea";
-import InputText from "./customedFormElements/InputText";
-import { NotesContext } from "../contexts/NotesContext";
+import DropDownBtn from "../CustomedComponents/FormElements/DropDownBtn";
+import TextArea from "../CustomedComponents/FormElements/TextArea";
+import InputText from "../CustomedComponents/FormElements/InputText";
+import { NotesContext } from "../Contexts/NotesContext";
 import { IDropDownMethods } from "../stylingStructures";
 import TemporalNotification from "../CustomedComponents/TemporalNotification";
 import { nanoid } from "nanoid";

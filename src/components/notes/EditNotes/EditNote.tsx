@@ -1,12 +1,16 @@
 import { useContext, useReducer } from "react";
-import { NotesContext } from "../../contexts/NotesContext";
+import { NotesContext } from "../../Contexts/NotesContext";
 import NoteEditCard from "./NoteEditCard";
 import useSortNotes from "../../CustomedComponents/useSortNotes";
 import { NoteStructure } from "../../stylingStructures";
 import FormModifyNote from "../FormModifyNote/FormModifyNote";
 import DeleteForm from "../DeleteForm/DeleteForm";
 
-const enum StateHiddenPanel { hidden, modify,delete}
+const enum StateHiddenPanel {
+  hidden,
+  modify,
+  delete,
+}
 
 interface IAction {
   type: StateHiddenPanel;
@@ -19,12 +23,26 @@ const reducer = (state: JSX.Element | undefined, action: IAction) => {
     case StateHiddenPanel.hidden:
       return;
     case StateHiddenPanel.modify:
-      return action.item && action.closeEditMode && 
-        <FormModifyNote note={action.item} closeEditMode={action.closeEditMode} />;
+      return (
+        action.item &&
+        action.closeEditMode && (
+          <FormModifyNote
+            note={action.item}
+            closeEditMode={action.closeEditMode}
+          />
+        )
+      );
 
     case StateHiddenPanel.delete:
-      return action.item && action.closeEditMode && 
-        <DeleteForm closeDeleteForm={action.closeEditMode} id={action.item.id} />;
+      return (
+        action.item &&
+        action.closeEditMode && (
+          <DeleteForm
+            closeDeleteForm={action.closeEditMode}
+            id={action.item.id}
+          />
+        )
+      );
   }
 };
 

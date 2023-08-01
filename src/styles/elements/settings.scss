@@ -39,7 +39,7 @@
     text-underline-offset: 1px;
   }
 }
-  
+
 .btn-to-form {
   padding: 5px;
   color: $color-blue-dark;
@@ -54,7 +54,7 @@
   transition: all 0.65s;
 
   &:hover {
-    color:white;
+    color: white;
     background-color: $color-blue-dark;
     box-shadow: white 0px 5px 10px 0px;
   }
@@ -111,7 +111,7 @@
 .form-display-flex {
   display: flex;
   flex-direction: column;
-  row-gap: .5rem;
+  row-gap: 0.5rem;
   font-size: large;
 }
 
@@ -124,11 +124,11 @@
   max-width: 60%;
   overflow-y: auto;
 
-  .categories-flex{
+  .categories-flex {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap:8px;
+    gap: 8px;
     row-gap: 6px;
 
     & > div {
@@ -144,7 +144,7 @@
     }
   }
 
-  @media all and (max-width:700px) {
+  @media all and (max-width: 700px) {
     max-width: 100%;
   }
 
@@ -171,13 +171,19 @@
   border: 3px solid;
   margin-right: auto;
   cursor: pointer;
-  transition: all .4s;
+  transition: all 0.4s;
 
-  &:hover{
-    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;  
+  &:hover {
+    box-shadow:
+      rgba(0, 0, 0, 0.07) 0px 1px 2px,
+      rgba(0, 0, 0, 0.07) 0px 2px 4px,
+      rgba(0, 0, 0, 0.07) 0px 4px 8px,
+      rgba(0, 0, 0, 0.07) 0px 8px 16px,
+      rgba(0, 0, 0, 0.07) 0px 16px 32px,
+      rgba(0, 0, 0, 0.07) 0px 32px 64px;
   }
 
-  &:active{
+  &:active {
     transform: translateY(10px);
   }
 }
@@ -192,8 +198,10 @@
   border: 2px solid rgb(255, 85, 0);
   margin-right: auto;
   cursor: pointer;
-  margin:1rem;
-  transition: border-color 0.6s, box-shadow 0.6s;
+  margin: 1rem;
+  transition:
+    border-color 0.6s,
+    box-shadow 0.6s;
 
   &:hover {
     border-color: whitesmoke;
@@ -202,11 +210,11 @@
       rgba(255, 0, 0, 0.05) 0px 4px 6px -2px;
   }
 
-  &.btn-red--invalid{
-    opacity: .4;
+  &.btn-red--invalid {
+    opacity: 0.4;
     cursor: default;
 
-    &:hover{
+    &:hover {
       border-color: rgb(255, 85, 0);
       box-shadow: none;
     }
@@ -227,7 +235,7 @@
   cursor: pointer;
   transition: text-shadow 0.5s;
 
-  @media all and (max-width:700px) {
+  @media all and (max-width: 700px) {
     top: -2.1rem;
     -webkit-text-stroke: 1px rgba(white, 55%);
   }

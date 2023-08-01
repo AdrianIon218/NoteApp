@@ -1,4 +1,4 @@
-import { CategoryContext } from "../../contexts/CategoryContext";
+import { CategoryContext } from "../Contexts/CategoryContext";
 import { useContext } from "react";
 
 interface IProps {
@@ -12,9 +12,9 @@ export default function ListCategories(props: IProps) {
     <fieldset className="categories-group">
       <legend>{props.title ?? "Current categories"}</legend>
       <div className="categories-flex">
-       {categoryContext.getCategories().map((item, index) => (
-         <div key={index}>{item}</div>
-       ))}
+        {categoryContext.getCategories().map((item, index) => (
+          <div key={index}>{item}</div>
+        ))}
       </div>
     </fieldset>
   );

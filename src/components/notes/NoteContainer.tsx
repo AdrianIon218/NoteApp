@@ -18,9 +18,5 @@ export default function NoteContainer({ currentStatus }: IProps) {
     (item) => item.noteState === currentStatus,
   )[0];
 
-  return (
-    <section className="noteContainer">
-      {compSelected.component}
-    </section>
-  );
+  return <section className="noteContainer">{compSelected.component}</section>;
 }

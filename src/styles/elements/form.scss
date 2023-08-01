@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  column-gap: .5rem;
+  column-gap: 0.5rem;
   align-items: center;
   margin-top: 10px;
   margin-bottom: 5px;
@@ -38,7 +38,7 @@
     border-radius: 50px;
     background-color: transparent;
   }
-  
+
   &::-webkit-scrollbar-thumb {
     border: 3px $color-blue-dark solid;
     border-radius: 10px;
@@ -46,7 +46,7 @@
   }
 }
 
-.email-input{
+.email-input {
   border: 2px solid $color-blue-dark;
   padding: 3px;
   border-radius: 5px;
@@ -61,7 +61,7 @@
     -ms-box-shadow: 0 0 5px $color-blue;
     box-shadow: 0 0 5px $color-blue;
   }
-  
+
   &::placeholder {
     color: rgba($color-gray-1, 0.7);
   }
@@ -83,7 +83,7 @@
     color: $color-gray-2;
     font-weight: 600;
 
-    @media all and (max-width:340px) {
+    @media all and (max-width: 340px) {
       max-width: 70%;
     }
 
@@ -94,7 +94,7 @@
     & ~ label[custom]::after {
       content: attr(custom);
       position: absolute;
-      bottom: 1rem; 
+      bottom: 1rem;
       left: -16em;
       width: 10rem;
       padding: 3px;
@@ -130,7 +130,7 @@
     content: "*";
     color: rgb(220, 86, 52);
   }
-} 
+}
 
 .contact-form {
   margin-left: 5em;
@@ -166,7 +166,7 @@
     cursor: pointer;
     display: inline-block;
     max-width: fit-content;
-    transition: all .2s;
+    transition: all 0.2s;
 
     &:hover {
       color: $color-green-fade;
@@ -177,13 +177,12 @@
       transform: translateY(10px);
     }
   }
- 
+
   @media all and (max-width: 700px) {
     margin-left: 10px;
     margin-right: 10px;
   }
 }
-
 
 // ------------------ drop down -----------------------------
 .label-dropdown {
@@ -263,15 +262,15 @@
     border-radius: 50px;
     background-color: rgba($color-blue-white, 0.75);
   }
-  
+
   &::-webkit-scrollbar-thumb {
     border: 3px $color-blue-dark solid;
     border-radius: 10px;
     background-color: $color-blue;
   }
 
-  @media all and (max-width:400px) {
-    top:2.2rem;
+  @media all and (max-width: 400px) {
+    top: 2.2rem;
   }
 
   & > button {
@@ -282,7 +281,7 @@
     cursor: pointer;
     transition: text-shadow 0.6s;
     align-self: stretch;
-  
+
     &:hover {
       text-shadow: 0 0 2.8px $color-blue;
     }
@@ -290,8 +289,8 @@
 
   & > button:nth-child(2n) {
     background-color: rgba($color-blue, 0.65);
-    color:white;
-  
+    color: white;
+
     &:hover {
       text-shadow: 0 0 2.8px white;
     }
@@ -364,16 +363,16 @@ div.field:has(> .btn-blue) {
 
   &:hover {
     text-shadow: 0 0 1.3px #777;
-    box-shadow: 
-        3px 1px 8px $color-blue,
-        -2px 1px 20px $color-blue-dark;
+    box-shadow:
+      3px 1px 8px $color-blue,
+      -2px 1px 20px $color-blue-dark;
   }
 
-  &:active{
+  &:active {
     transform: translateY(8px);
   }
 
-  &.red{
+  &.red {
     color: $color-red;
     background-color: lighten($color-red-fade, 10%);
 
@@ -381,6 +380,6 @@ div.field:has(> .btn-blue) {
       box-shadow:
         3px 1px 8px $color-red-fade,
         -2px 1px 20px $color-red;
-    }    
+    }
   }
 }

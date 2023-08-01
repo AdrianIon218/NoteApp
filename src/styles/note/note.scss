@@ -33,7 +33,7 @@
   }
 
   @media only screen and (max-width: 700px) {
-    flex-basis:100%;
+    flex-basis: 100%;
   }
 }
 
@@ -51,7 +51,7 @@
 
   & > button {
     padding: 0.25em;
-    color:white;
+    color: white;
     font-size: 1.4em;
     font-weight: 700;
     background-color: $color-blue;
@@ -73,30 +73,31 @@
 }
 
 .note__nav > button:hover {
-  color:$color-blue;
+  color: $color-blue;
   background-color: white;
   border-radius: 7px;
 }
 
 .note__nav > button.note__nav__selected {
   border-color: rgba($color-blue-fade, 0.85) !important;
-  color:$color-blue;
+  color: $color-blue;
   background-color: white;
   border-radius: 7px !important;
-  position:relative;
-  &::before, &::after{
+  position: relative;
+  &::before,
+  &::after {
     position: absolute;
     color: $color-blue;
   }
 
-  &::before{
+  &::before {
     left: -15px;
-    content: '-';
+    content: "-";
   }
 
-  &::after{
-    right:-15px;
-    content: '-';
+  &::after {
+    right: -15px;
+    content: "-";
   }
 
   &:hover {
@@ -119,7 +120,7 @@
     margin-top: 10px;
     margin-bottom: 5px;
   }
-} 
+}
 
 div.field:has(> .btn) {
   margin-top: 2em;
@@ -139,7 +140,7 @@ div.field:has(> .btn) {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   }
 
-  &__container{
+  &__container {
     background-color: $color-blue-white;
     display: flex;
     flex-direction: row;
@@ -187,7 +188,7 @@ div.field:has(> .btn) {
 
     &:hover {
       background-color: $color-blue;
-      color:white;
+      color: white;
       box-shadow:
         rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
         rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
@@ -199,14 +200,14 @@ div.field:has(> .btn) {
       grid-column: span 2;
     }
 
-    & > label { 
+    & > label {
       font-size: 1rem;
       color: $color-green-dark;
       background-color: rgba($color-green-fade, 75%);
       font-weight: 700;
       align-self: center;
       border: 1px solid;
-      border-radius:5px;
+      border-radius: 5px;
       text-align: center;
       font-weight: 800;
       cursor: pointer;
@@ -215,12 +216,12 @@ div.field:has(> .btn) {
       overflow: hidden; /* make sure it hides the content that overflows */
       white-space: nowrap; /* don't break the line */
       text-overflow: ellipsis; /* give the beautiful '...' effect */
-      transition: all .5s;
+      transition: all 0.5s;
     }
 
-    &:hover > label{
+    &:hover > label {
       color: white;
-      border-color:  $color-green-dark;
+      border-color: $color-green-dark;
       background-color: $color-green-dark;
     }
 
@@ -246,7 +247,7 @@ div.field:has(> .btn) {
     opacity: 0;
     transition: opacity 1s;
   }
-  
+
   .note-item:hover::after {
     opacity: 1;
     visibility: visible;
@@ -271,7 +272,7 @@ div.field:has(> .btn) {
   top: 2rem;
   left: 5%;
   right: 5%;
-  bottom: .5rem;
+  bottom: 0.5rem;
   border-radius: 12px;
   color: $color-blue-dark;
   border: 10px double;
@@ -379,7 +380,7 @@ div.field:has(> .btn) {
     width: 15px;
     background-color: transparent;
   }
-  
+
   &::-webkit-scrollbar-thumb {
     border: 3px $color-blue-dark solid;
     border-radius: 10px;
@@ -387,7 +388,7 @@ div.field:has(> .btn) {
   }
 }
 
-.create-note-container{
+.create-note-container {
   & > h1 {
     font-size: 2rem;
     text-align: center;
@@ -402,4 +403,4 @@ div.field:has(> .btn) {
     margin-top: 10px;
     margin-bottom: 5px;
   }
-} 
+}

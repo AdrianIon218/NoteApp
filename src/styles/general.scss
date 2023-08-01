@@ -1,20 +1,28 @@
-:root{
+:root {
   --display-time: 2s;
 }
 
-.small-margin{
-    margin:5px;
+.small-margin {
+  margin: 5px;
 }
 
-.txt-center{
-    text-align: center;
+.medium-margin-bot {
+  margin-bottom: 1.5rem;
 }
 
-.txt-bold{
-    font-weight: bolder;
+.txt-center {
+  text-align: center;
 }
 
-.div-scroll-Y{
+.txt-bold {
+  font-weight: bolder;
+}
+
+.txt-red {
+  color: $color-red;
+}
+
+.div-scroll-Y {
   height: 100%;
   overflow-y: auto;
 }

@@ -20,15 +20,18 @@ export default function NoteDisplay(props: IProps) {
   });
 
   function closeNote() {
-
     noteRef.current!.classList.add("anim-line-down");
     setTimeout(props.closeNote, 700);
   }
 
   return (
     <div className="backdrop" onClick={closeNote}>
-      <div className="note-centered" ref={noteRef} onClick={e=>e.stopPropagation()}>
-        {categorySelected ?  <label>{categorySelected}</label> : <></> }
+      <div
+        className="note-centered"
+        ref={noteRef}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {categorySelected ? <label>{categorySelected}</label> : <></>}
         <button className="close-btn" onClick={closeNote}>
           &times;
         </button>

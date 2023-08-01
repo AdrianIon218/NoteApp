@@ -13,9 +13,9 @@ const sideBarElements = [
   { btnValue: ButtonSelected.editNote, navTitle: "Edit Note" },
 ];
 
-interface IProps{
-  initialNavState: ButtonSelected,
-  setNavNotesState: (state:ButtonSelected) => void
+interface IProps {
+  initialNavState: ButtonSelected;
+  setNavNotesState: (state: ButtonSelected) => void;
 }
 
 function NoteNav(props: IProps) {
@@ -32,7 +32,7 @@ function NoteNav(props: IProps) {
 
   const sideBar = sideBarElements.map((item, index) => (
     <button
-      className={ btnSelected === item.btnValue ? "note__nav__selected" : "" }
+      className={btnSelected === item.btnValue ? "note__nav__selected" : ""}
       name={item.btnValue.toString()}
       onClick={onChange}
       key={index}

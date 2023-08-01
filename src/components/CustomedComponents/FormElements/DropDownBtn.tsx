@@ -1,5 +1,13 @@
-import { CategoryContext } from "../../contexts/CategoryContext";
-import { useMemo, useRef, useState, forwardRef, useImperativeHandle, useId, useContext } from "react";
+import { CategoryContext } from "../../Contexts/CategoryContext";
+import {
+  useMemo,
+  useRef,
+  useState,
+  forwardRef,
+  useImperativeHandle,
+  useId,
+  useContext,
+} from "react";
 import { categoryValues } from "../../stylingStructures";
 
 interface IProps {
@@ -8,7 +16,10 @@ interface IProps {
   isNeccessary?: boolean;
 }
 
-function DropDownBtn({ labelMessage, valueDefault, isNeccessary }: IProps, ref: any) {
+function DropDownBtn(
+  { labelMessage, valueDefault, isNeccessary }: IProps,
+  ref: any,
+) {
   const categories = useContext(CategoryContext);
   const [updateCat, setUpdateCat] = useState(true);
   const [blockedCategories, setBlockedCategories] = useState<string[]>([]);
@@ -48,11 +59,7 @@ function DropDownBtn({ labelMessage, valueDefault, isNeccessary }: IProps, ref: 
               {item}{" "}
             </button>
           ) : (
-            <button
-              type="button"
-              key={index}
-              className="btn-blocked"
-            >
+            <button type="button" key={index} className="btn-blocked">
               {" "}
               {item}{" "}
             </button>
@@ -97,7 +104,8 @@ function DropDownBtn({ labelMessage, valueDefault, isNeccessary }: IProps, ref: 
   return (
     <div className="field">
       <label htmlFor={btnId} className="label-dropdown">
-        {labelMessage}{isNeccessary ? <span style={{color:"red"}}>*</span> :'' }
+        {labelMessage}
+        {isNeccessary ? <span style={{ color: "red" }}>*</span> : ""}
       </label>
       <div className="btnWithDropDown" onBlur={() => noFocus()}>
         <button
@@ -106,18 +114,14 @@ function DropDownBtn({ labelMessage, valueDefault, isNeccessary }: IProps, ref: 
           ref={listCategoriesBtn}
           name={valueDefault || categoryValues[0]}
           className={`btn-category ${
-            showDropDown === "animation-go-down"
-              ? "btn-category-active"
-              : ""
+            showDropDown === "animation-go-down" ? "btn-category-active" : ""
           }`}
-          onClick={ toggleCategories}
+          onClick={toggleCategories}
         >
           {valueDefault}
         </button>
 
-        <div className={`dropdown ${showDropDown}`}>
-          {categoriesElements}
-        </div>
+        <div className={`dropdown ${showDropDown}`}>{categoriesElements}</div>
       </div>
     </div>
   );

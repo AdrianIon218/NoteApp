@@ -1,9 +1,9 @@
 import { NoteStructure, IDropDownMethods } from "../../stylingStructures";
 import { useRef, useContext, useState } from "react";
-import InputText from "../customedFormElements/InputText";
-import DropDownBtn from "../customedFormElements/DropDownBtn";
-import TextArea from "../customedFormElements/TextArea";
-import { NotesContext } from "../../contexts/NotesContext";
+import InputText from "../../CustomedComponents/FormElements/InputText";
+import DropDownBtn from "../../CustomedComponents/FormElements/DropDownBtn";
+import TextArea from "../../CustomedComponents/FormElements/TextArea";
+import { NotesContext } from "../../Contexts/NotesContext";
 import TemporalNotification from "../../CustomedComponents/TemporalNotification";
 
 interface IProps {
@@ -55,43 +55,48 @@ export default function FormModifyNote({ note, closeEditMode }: IProps) {
 
   return (
     <div className="backdrop" onClick={closePanel}>
-    <div className="note-modify" ref={panel} onClick={(event)=>event.stopPropagation()}>
-      {showMessage && (
-        <TemporalNotification hideMessage={hideMessage} durationSeconds={2.2}>
-          Note changed !
-        </TemporalNotification>
-      )}
-      <h2>Edit note </h2>
-      <form onSubmit={submit}>
-        <InputText
-          ref={titleNote}
-          text="Title"
-          customText="The title must be between 3 and 30 characters !"
-          minLength={3}
-          maxLength={30}
-          value={note.title}
-        />
-        <DropDownBtn
-          labelMessage="Change the category"
-          ref={btnSelectRef}
-          valueDefault={note.categorySelected}
-        />
-        <TextArea name="textNote" ref={textNote} value={note.text} />
-        <div className="modify-buttons">
-          <button>Save</button>
-          <button
-            type="button"
-            onClick={resetNote}
-            className="red"
-            title="Reset to the last saved content"
-          >
-            Discard changes
-          </button>
-        </div>
-      </form>
-      <button className="close-btn" onClick={closePanel}>
-        &times;
-      </button>
+      <div
+        className="note-modify"
+        ref={panel}
+        onClick={(event) => event.stopPropagation()}
+      >
+        {showMessage && (
+          <TemporalNotification hideMessage={hideMessage} durationSeconds={2.2}>
+            Note changed !
+          </TemporalNotification>
+        )}
+        <h2>Edit note </h2>
+        <form onSubmit={submit}>
+          <InputText
+            ref={titleNote}
+            text="Title"
+            customText="The title must be between 3 and 30 characters !"
+            minLength={3}
+            maxLength={30}
+            value={note.title}
+          />
+          <DropDownBtn
+            labelMessage="Change the category"
+            ref={btnSelectRef}
+            valueDefault={note.categorySelected}
+          />
+          <TextArea name="textNote" ref={textNote} value={note.text} />
+          <div className="modify-buttons">
+            <button>Save</button>
+            <button
+              type="button"
+              onClick={resetNote}
+              className="red"
+              title="Reset to the last saved content"
+            >
+              Discard changes
+            </button>
+          </div>
+        </form>
+        <button className="close-btn" onClick={closePanel}>
+          &times;
+        </button>
+      </div>
     </div>
-    </div>);
+  );
 }
