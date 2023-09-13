@@ -12,6 +12,7 @@ interface IProps {
   minLength?: number;
   maxLength?: number;
   value?: string;
+  placeholder?:string;
 }
 
 function InputText(props: IProps, ref: any) {
@@ -32,6 +33,7 @@ function InputText(props: IProps, ref: any) {
         title=""
         required
         defaultValue={props.value}
+        placeholder={props.placeholder && `ex: ${props.placeholder}`}
       />
       {props.customText && (
         <label htmlFor={titleId} custom={props.customText}></label>

@@ -47,7 +47,7 @@ function ContactForm() {
       )}
       <form className="contact-form" onSubmit={submit}>
         <h2>Fill out the form for support </h2>
-        <InputText ref={userName} text="Name" />
+        <InputText ref={userName} text="Name" placeholder="Andrew" />
         <InputEmail ref={inputEmail} />
         <TextArea name="textNote" ref={textMessage} />
         <button className="btn">Send</button>

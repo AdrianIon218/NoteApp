@@ -14,7 +14,7 @@ function InputEmail(props: any, ref: any) {
         ref={ref}
         className="email-input"
         required
-        placeholder="ex:name@yahoo.com"
+        placeholder="ex: name@yahoo.com"
         title=""
       ></input>
     </div>

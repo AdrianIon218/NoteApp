@@ -6,6 +6,13 @@
   align-items: center;
   margin-top: 10px;
   margin-bottom: 5px;
+
+  &:has(.label-email){
+    @media all and (max-width: 320px) {
+      row-gap: 0.2rem;
+      flex-wrap: wrap;
+    }
+  }
 }
 
 .textArea {
@@ -68,6 +75,14 @@
 }
 
 .label-email {
+  @media all and (max-width: 400px) {
+    width: min-content;
+  }
+
+  @media all and (max-width: 320px) {
+    width: max-content;
+  }
+
   &::after {
     content: "*";
     color: rgb(220, 86, 52);
@@ -82,6 +97,10 @@
     border-radius: 5px;
     color: $color-gray-2;
     font-weight: 600;
+
+    &::placeholder {
+      color: rgba($color-gray-1, 0.7);
+    }
 
     @media all and (max-width: 340px) {
       max-width: 70%;
@@ -143,7 +162,6 @@
   overflow-x: hidden;
   overflow-y: auto;
   display: flex;
-  min-width: fit-content;
   flex-direction: column;
   gap: 0.5rem;
   padding: 1em;

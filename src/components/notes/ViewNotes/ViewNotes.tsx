@@ -20,13 +20,13 @@ export default function ViewNote() {
 
   return (
     <div className="viewNote">
-      <h2>
+      <h1>
         {allNotes.length === 0
           ? "You don't have any notes"
           : allNotes.length === 1
           ? "You have only 1 note"
           : "You have " + allNotes.length.toString() + " notes"}
-      </h2>
+      </h1>
       {allNotes.length > 0 && (
         <div className="viewNote__container">{notesElements}</div>
       )}
