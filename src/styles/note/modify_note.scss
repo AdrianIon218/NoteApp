@@ -1,9 +1,7 @@
 .note-modify {
-  position: absolute;
-  top: 3%;
-  left: 5%;
-  right: 5%;
-  bottom: 2%;
+  min-width: 60vw;
+  width: auto;
+  height: 100%;
   border-radius: 20px;
   color: $color-blue-dark;
   border: 10px double;
