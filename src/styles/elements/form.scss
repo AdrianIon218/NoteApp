@@ -206,8 +206,7 @@
 .label-dropdown {
   display: inline-block;
   pointer-events: none;
-  max-width: 46%;
-  width: fit-content;
+  width: max-content;
   font-weight: 900;
 }
 
@@ -285,10 +284,6 @@
     border: 3px $color-blue-dark solid;
     border-radius: 10px;
     background-color: $color-blue;
-  }
-
-  @media all and (max-width: 400px) {
-    top: 2.2rem;
   }
 
   & > button {
