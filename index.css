@@ -41,7 +41,7 @@ body:has(.backdrop) {
       rgba(255, 255, 255, 0.5) 0%,
       rgba(148, 187, 233, 0.5) 100%
     ),
-    url("./public/background.png");
+    url("/background.png");
 }
 
 body::-webkit-scrollbar {
