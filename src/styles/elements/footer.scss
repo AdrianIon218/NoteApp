@@ -21,8 +21,8 @@
     height: 3em;
     width: 3rem;
     background-color: darken($color-blue, 10%);
-    -webkit-mask-image: url("../../../public/notebook.svg");
-    mask-image: url("../../../public/notebook.svg");
+    -webkit-mask-image: url("/notebook.svg");
+    mask-image: url("/notebook.svg");
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
     -webkit-mask-size: contain;
