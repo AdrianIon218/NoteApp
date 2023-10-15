@@ -19,7 +19,16 @@
   &__logo {
     border-radius: 20%;
     height: 3em;
-    width: 60px;
+    width: 3rem;
+    background-color: darken($color-blue, 10%);
+    -webkit-mask-image: url("../../../public/notebook.svg");
+    mask-image: url("../../../public/notebook.svg");
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    mask-position: left center;
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
