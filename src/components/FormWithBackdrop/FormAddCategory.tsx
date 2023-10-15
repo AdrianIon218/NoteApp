@@ -31,7 +31,9 @@ export default function FormAddCategory() {
     <>
       {showNotification}
       <form onSubmit={submit} className="form-display-flex">
-        <h2 className="txt-center" style={{margin:"5px"}}>Add a new category</h2>
+        <h2 className="txt-center" style={{ margin: "5px" }}>
+          Add a new category
+        </h2>
         <InputText
           text="New category name"
           customText="The category must be unique and between 3 and 30 characters !"

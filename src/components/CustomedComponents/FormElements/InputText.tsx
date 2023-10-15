@@ -12,7 +12,7 @@ interface IProps {
   minLength?: number;
   maxLength?: number;
   value?: string;
-  placeholder?:string;
+  placeholder?: string;
 }
 
 function InputText(props: IProps, ref: any) {

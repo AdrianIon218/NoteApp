@@ -78,7 +78,11 @@ export default function FormModifyCategory() {
           minLength={3}
           maxLength={30}
         />
-        <button type="submit" className="btn-green" style={{marginTop:"1rem"}}>
+        <button
+          type="submit"
+          className="btn-green"
+          style={{ marginTop: "1rem" }}
+        >
           Save
         </button>
       </form>
