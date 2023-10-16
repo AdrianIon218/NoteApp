@@ -10,6 +10,7 @@ export default function FormAddCategory() {
   const [showNotification, setShowMessage] = useState<
     JSX.Element | undefined
   >();
+  const [isSaveAvailable, setSaveAvailable] = useState(false);
 
   function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -39,10 +40,13 @@ export default function FormAddCategory() {
           customText="The category must be unique and between 3 and 30 characters !"
           ref={inputRef}
           minLength={3}
-          maxLength={30}
+          maxLength={31}
+          onChangeHandler={(value:string)=>{
+            setSaveAvailable(value.length >= 3);
+          }}
         />
         <ListCategories />
-        <button type="submit" className="btn-green">
+        <button type="submit" className="btn-green" disabled={!isSaveAvailable}>
           Save
         </button>
       </form>

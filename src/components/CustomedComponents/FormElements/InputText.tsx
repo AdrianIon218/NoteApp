@@ -13,6 +13,7 @@ interface IProps {
   maxLength?: number;
   value?: string;
   placeholder?: string;
+  onChangeHandler?: (e:string)=>void;
 }
 
 function InputText(props: IProps, ref: any) {
@@ -34,6 +35,10 @@ function InputText(props: IProps, ref: any) {
         required
         defaultValue={props.value}
         placeholder={props.placeholder && `ex: ${props.placeholder}`}
+        onChange={(e)=>{
+          const txt = e.target.value;
+          props.onChangeHandler?.(txt);
+        }}
       />
       {props.customText && (
         <label htmlFor={titleId} custom={props.customText}></label>

@@ -79,7 +79,7 @@
   }
 }
 
-.form-flex {
+.form-grid {
   display: grid;
   justify-content: center;
   grid-template-columns: auto min-content;
@@ -205,17 +205,23 @@
 
 .btn-green {
   color: $color-green-dark;
+  background-color: $color-green-fade;
   font-weight: 800;
   font-size: medium;
   border-radius: 8px;
   padding: 3px;
-  background-color: $color-green-fade;
   border: 3px solid;
   margin-right: auto;
   cursor: pointer;
   transition: all 0.4s;
 
-  &:hover {
+  &:disabled{
+    cursor: default;
+    color: lighten(rgba($color-green-dark, .6), 7);
+    background-color: lighten(rgba($color-green-fade, .6) , 7);
+  }
+
+  &:not(:disabled):hover {
     box-shadow:
       rgba(0, 0, 0, 0.07) 0px 1px 2px,
       rgba(0, 0, 0, 0.07) 0px 2px 4px,
@@ -225,7 +231,7 @@
       rgba(0, 0, 0, 0.07) 0px 32px 64px;
   }
 
-  &:active {
+  &:not(:disabled):active {
     transform: translateY(10px);
   }
 }
