@@ -140,7 +140,7 @@
   }
   40% {
     opacity: 1;
-    transform: translateY(20%);
+    transform: translateY(10%);
   }
   100% {
     opacity: 1;
@@ -215,10 +215,10 @@
   cursor: pointer;
   transition: all 0.4s;
 
-  &:disabled{
+  &:disabled {
     cursor: default;
-    color: lighten(rgba($color-green-dark, .6), 7);
-    background-color: lighten(rgba($color-green-fade, .6) , 7);
+    color: lighten(rgba($color-green-dark, 0.6), 7);
+    background-color: lighten(rgba($color-green-fade, 0.6), 7);
   }
 
   &:not(:disabled):hover {

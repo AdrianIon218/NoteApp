@@ -1,48 +1,41 @@
-import { useState } from "react";
+import { useId, useState } from "react";
 import FormWithBackdrop from "../FormWithBackdrop/FormWithBackdrop";
 import FormAddCategory from "../FormWithBackdrop/FormAddCategory";
 import FormDeleteCategory from "../FormWithBackdrop/FormDeleteCategory";
 import FormModifyCategory from "../FormWithBackdrop/FormModifyCategory";
 
 enum CategoryBtnState {
-  none,
   Add,
   Delete,
   Modify,
 }
 
+const CategoryBtns = [
+  {
+    btnText: "Add a new category",
+    categoryState: CategoryBtnState.Add,
+  },
+  {
+    btnText: "Delete a category",
+    categoryState: CategoryBtnState.Delete,
+  },
+  {
+    btnText: "Modify a category",
+    categoryState: CategoryBtnState.Modify,
+  },
+];
+
 export default function Settings() {
   const [form, setFormShown] = useState<undefined | JSX.Element>();
-
+  const btnRootKey = useId();
   const closeForm = () => setFormShown(undefined);
 
-  function showCorespondingPanel(btn: CategoryBtnState) {
-    switch (btn) {
-      case CategoryBtnState.none:
-        setFormShown(undefined);
-        break;
-      case CategoryBtnState.Add:
-        setFormShown(
-          <FormWithBackdrop closePanel={closeForm}>
-            <FormAddCategory />
-          </FormWithBackdrop>,
-        );
-        break;
-      case CategoryBtnState.Delete:
-        setFormShown(
-          <FormWithBackdrop closePanel={closeForm}>
-            <FormDeleteCategory />
-          </FormWithBackdrop>,
-        );
-        break;
-      case CategoryBtnState.Modify:
-        setFormShown(
-          <FormWithBackdrop closePanel={closeForm}>
-            <FormModifyCategory />
-          </FormWithBackdrop>,
-        );
-        break;
-    }
+  function showCorespondingCategoryPanel(btn: CategoryBtnState) {
+    setFormShown(<FormWithBackdrop closePanel={closeForm}>
+     {btn === CategoryBtnState.Add && <FormAddCategory />}
+     {btn === CategoryBtnState.Delete && <FormDeleteCategory />}
+     {btn === CategoryBtnState.Modify && <FormModifyCategory />}
+    </FormWithBackdrop>);
   }
 
   return (
@@ -51,24 +44,15 @@ export default function Settings() {
       <div className="settings-panel">
         <div className="forms-panel">
           <h2>Categories settings</h2>
-          <button
-            className="btn-to-form"
-            onClick={() => showCorespondingPanel(CategoryBtnState.Add)}
-          >
-            Add a new category
-          </button>
-          <button
-            className="btn-to-form"
-            onClick={() => showCorespondingPanel(CategoryBtnState.Delete)}
-          >
-            Delete a category
-          </button>
-          <button
-            className="btn-to-form"
-            onClick={() => showCorespondingPanel(CategoryBtnState.Modify)}
-          >
-            Modify a category
-          </button>
+          {CategoryBtns.map((item, index) => (
+            <button
+              className="btn-to-form"
+              onClick={() => showCorespondingCategoryPanel(item.categoryState)}
+              key={`${btnRootKey}-${index}`}
+            >
+              {item.btnText}
+            </button>
+          ))}
         </div>
       </div>
     </>

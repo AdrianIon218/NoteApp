@@ -49,22 +49,21 @@ function DropDownBtn(
     return (
       <>
         {categories.getCategories().map((item, index) => {
-          return !blockedCategories.includes(item.trim()) ? (
+          const isCurrCatBlocked = blockedCategories.includes(item.trim());
+          return (
             <button
               type="button"
               key={index}
-              onClick={() => selectCategoryValue(item)}
+              className={isCurrCatBlocked ? "btn-blocked" : undefined}
+              onClick={
+                isCurrCatBlocked ? undefined : () => selectCategoryValue(item)
+              }
             >
               {" "}
               {item}{" "}
             </button>
-          ) : (
-            <button type="button" key={index} className="btn-blocked">
-              {" "}
-              {item}{" "}
-            </button>
           );
-        })}{" "}
+        })}
       </>
     );
   }, [updateCat, blockedCategories]);
@@ -120,7 +119,6 @@ function DropDownBtn(
         >
           {valueDefault}
         </button>
-
         <div className={`dropdown ${showDropDown}`}>{categoriesElements}</div>
       </div>
     </div>

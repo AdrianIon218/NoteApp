@@ -12,13 +12,13 @@ export default function DeleteForm(props: Iprops) {
 
   function closeForm() {
     deleteForm.current!.classList.add("anim-line-down-del");
-    setTimeout(props.closeDeleteForm, 550);
+    setTimeout(props.closeDeleteForm, 350);
   }
 
   function deleteItem() {
     notesContext.deleteNoteById(props.id);
     deleteForm.current!.classList.add("anim-line-down-del");
-    setTimeout(props.closeDeleteForm, 550);
+    setTimeout(props.closeDeleteForm, 350);
   }
 
   return (
@@ -31,7 +31,7 @@ export default function DeleteForm(props: Iprops) {
         <button className="close-btn" onClick={closeForm}>
           &times;
         </button>
-        <h2>Are you sure ?</h2>
+        <h2>Do you really want to delete this note ?</h2>
         <div>
           <button className="del-btn" onClick={deleteItem}>
             Yes

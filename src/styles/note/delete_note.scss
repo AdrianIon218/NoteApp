@@ -2,7 +2,8 @@
   position: absolute;
   top: 20%;
   min-width: 60%;
-  height: 50%;
+  min-height: 43%;
+  margin: 0px 1.2rem;
   border-radius: 20px;
   color: $color-blue-dark;
   border: 10px double;
@@ -25,7 +26,7 @@
 }
 
 .anim-line-down-del {
-  @include animation(anim-lineDown 0.5s ease-out 0s 1 normal forwards);
+  @include animation(anim-lineDown 0.3s ease-out 0s 1 normal forwards);
 }
 
 div:has(> .del-btn) {
@@ -35,22 +36,28 @@ div:has(> .del-btn) {
 }
 
 .del-btn {
-  padding: 0.4em;
-  font-size: 24px;
+  padding: 0.4rem;
+  font-size: 1.4rem;
+  font-weight: 800;
   border-radius: 10px;
   cursor: pointer;
-  color: $color-green;
+  color: darken($color-green, 8%);
   font-weight: 700;
   background-color: rgba($color-green-fade, 0.85);
-  border: 4px double $color-green;
+  border: 4px double;
   transition:
     box-shadow 0.7s,
-    transform 0.5s;
+    transform 0.5s,
+    transform 0.3s;
 
   &:hover {
     box-shadow:
       3px 3px 20px $color-green-fade,
       -2px 1px 30px $color-green;
+  }
+
+  &:active {
+    transform: translateY(5px);
   }
 }
 

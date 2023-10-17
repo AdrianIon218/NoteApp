@@ -41,7 +41,7 @@ export default function FormAddCategory() {
           ref={inputRef}
           minLength={3}
           maxLength={31}
-          onChangeHandler={(value:string)=>{
+          onChangeHandler={(value: string) => {
             setSaveAvailable(value.length >= 3);
           }}
         />

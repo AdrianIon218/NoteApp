@@ -15,6 +15,7 @@ export default function FormModifyCategory() {
   const [showNotification, setShowMessage] = useState<
     JSX.Element | undefined
   >();
+  const [isInputValid, setInputValid] = useState(false);
 
   useLayoutEffect(() => {
     categorySelected.current!.blockCategories(categoryValues);
@@ -76,11 +77,15 @@ export default function FormModifyCategory() {
           customText="The category must be between 3 and 30 characters !"
           ref={inputRef}
           minLength={3}
-          maxLength={30}
+          maxLength={31}
+          onChangeHandler={(value: string) => {
+            setInputValid(value.length >= 3);
+          }}
         />
         <button
           type="submit"
           className="btn-green"
+          disabled={!isInputValid}
           style={{ marginTop: "1rem" }}
         >
           Save
