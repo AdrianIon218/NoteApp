@@ -31,11 +31,13 @@ export default function Settings() {
   const closeForm = () => setFormShown(undefined);
 
   function showCorespondingCategoryPanel(btn: CategoryBtnState) {
-    setFormShown(<FormWithBackdrop closePanel={closeForm}>
-     {btn === CategoryBtnState.Add && <FormAddCategory />}
-     {btn === CategoryBtnState.Delete && <FormDeleteCategory />}
-     {btn === CategoryBtnState.Modify && <FormModifyCategory />}
-    </FormWithBackdrop>);
+    setFormShown(
+      <FormWithBackdrop closePanel={closeForm}>
+        {btn === CategoryBtnState.Add && <FormAddCategory />}
+        {btn === CategoryBtnState.Delete && <FormDeleteCategory />}
+        {btn === CategoryBtnState.Modify && <FormModifyCategory />}
+      </FormWithBackdrop>,
+    );
   }
 
   return (
