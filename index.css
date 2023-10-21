@@ -48,5 +48,5 @@ body:has(.backdrop) {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("/background-test.jpg");
+  background-image: url("/background.jpg");
 }
