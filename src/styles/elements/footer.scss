@@ -15,6 +15,8 @@
   gap: 0.5rem;
   padding: 30px 5px;
   align-items: center;
+  position: relative;
+  overflow: hidden;
 
   &__logo {
     border-radius: 20%;
@@ -41,5 +43,25 @@
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
+  }
+
+  // animation mouse hover
+  &::before {
+    --size: 0;
+    content: "";
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: var(--size);
+    height: var(--size);
+    background: radial-gradient(circle closest-side, white, transparent);
+    transform: translate(-50%, -50%);
+    transition:
+      width 0.2s ease,
+      height 0.2s ease;
+  }
+
+  &:hover::before {
+    --size: 2.5rem;
   }
 }

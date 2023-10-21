@@ -15,6 +15,19 @@ body {
   background-color: rgb(25, 133, 200);
 }
 
+body::-webkit-scrollbar {
+  padding: 5px;
+  width: 15px;
+  border-radius: 50px;
+  background-color: #e7e4e4;
+}
+
+body::-webkit-scrollbar-thumb {
+  border: 2px rgb(67, 154, 204) solid;
+  border-radius: 14px;
+  background-color: rgb(22, 114, 167);
+}
+
 body:has(.backdrop) {
   overflow: hidden;
 }
@@ -36,17 +49,4 @@ body:has(.backdrop) {
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url("/background-test.jpg");
-}
-
-body::-webkit-scrollbar {
-  padding: 5px;
-  width: 15px;
-  border-radius: 50px;
-  background-color: #e7e4e4;
-}
-
-body::-webkit-scrollbar-thumb {
-  border: 2px rgb(67, 154, 204) solid;
-  border-radius: 14px;
-  background-color: rgb(22, 114, 167);
 }
