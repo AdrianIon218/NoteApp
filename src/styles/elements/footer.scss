@@ -46,22 +46,24 @@
   }
 
   // animation mouse hover
-  &::before {
-    --size: 0;
-    content: "";
-    position: absolute;
-    left: var(--x);
-    top: var(--y);
-    width: var(--size);
-    height: var(--size);
-    background: radial-gradient(circle closest-side, white, transparent);
-    transform: translate(-50%, -50%);
-    transition:
-      width 0.2s ease,
-      height 0.2s ease;
-  }
+  @media only screen and (hover: hover) {
+    &::before {
+      --size: 0;
+      content: "";
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      width: var(--size);
+      height: var(--size);
+      background: radial-gradient(circle closest-side, white, transparent);
+      transform: translate(-50%, -50%);
+      transition:
+        width 0.2s ease,
+        height 0.2s ease;
+    }
 
-  &:hover::before {
-    --size: 2.5rem;
+    &:hover::before {
+      --size: 2.5rem;
+    }
   }
 }
