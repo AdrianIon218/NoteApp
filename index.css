@@ -50,3 +50,14 @@ body:has(.backdrop) {
   background-size: cover;
   background-image: url("/background.jpg");
 }
+
+@media only screen and (hover: hover) {
+  #root:has(.backdrop) {
+    padding-right: 15px;
+  }
+
+  #root:has(.backdrop) .nav,
+  #root:has(.backdrop) .footer {
+    margin-right: -15px;
+  }
+}
