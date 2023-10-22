@@ -46,7 +46,7 @@
   }
 
   // animation mouse hover
-  @media only screen and (hover: hover) {
+  @media only screen and (pointer: fine) {
     &::before {
       --size: 0;
       content: "";
