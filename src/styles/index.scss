@@ -1,25 +1,27 @@
-@import "./variables.scss";
+@import "./variables";
 
-@import "./mixin.scss";
+@import "./mixin";
 
-@import "./general.scss";
+@import "./general";
 
-@import "./elements/nav.scss";
+@import "./elements/nav";
 
-@import "./elements/footer.scss";
+@import "./elements/footer";
 
-@import "./note/note.scss";
+@import "./note/note";
 
-@import "./elements/form.scss";
+@import "./elements/form";
 
-@import "./elements/settings.scss";
+@import "./elements/settings";
 
-@import "./elements/notification.scss";
+@import "./elements/notification";
 
-@import "./elements/no_page.scss";
+@import "./elements/no-page";
 
-@import "./note/edit_note.scss";
+@import "./elements/loading-spinner";
 
-@import "./note/delete_note.scss";
+@import "./note/edit-note";
 
-@import "./note//modify_note.scss";
+@import "./note/delete-note";
+
+@import "./note//modify-note";

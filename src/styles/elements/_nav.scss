@@ -18,8 +18,10 @@
     padding-bottom: 1em;
   }
 
-  &:hover {
-    box-shadow: 0 3px 10px 3px #777;
+  @media only screen and (pointer: fine) {
+    &:hover {
+      box-shadow: 0 3px 10px 3px #777;
+    }
   }
 
   div {

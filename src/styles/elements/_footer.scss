@@ -45,7 +45,7 @@
     user-select: none;
   }
 
-  // animation mouse hover
+  // animation mouse hover only for desktop
   @media only screen and (pointer: fine) {
     &::before {
       --size: 0;

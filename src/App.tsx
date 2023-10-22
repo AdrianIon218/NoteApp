@@ -1,9 +1,12 @@
 import { Route, Routes } from "react-router-dom";
+import { Suspense, lazy } from "react";
 import Layout from "./components/Layout/Layout";
-import NoteComp from "./components/notes/NoteComp";
-import ContactForm from "./components/Pages/ContactForm";
-import Settings from "./components/Pages/Settings";
-import NoPage from "./components/Pages/NoPage";
+import LoadingSpinner from "./components/Layout/LoadingSpinner";
+
+const NoteComp = lazy(() => import("./components/notes/NoteComp"));
+const ContactForm = lazy(() => import("./components/Pages/ContactForm"));
+const Settings = lazy(() => import("./components/Pages/Settings"));
+const NoPage = lazy(() => import("./components/Pages/NoPage"));
 
 function App() {
   type route = { path: string; component: JSX.Element };
@@ -18,11 +21,13 @@ function App() {
 
   return (
     <Layout>
-      <Routes>
-        {paths.map((path, index) => (
-          <Route path={path.path} element={path.component} key={index} />
-        ))}
-      </Routes>
+      <Suspense fallback={<LoadingSpinner />}>
+        <Routes>
+          {paths.map((path, index) => (
+            <Route path={path.path} element={path.component} key={index} />
+          ))}
+        </Routes>
+      </Suspense>
     </Layout>
   );
 }

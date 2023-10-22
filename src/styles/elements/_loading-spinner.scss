@@ -1,0 +1,31 @@
+.loading-spinner {
+  display: block;
+  margin-top:2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 50%;
+
+  &::after {
+    content: "";
+    display: inline-block;
+    border-radius: 50%;
+    border: 7px dotted $color-blue;
+    border-right-color: $color-blue-dark;
+    /*
+    border: 7px dotted darken($color-blue-fade, 10%);
+    border-top-color: $color-blue;
+    border-right-color: $color-blue-dark;*/
+    padding: 20px;
+    transform: translateX(-50%);
+    animation: spin 1.8s ease 0s infinite;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
