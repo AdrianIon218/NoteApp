@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useId, useState } from "react";
 
 export const enum ButtonSelected {
-  none,
   viewNotes,
   createNote,
   editNote,
@@ -20,6 +19,7 @@ interface IProps {
 
 function NoteNav(props: IProps) {
   const [btnSelected, setBtnSelected] = useState(() => props.initialNavState);
+  const listID = useId();
 
   function onChange(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     const { currentTarget: target } = event;
@@ -35,7 +35,7 @@ function NoteNav(props: IProps) {
       className={btnSelected === item.btnValue ? "note__nav__selected" : ""}
       name={item.btnValue.toString()}
       onClick={onChange}
-      key={index}
+      key={`${listID}-${index}`}
     >
       {item.navTitle}
     </button>

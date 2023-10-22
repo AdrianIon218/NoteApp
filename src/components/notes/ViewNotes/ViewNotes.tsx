@@ -3,7 +3,7 @@ import useSortNotes from "../../CustomedComponents/useSortNotes";
 import { useContext } from "react";
 import { NotesContext } from "../../Contexts/NotesContext";
 
-export default function ViewNote() {
+export default function ViewNotes() {
   const allNotes = useSortNotes(useContext(NotesContext).getNotes());
 
   const notesElements = allNotes.map((item, index) => {
@@ -19,16 +19,16 @@ export default function ViewNote() {
   });
 
   return (
-    <div className="viewNote">
+    <div className="view-notes">
       <h1>
         {allNotes.length === 0
           ? "You don't have any notes"
           : allNotes.length === 1
           ? "You have only 1 note"
-          : "You have " + allNotes.length.toString() + " notes"}
+          : `You have ${allNotes.length} notes`}
       </h1>
       {allNotes.length > 0 && (
-        <div className="viewNote__container">{notesElements}</div>
+        <div className="view-notes__container">{notesElements}</div>
       )}
     </div>
   );

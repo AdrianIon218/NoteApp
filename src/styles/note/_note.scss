@@ -127,18 +127,17 @@ div.field:has(> .btn) {
   margin-top: 2em;
 }
 
-.viewNote {
+.view-notes {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding-left: 0em;
   width: 100%;
 
-  & > h1 {
-    font-size: 1.8rem;
+  h1 {
+    font-size: 1.9rem;
     text-align: center;
+    font-weight: 900;
     margin-bottom: 2em;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   }
 
   &__container {
@@ -158,14 +157,13 @@ div.field:has(> .btn) {
 
     &::-webkit-scrollbar {
       padding: 5px;
-      width: 15px;
-      border-radius: 50px;
+      width: 10px;
       background-color: transparent;
     }
 
     &::-webkit-scrollbar-thumb {
       border: 3px $color-blue-dark solid;
-      border-radius: 10px;
+      border-radius: 50px;
       background-color: rgba($color-blue, 0.75);
     }
   }

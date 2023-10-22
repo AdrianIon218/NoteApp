@@ -1,6 +1,6 @@
 import { useState } from "react";
 import NoteNav, { ButtonSelected } from "./NoteNav";
-import NoteContainer from "./NoteContainer";
+import NoteBox from "./NoteBox";
 
 export default function NoteComp() {
   const [notesCtx, setNotesCtx] = useState({
@@ -8,10 +8,9 @@ export default function NoteComp() {
   });
 
   function setNavNotesState(newNavNotesState: ButtonSelected) {
-    setNotesCtx((prevNotesCtx) => ({
-      ...prevNotesCtx,
-      ["navNotesState"]: newNavNotesState,
-    }));
+    setNotesCtx({
+      navNotesState: newNavNotesState,
+    });
   }
 
   return (
@@ -20,9 +19,7 @@ export default function NoteComp() {
         initialNavState={notesCtx.navNotesState}
         setNavNotesState={setNavNotesState}
       />
-      {notesCtx.navNotesState !== ButtonSelected.none && (
-        <NoteContainer currentStatus={notesCtx.navNotesState} />
-      )}
+      <NoteBox currentStatus={notesCtx.navNotesState} />
     </section>
   );
 }

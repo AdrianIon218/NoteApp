@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import Layout from "./components/Layout/Layout";
-import LoadingSpinner from "./components/Layout/LoadingSpinner";
+import LoadingSpinner from "./components/CustomedComponents/LoadingSpinner";
 
 const NoteComp = lazy(() => import("./components/notes/NoteComp"));
 const ContactForm = lazy(() => import("./components/Pages/ContactForm"));
