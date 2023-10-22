@@ -1,6 +1,5 @@
-import NoteNav from "./NoteNav";
-import { ButtonSelected } from "./NoteNav";
 import { useState } from "react";
+import NoteNav, { ButtonSelected } from "./NoteNav";
 import NoteContainer from "./NoteContainer";
 
 export default function NoteComp() {
@@ -16,7 +15,7 @@ export default function NoteComp() {
   }
 
   return (
-    <article className="noteComp">
+    <section className="note-container">
       <NoteNav
         initialNavState={notesCtx.navNotesState}
         setNavNotesState={setNavNotesState}
@@ -24,6 +23,6 @@ export default function NoteComp() {
       {notesCtx.navNotesState !== ButtonSelected.none && (
         <NoteContainer currentStatus={notesCtx.navNotesState} />
       )}
-    </article>
+    </section>
   );
 }
