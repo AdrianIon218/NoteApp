@@ -1,0 +1,106 @@
+.select-interactive {
+  position: relative;
+  font-size: 1.2rem;
+
+  &__ctn {
+    position: relative;
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    padding: 2px;
+    padding-right: 1rem;
+    width: 10rem;
+    height: 2rem;
+    color: $color-blue;
+    font-weight: 600;
+    text-align: center;
+    border: 3px solid $color-blue-dark;
+    border-radius: 5px;
+    background-color: white;
+    @include ellipsis();
+
+    &:focus {
+      -moz-box-shadow: 0 0 5px $color-blue-dark;
+      -webkit-box-shadow: 0 0 5px $color-blue-dark;
+      -o-box-shadow: 0 0 5px $color-blue-dark;
+      -ms-box-shadow: 0 0 5px $color-blue-dark;
+      box-shadow: 0 0 5px $color-blue-dark;
+    }
+
+    &::after {
+      content: "\25be"; // arrow down
+      color: $color-blue-dark;
+      font-weight: 900;
+      font-size: larger;
+      position: absolute;
+      right: 2px;
+      top: -4px;
+      transition: transform 0.2s;
+    }
+
+    &--open::after {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__options {
+    position: absolute;
+    top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba($color-blue-fade, 0.85);
+    border-radius: 5px;
+    border: 2px solid $color-blue-dark;
+    width: 10rem;
+    z-index: 1;
+    max-height: 7rem;
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+
+    &::-webkit-scrollbar {
+      padding: 5px;
+      width: 15px;
+      border-radius: 50px;
+      background-color: rgba($color-blue-white, 0.75);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border: 3px $color-blue-dark solid;
+      border-radius: 10px;
+      background-color: $color-blue;
+    }
+
+    & > button {
+      font-weight: 700;
+      color: $color-blue-dark;
+      background-color: transparent;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      width: 100%;
+      @include ellipsis();
+
+      &:hover {
+        background-color:white
+      }
+    }
+
+    & > button:nth-child(2n) {
+      background-color: rgba($color-blue, 0.65);
+      color: white;
+
+      &:hover{
+        background-color:white;
+        color: $color-blue-dark;
+      }
+    }
+
+    &--open{
+      visibility:visible;
+      @include animation(fade-in 0.5s linear 0s 1 normal forwards);
+    }
+  }
+}

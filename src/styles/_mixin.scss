@@ -20,3 +20,9 @@
     background-color: $color-blue-fade;
   }
 }
+
+@mixin ellipsis(){
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

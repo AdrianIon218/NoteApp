@@ -32,7 +32,7 @@ function NoteNav(props: IProps) {
 
   const sideBar = sideBarElements.map((item, index) => (
     <button
-      className={btnSelected === item.btnValue ? "note__nav__selected" : ""}
+      className={btnSelected === item.btnValue ? "note-nav__selected" : ""}
       name={item.btnValue.toString()}
       onClick={onChange}
       key={`${listID}-${index}`}
@@ -41,7 +41,7 @@ function NoteNav(props: IProps) {
     </button>
   ));
 
-  return <section className="note__nav">{sideBar}</section>;
+  return <section className="note-nav">{sideBar}</section>;
 }
 
 export default NoteNav;
