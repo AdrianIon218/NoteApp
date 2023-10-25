@@ -42,7 +42,9 @@ export default function ViewNotes() {
       </h3>
       <h1>
         {numOfNotesToDisplay === 0
-          ? "You don't have any notes!"
+          ? searchCategory === "all"
+            ? "You don't have any notes!"
+            : "You don't have any notes of this category!"
           : numOfNotesToDisplay === 1
           ? "You have only 1 note!"
           : `You have ${numOfNotesToDisplay} notes!`}
