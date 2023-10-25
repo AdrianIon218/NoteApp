@@ -3,6 +3,7 @@ import { useRef } from "react";
 interface IProps {
   closePanel: () => void;
   children: React.ReactNode;
+  plusClass?: string;
 }
 
 export default function FormWithBackdrop(props: IProps) {
@@ -20,7 +21,7 @@ export default function FormWithBackdrop(props: IProps) {
     <div className="backdrop" ref={backdropPanel} onClick={exitForm}>
       <div className="form-grid" ref={formPanel}>
         <div
-          className="form-container"
+          className={` ${props.plusClass} form-container`}
           onClick={(event) => event.stopPropagation()}
         >
           {props.children}

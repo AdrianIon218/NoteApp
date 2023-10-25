@@ -1,3 +1,4 @@
+import FormWithBackdrop from "../../FormWithBackdrop/FormWithBackdrop";
 import { NoteStructure } from "../../stylingStructures";
 import React, { useRef } from "react";
 
@@ -19,25 +20,14 @@ export default function NoteDisplay(props: IProps) {
     );
   });
 
-  function closeNote() {
-    noteRef.current!.classList.add("anim-line-down");
-    setTimeout(props.closeNote, 700);
-  }
-
   return (
-    <div className="backdrop" onClick={closeNote}>
-      <div
-        className="note-centered"
-        ref={noteRef}
-        onClick={(e) => e.stopPropagation()}
-      >
-        {categorySelected ? <label>{categorySelected}</label> : <></>}
-        <button className="close-btn" onClick={closeNote}>
-          &times;
-        </button>
-        <h2 title={title}>{title}</h2>
-        <div className="note-text">{textWithNewLines}</div>
-      </div>
-    </div>
+    <FormWithBackdrop
+      closePanel={props.closeNote}
+      plusClass="note-max-extended"
+    >
+      {categorySelected ? <label>{categorySelected}</label> : null}
+      <h2 title={title}>{title}</h2>
+      <div className="note-text">{textWithNewLines}</div>
+    </FormWithBackdrop>
   );
 }

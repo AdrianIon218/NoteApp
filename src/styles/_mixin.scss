@@ -26,3 +26,17 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+@mixin scrollbar($width: 10px) {
+  &::-webkit-scrollbar {
+    width: $width;
+    border-radius: 8px;
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    order: 3px $color-blue-fade solid;
+    border-radius: 10px;
+    background-color: $color-blue-dark;
+  }
+}

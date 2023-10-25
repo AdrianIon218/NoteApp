@@ -60,4 +60,8 @@ body:has(.backdrop) {
   #root:has(.backdrop) .footer {
     margin-right: -15px;
   }
+
+  #root:has(.backdrop) .nav {
+    padding-right: 20px !important;
+  }
 }

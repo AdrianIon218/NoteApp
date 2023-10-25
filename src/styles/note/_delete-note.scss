@@ -26,7 +26,7 @@
 }
 
 .anim-line-down-del {
-  @include animation(anim-lineDown 0.3s ease-out 0s 1 normal forwards);
+  @include animation(anim-out-down 0.3s ease-out 0s 1 normal forwards);
 }
 
 div:has(> .del-btn) {
