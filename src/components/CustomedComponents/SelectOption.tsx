@@ -14,9 +14,9 @@ function SelectOption(props: IProps) {
     setIsOpen((curr) => !curr);
   }
 
-  function optionClick(e:any) {
+  function optionClick(e: any) {
     const optionSelected = e.target.value;
-    if(optionSelected !== currentOption){
+    if (optionSelected !== currentOption) {
       setCurrentOption(optionSelected);
       props.onSelection?.(optionSelected);
     }
@@ -27,20 +27,30 @@ function SelectOption(props: IProps) {
     <div className="select-interactive">
       <div
         className={`select-interactive__ctn ${
-          isOpen && "select-interactive__ctn--open"
+          isOpen ? "select-interactive__ctn--open" : ""
         }`}
         onClick={toggleBtn}
         title={currentOption}
         role="button"
         tabIndex={0}
-        onBlur={()=>setIsOpen(false)}
+        onBlur={() => setIsOpen(false)}
       >
         {currentOption}
       </div>
-      <div className={`select-interactive__options ${isOpen && "select-interactive__options--open"}`} 
-        >
+      <div
+        className={`select-interactive__options ${
+          isOpen ? "select-interactive__options--open" : ""
+        }`}
+      >
         {props.options.map((option, index) => (
-          <button key={`${listKey}-${index}`} value={option} onClick={e=>optionClick(e)} title={option}>{option}</button>
+          <button
+            key={`${listKey}-${index}`}
+            value={option}
+            onClick={optionClick}
+            title={option}
+          >
+            {option}
+          </button>
         ))}
       </div>
     </div>
