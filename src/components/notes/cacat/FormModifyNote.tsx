@@ -23,14 +23,14 @@ export default function FormModifyNote({ note, closeEditMode }: IProps) {
     event.preventDefault();
     const modifiedNote: NoteStructure = {
       title: titleNote.current!.value,
-      categorySelected: btnSelectRef.current!.getSelectValue(),
+      category: btnSelectRef.current!.getSelectValue(),
       text: textNote.current!.value,
       id: note.id,
     };
 
     if (
       modifiedNote.title !== note.title ||
-      modifiedNote.categorySelected !== note.categorySelected ||
+      modifiedNote.category !== note.category ||
       modifiedNote.text !== note.text
     ) {
       notesCtx.modifyNote(modifiedNote);
@@ -45,7 +45,7 @@ export default function FormModifyNote({ note, closeEditMode }: IProps) {
   function resetNote() {
     titleNote.current!.value = note.title;
     textNote.current!.value = note.text;
-    btnSelectRef.current!.setValue(note.categorySelected);
+    btnSelectRef.current!.setValue(note.category);
   }
 
   function closePanel() {
@@ -78,7 +78,7 @@ export default function FormModifyNote({ note, closeEditMode }: IProps) {
           <DropDownBtn
             labelMessage="Change the category"
             ref={btnSelectRef}
-            valueDefault={note.categorySelected}
+            valueDefault={note.category}
           />
           <TextArea name="textNote" ref={textNote} value={note.text} />
           <div className="modify-buttons">

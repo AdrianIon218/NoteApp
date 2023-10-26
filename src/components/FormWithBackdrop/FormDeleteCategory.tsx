@@ -13,7 +13,7 @@ import TemporalNotification from "../CustomedComponents/TemporalNotification";
 import ListCategories from "./ListCategories";
 
 export default function FormDeleteCategory() {
-  const categorySelected = useRef<IDropDownMethods>();
+  const category = useRef<IDropDownMethods>();
   const categoryContext = useContext(CategoryContext);
   const notesContext = useContext(NotesContext);
   const [showNotification, setShowMessage] = useState<
@@ -21,12 +21,12 @@ export default function FormDeleteCategory() {
   >();
 
   useLayoutEffect(() => {
-    categorySelected.current!.blockCategories(categoryValues);
+    category.current!.blockCategories(categoryValues);
   }, []);
 
   function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const selectedCategory = categorySelected.current!.getSelectValue();
+    const selectedCategory = category.current!.getSelectValue();
     if (
       categoryValues.indexOf(selectedCategory) === -1 &&
       categoryContext.getCategories().includes(selectedCategory)
@@ -34,12 +34,12 @@ export default function FormDeleteCategory() {
       categoryContext.deleteCategory(selectedCategory);
       notesContext
         .getNotes()
-        .filter((note) => note.categorySelected === selectedCategory)
+        .filter((note) => note.category === selectedCategory)
         .forEach((note) => {
-          notesContext.modifyNote({ ...note, ["categorySelected"]: "none" });
+          notesContext.modifyNote({ ...note, ["category"]: "none" });
         });
-      categorySelected.current!.setValue("none");
-      categorySelected.current!.updateCategory();
+      category.current!.setValue("none");
+      category.current!.updateCategory();
       setShowMessage(
         <TemporalNotification
           hideMessage={() => setShowMessage(undefined)}
@@ -60,7 +60,7 @@ export default function FormDeleteCategory() {
           <form onSubmit={submit}>
             <DropDownBtn
               labelMessage="Select category"
-              ref={categorySelected}
+              ref={category}
               isNeccessary={true}
             />
             <h3 style={{ marginBottom: "5px" }} className="txt-red">
@@ -77,7 +77,7 @@ export default function FormDeleteCategory() {
               type="submit"
               className="btn-red"
               disabled={categoryValues.includes(
-                categorySelected.current?.getSelectValue()!,
+                category.current?.getSelectValue()!,
               )}
             >
               Delete category

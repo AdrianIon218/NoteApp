@@ -40,7 +40,7 @@ export default function NotesContextProvider(props: any) {
     );
     if (indexNoteToEdit !== -1) {
       notes.value[indexNoteToEdit].title = note.title;
-      notes.value[indexNoteToEdit].categorySelected = note.categorySelected;
+      notes.value[indexNoteToEdit].category = note.category;
       notes.value[indexNoteToEdit].text = note.text;
       notes.setValue([...notes.value]);
     }

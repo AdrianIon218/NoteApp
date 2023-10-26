@@ -8,7 +8,7 @@ import { NotesContext } from "../Contexts/NotesContext";
 import TemporalNotification from "../CustomedComponents/TemporalNotification";
 
 export default function FormModifyCategory() {
-  const categorySelected = useRef<IDropDownMethods>();
+  const category = useRef<IDropDownMethods>();
   const inputRef = useRef<HTMLInputElement>();
   const categoryCtx = useContext(CategoryContext);
   const notesCtx = useContext(NotesContext);
@@ -18,12 +18,12 @@ export default function FormModifyCategory() {
   const [isInputValid, setInputValid] = useState(false);
 
   useLayoutEffect(() => {
-    categorySelected.current!.blockCategories(categoryValues);
+    category.current!.blockCategories(categoryValues);
   }, []);
 
   function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const oldCategoryName = categorySelected.current!.getSelectValue();
+    const oldCategoryName = category.current!.getSelectValue();
     const newCategoryName = inputRef.current!.value.trim();
     if (
       oldCategoryName != "none" &&
@@ -31,15 +31,15 @@ export default function FormModifyCategory() {
     ) {
       notesCtx
         .getNotes()
-        .filter((item) => item.categorySelected === oldCategoryName)
+        .filter((item) => item.category === oldCategoryName)
         .forEach((item) => {
           notesCtx.modifyNote({
             ...item,
-            ["categorySelected"]: newCategoryName,
+            ["category"]: newCategoryName,
           });
         });
-      categorySelected.current!.setValue("none");
-      categorySelected.current!.updateCategory();
+      category.current!.setValue("none");
+      category.current!.updateCategory();
       inputRef.current!.value = "";
       setShowMessage(
         <TemporalNotification
@@ -59,7 +59,7 @@ export default function FormModifyCategory() {
       <form onSubmit={submit}>
         <DropDownBtn
           labelMessage="Select category"
-          ref={categorySelected}
+          ref={category}
           isNeccessary={true}
         />
         <h3

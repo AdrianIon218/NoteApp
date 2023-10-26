@@ -3,7 +3,7 @@ import { NotesContext } from "../../Contexts/NotesContext";
 import NoteEditCard from "./NoteEditCard";
 import useSortNotes from "../../CustomedComponents/useSortNotes";
 import { NoteStructure } from "../../stylingStructures";
-import FormModifyNote from "../FormModifyNote/FormModifyNote";
+import FormModifyNote from "../cacat/FormModifyNote";
 import DeleteForm from "../DeleteForm/DeleteForm";
 
 const enum StateHiddenPanel {
@@ -74,7 +74,7 @@ export default function EditNote() {
     <NoteEditCard
       key={index}
       title={item.title}
-      categorySelected={item.categorySelected}
+      category={item.category}
       text={item.text}
       modifyItem={() => {
         modifyPanel(item);

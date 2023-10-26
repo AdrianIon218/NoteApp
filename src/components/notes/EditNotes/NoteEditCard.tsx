@@ -9,9 +9,7 @@ export default function NoteEditCard(props: IProps) {
   return (
     <div className="note-item-edit">
       <h2 title={props.title}>{props.title}</h2>
-      {props.categorySelected !== categoryValues[0] && (
-        <label>{props.categorySelected}</label>
-      )}
+      {props.category !== categoryValues[0] && <label>{props.category}</label>}
       <div className="edit-btn" onClick={() => props.modifyItem()}>
         <button>edit</button>
       </div>

@@ -21,3 +21,21 @@
     transform: translateY(90%);
   }
 }
+
+@keyframes anim-go-down-fade {
+  0% {
+    opacity: 0;
+    transform: translateY(90%);
+  }
+  18% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(10%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}

@@ -6,7 +6,7 @@ interface IProps {
   plusClass?: string;
 }
 
-export default function FormWithBackdrop(props: IProps) {
+export default function PanelWithBackdrop(props: IProps) {
   const backdropPanel = useRef<HTMLDivElement>(null);
   const formPanel = useRef<HTMLDivElement>(null);
 
@@ -19,9 +19,9 @@ export default function FormWithBackdrop(props: IProps) {
 
   return (
     <div className="backdrop" ref={backdropPanel} onClick={exitForm}>
-      <div className="form-grid" ref={formPanel}>
+      <div className="panel-grid" ref={formPanel}>
         <div
-          className={` ${props.plusClass} form-container`}
+          className={` ${props.plusClass} panel-container`}
           onClick={(event) => event.stopPropagation()}
         >
           {props.children}

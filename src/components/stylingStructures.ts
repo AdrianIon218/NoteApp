@@ -1,6 +1,6 @@
 export type NoteStructure = {
   title: string;
-  categorySelected: string;
+  category: string;
   text: string;
   id: string;
 };

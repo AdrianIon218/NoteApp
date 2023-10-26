@@ -12,9 +12,7 @@ export default function ViewNotes() {
 
   const noteElements = allNotes
     .filter((item) => {
-      return (
-        searchCategory === "all" || item.categorySelected === searchCategory
-      );
+      return searchCategory === "all" || item.category === searchCategory;
     })
     .map((item) => {
       return (
@@ -23,7 +21,7 @@ export default function ViewNotes() {
           id={item.id}
           title={item.title}
           text={item.text}
-          categorySelected={item.categorySelected}
+          category={item.category}
         />
       );
     });
@@ -32,7 +30,7 @@ export default function ViewNotes() {
   return (
     <div className="view-notes">
       <h3>
-        Select a category&nbsp;
+        <span>Select a category&nbsp;</span>
         <SelectOption
           options={["all", ...categories]}
           onSelection={(option: string) => {

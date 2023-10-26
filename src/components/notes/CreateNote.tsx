@@ -30,7 +30,7 @@ function CreateNote() {
 
       const noteObj = {
         title: titleNoteVal,
-        categorySelected: btnSelectedVal,
+        category: btnSelectedVal,
         text: textNoteVal,
         id: nanoid(),
       };

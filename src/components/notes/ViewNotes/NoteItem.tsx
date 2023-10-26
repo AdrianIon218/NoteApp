@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NoteStructure, categoryValues } from "../../stylingStructures";
+import { NoteStructure } from "../../stylingStructures";
 import NoteDisplay from "./NoteDisplay";
 
 export default function NoteItem(props: NoteStructure) {
@@ -18,8 +18,8 @@ export default function NoteItem(props: NoteStructure) {
       {isNoteShown && <NoteDisplay note={props} closeNote={hideNote} />}
       <div className="note-item" onClick={showNote}>
         <h2 title={props.title}>{props.title}</h2>
-        {props.categorySelected !== categoryValues[0] && (
-          <label>{props.categorySelected}</label>
+        {props.category !== "none" && props.category !== "" && (
+          <label>{props.category}</label>
         )}
         <div>{props.text.split("\n")[0]}</div>
       </div>

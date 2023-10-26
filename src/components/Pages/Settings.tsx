@@ -1,5 +1,5 @@
 import { useId, useState } from "react";
-import FormWithBackdrop from "../FormWithBackdrop/FormWithBackdrop";
+import PanelWithBackdrop from "../CustomedComponents/PanelWithBackdrop";
 import FormAddCategory from "../FormWithBackdrop/FormAddCategory";
 import FormDeleteCategory from "../FormWithBackdrop/FormDeleteCategory";
 import FormModifyCategory from "../FormWithBackdrop/FormModifyCategory";
@@ -32,11 +32,11 @@ export default function Settings() {
 
   function showCorespondingCategoryPanel(btn: CategoryBtnState) {
     setFormShown(
-      <FormWithBackdrop closePanel={closeForm}>
+      <PanelWithBackdrop closePanel={closeForm}>
         {btn === CategoryBtnState.Add && <FormAddCategory />}
         {btn === CategoryBtnState.Delete && <FormDeleteCategory />}
         {btn === CategoryBtnState.Modify && <FormModifyCategory />}
-      </FormWithBackdrop>,
+      </PanelWithBackdrop>,
     );
   }
 
