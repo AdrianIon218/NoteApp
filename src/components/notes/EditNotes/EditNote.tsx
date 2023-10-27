@@ -3,7 +3,7 @@ import { NotesContext } from "../../Contexts/NotesContext";
 import NoteEditCard from "./NoteEditCard";
 import useSortNotes from "../../CustomedComponents/useSortNotes";
 import { NoteStructure } from "../../stylingStructures";
-import FormModifyNote from "../cacat/FormModifyNote";
+import FormModifyNote from "../FormModifyNote";
 import DeleteForm from "../DeleteForm/DeleteForm";
 
 const enum StateHiddenPanel {

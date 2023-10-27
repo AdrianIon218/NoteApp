@@ -267,33 +267,6 @@ div.field:has(> .btn) {
   }
 }
 
-.note-max-extended {
-  height: 90vh;
-  width: 80vw;
-
-  @media only screen and (max-width: $breakpoint-phone) {
-    width: 90vw;
-  }
-
-  & > h2 {
-    text-align: center;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-
-  & > label {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    background-color: $color-green-fade;
-    color: $color-green-dark;
-    border: 2px dashed;
-    font-size: small;
-    border-radius: 2px;
-    padding: 5px;
-  }
-}
-
 .note-text {
   background-color: rgba(white, 0.75);
   width: 100%;

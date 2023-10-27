@@ -23,9 +23,11 @@ export default function NoteDisplay(props: IProps) {
   return (
     <PanelWithBackdrop
       closePanel={props.closeNote}
-      plusClass="note-max-extended"
+      plusClass="panel-max-extended"
     >
-      {category ?? category !== "" ? <label>{category}</label> : null}
+      {category ?? category !== "" ? (
+        <label className="category-label">{category}</label>
+      ) : null}
       <h2 title={title}>{title}</h2>
       <div className="note-text">{textWithNewLines}</div>
     </PanelWithBackdrop>
