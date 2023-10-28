@@ -1,12 +1,13 @@
-import { NoteStructure, IDropDownMethods } from "../stylingStructures";
+import { ISelectOptionMethods, NoteStructure } from "../stylingStructures";
 import { useRef, useContext, useState } from "react";
 import InputText from "../CustomedComponents/FormElements/InputText";
-import DropDownBtn from "../CustomedComponents/FormElements/DropDownBtn";
 import TextArea from "../CustomedComponents/FormElements/TextArea";
 import { NotesContext } from "../Contexts/NotesContext";
 import TemporalNotification from "../CustomedComponents/TemporalNotification";
 
 import PanelWithBackdrop from "../CustomedComponents/PanelWithBackdrop";
+import SelectOption from "../CustomedComponents/SelectOption";
+import { CategoryContext } from "../Contexts/CategoryContext";
 
 interface IProps {
   note: NoteStructure;
@@ -16,15 +17,17 @@ interface IProps {
 export default function FormModifyNote({ note, closeEditMode }: IProps) {
   const [showMessage, setShowMessage] = useState(false);
   const notesCtx = useContext(NotesContext);
+  const categories = useContext(CategoryContext).getCategories();
+  const [categorySelected, setCategory] = useState(note.category);
+  const categoryBtnRef = useRef<ISelectOptionMethods>(null);
   const titleNote = useRef<HTMLInputElement>(null);
-  const btnSelectRef = useRef<IDropDownMethods>(null);
   const textNote = useRef<HTMLTextAreaElement>(null);
 
   function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const modifiedNote: NoteStructure = {
       title: titleNote.current!.value,
-      category: btnSelectRef.current!.getSelectValue(),
+      category: categorySelected,
       text: textNote.current!.value,
       id: note.id,
     };
@@ -46,7 +49,8 @@ export default function FormModifyNote({ note, closeEditMode }: IProps) {
   function resetNote() {
     titleNote.current!.value = note.title;
     textNote.current!.value = note.text;
-    btnSelectRef.current!.setValue(note.category);
+    setCategory(note.category);
+    categoryBtnRef.current?.resetSelectValue();
   }
 
   return (
@@ -69,18 +73,26 @@ export default function FormModifyNote({ note, closeEditMode }: IProps) {
           maxLength={30}
           value={note.title}
         />
-        <DropDownBtn
-          labelMessage="Change the category"
-          ref={btnSelectRef}
-          valueDefault={note.category}
-        />
+
+        <div className="field">
+        Change the category
+          <SelectOption
+            options={categories}
+            defaultOption={note.category}
+            onSelection={(str: string) => {
+              setCategory(str);
+            }}
+            ref={categoryBtnRef}
+          />
+        </div>
+
         <TextArea name="textNote" ref={textNote} value={note.text} />
-        <div className="modify-buttons">
-          <button>Save</button>
+        <div className="field-group-btns">
+          <button className="btn-blue">Save</button>
           <button
             type="button"
             onClick={resetNote}
-            className="red"
+            className="btn-blue red"
             title="Reset to the last saved content"
           >
             Discard changes

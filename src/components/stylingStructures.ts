@@ -28,3 +28,7 @@ export interface IDropDownMethods {
   updateCategory(): void;
   blockCategories(arr: string[]): void;
 }
+
+export interface ISelectOptionMethods{
+  resetSelectValue(): void;
+}

@@ -1,11 +1,16 @@
 .field {
-  position: relative;
   display: flex;
   flex-direction: row;
-  column-gap: 0.5rem;
+  column-gap: 1.2rem;
   align-items: center;
   margin-top: 10px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+
+  @media only screen and (max-width: 405px) {
+    align-items: flex-start;
+    row-gap: 0.5rem;
+    flex-direction: column;
+  }
 
   &:has(.label-email) {
     @media all and (max-width: 320px) {
@@ -13,6 +18,16 @@
       flex-wrap: wrap;
     }
   }
+}
+
+
+.field-group-btns{
+  display: flex;
+  flex-direction: row;
+  column-gap: 1.2rem;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .textArea {

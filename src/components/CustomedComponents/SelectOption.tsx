@@ -1,14 +1,22 @@
-import { useId, useState } from "react";
+import { forwardRef, useId, useState } from "react";
+import { useImperativeHandle } from "react";
 
 interface IProps {
   options: string[];
-  onSelection?: (str: string) => void;
+  onSelection: (str: string) => void;
+  defaultOption?: string;
 }
 
-function SelectOption(props: IProps) {
-  const [currentOption, setCurrentOption] = useState(props.options[0]);
+function SelectOption(props: IProps, ref?:any) {
+  const [currentOption, setCurrentOption] = useState(props.defaultOption ?? props.options[0]);
   const [isOpen, setIsOpen] = useState(false);
   const listKey = useId();
+
+  useImperativeHandle(ref, ()=>({
+    resetSelectValue() {
+      setCurrentOption(props.defaultOption ?? props.options[0])
+    }
+  }));
 
   function toggleBtn() {
     setIsOpen((curr) => !curr);
@@ -18,7 +26,7 @@ function SelectOption(props: IProps) {
     const optionSelected = e.target.value;
     if (optionSelected !== currentOption) {
       setCurrentOption(optionSelected);
-      props.onSelection?.(optionSelected);
+      props.onSelection(optionSelected);
     }
     setIsOpen(false);
   }
@@ -44,6 +52,7 @@ function SelectOption(props: IProps) {
       >
         {props.options.map((option, index) => (
           <button
+            type="button"
             key={`${listKey}-${index}`}
             value={option}
             onClick={optionClick}
@@ -57,4 +66,4 @@ function SelectOption(props: IProps) {
   );
 }
 
-export default SelectOption;
+export default forwardRef(SelectOption);

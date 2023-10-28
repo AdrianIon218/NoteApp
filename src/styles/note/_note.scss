@@ -95,23 +95,6 @@
   }
 }
 
-.create-note-container {
-  & > h1 {
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 3rem;
-  }
-
-  & > form > .field {
-    display: flex;
-    flex-direction: row;
-    column-gap: 1.2rem;
-    align-items: center;
-    margin-top: 10px;
-    margin-bottom: 5px;
-  }
-}
-
 div.field:has(> .btn) {
   margin-top: 2em;
 }
@@ -295,14 +278,5 @@ div.field:has(> .btn) {
     font-size: 2rem;
     text-align: center;
     margin-bottom: 3rem;
-  }
-
-  & > form > .field {
-    display: flex;
-    flex-direction: row;
-    column-gap: 1.2rem;
-    align-items: center;
-    margin-top: 10px;
-    margin-bottom: 5px;
   }
 }

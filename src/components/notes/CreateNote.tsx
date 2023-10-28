@@ -1,36 +1,39 @@
 import { useRef, useContext, useState } from "react";
-import DropDownBtn from "../CustomedComponents/FormElements/DropDownBtn";
 import TextArea from "../CustomedComponents/FormElements/TextArea";
 import InputText from "../CustomedComponents/FormElements/InputText";
 import { NotesContext } from "../Contexts/NotesContext";
-import { IDropDownMethods } from "../stylingStructures";
+import { CategoryContext } from "../Contexts/CategoryContext";
 import TemporalNotification from "../CustomedComponents/TemporalNotification";
 import { nanoid } from "nanoid";
+import SelectOption from "../CustomedComponents/SelectOption";
+import { ISelectOptionMethods } from "../stylingStructures";
 
 function CreateNote() {
   const [showMessage, setShowMessage] = useState(false);
   const notesCtx = useContext(NotesContext);
+  const categories = useContext(CategoryContext).getCategories();
 
   const titleNote = useRef<HTMLInputElement>(null);
-  const btnSelectRef = useRef<IDropDownMethods>();
+  const [categorySelected, setCategory] = useState("none");
   const textNote = useRef<HTMLTextAreaElement>(null);
+  const categoryBtnRef = useRef<ISelectOptionMethods>(null);
 
   function resetInputs() {
     titleNote.current!.value = "";
     (textNote.current as HTMLTextAreaElement).value = "";
-    btnSelectRef.current!.resetSelectValue();
+    setCategory("none");
+    categoryBtnRef.current?.resetSelectValue();
   }
 
   function submit(event: React.FormEvent<HTMLFormElement>) {
     if (!showMessage) {
       event.preventDefault();
       const titleNoteVal = titleNote.current!.value;
-      const btnSelectedVal = btnSelectRef.current!.getSelectValue();
       const textNoteVal = (textNote.current as HTMLTextAreaElement).value;
 
       const noteObj = {
         title: titleNoteVal,
-        category: btnSelectedVal,
+        category: categorySelected,
         text: textNoteVal,
         id: nanoid(),
       };
@@ -62,11 +65,20 @@ function CreateNote() {
           maxLength={30}
         />
 
-        <DropDownBtn labelMessage="Choose a category" ref={btnSelectRef} />
+        <div className="field">
+          Choose a category{" "}
+          <SelectOption
+            options={categories}
+            onSelection={(str: string) => {
+              setCategory(str);
+            }}
+            ref={categoryBtnRef}
+          />
+        </div>
 
         <TextArea name="textNote" ref={textNote} />
 
-        <div className="field">
+        <div className="field-group-btns">
           <button type="submit" className="btn-blue">
             {" "}
             Save{" "}
