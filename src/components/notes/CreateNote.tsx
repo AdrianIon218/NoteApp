@@ -7,15 +7,19 @@ import { CategoryContext } from "../Contexts/CategoryContext";
 import TemporalNotification from "../CustomedComponents/TemporalNotification";
 import SelectOption from "../CustomedComponents/SelectOption";
 import { ISelectOptionMethods } from "../stylingStructures";
+import { NotificationCtx } from "../Contexts/NotificationContext";
 
 function CreateNote() {
-  const [showMessage, setShowMessage] = useState(false);
   const notesCtx = useContext(NotesContext);
+  const notificationCtx = useContext(NotificationCtx);
+
   const categories = useContext(CategoryContext).getCategories();
   const categoryBtnRef = useRef<ISelectOptionMethods>(null);
   const [categorySelected, setCategory] = useState("none");
+
   const titleNoteRef = useRef<HTMLInputElement>(null);
   const [titleText, setTitleText] = useState("");
+
   const textNoteRef = useRef<HTMLTextAreaElement>(null);
   const [textNote, setTextNote] = useState("");
 
@@ -29,33 +33,22 @@ function CreateNote() {
   }
 
   function submit(event: React.FormEvent<HTMLFormElement>) {
-    if (!showMessage) {
-      event.preventDefault();
+    event.preventDefault();
 
-      const noteObj = {
-        title: titleText,
-        category: categorySelected,
-        text: textNote,
-        id: nanoid(),
-      };
+    const noteObj = {
+      title: titleText,
+      category: categorySelected,
+      text: textNote,
+      id: nanoid(),
+    };
 
-      notesCtx.addNote(noteObj);
-      resetInputs();
-      setShowMessage(true);
-    }
-  }
-
-  function hideMessage() {
-    setShowMessage(false);
+    notificationCtx.showNotification("Note added !");
+    notesCtx.addNote(noteObj);
+    resetInputs();
   }
 
   return (
     <div className="create-note-container">
-      {showMessage && (
-        <TemporalNotification hideMessage={hideMessage}>
-          Note added !
-        </TemporalNotification>
-      )}
       <h1>Create a note</h1>
       <form onSubmit={submit}>
         <InputText
@@ -76,12 +69,29 @@ function CreateNote() {
             ref={categoryBtnRef}
           />
         </div>
-        <TextArea name="textNote" ref={textNoteRef} onChangeHandler={setTextNote} />
+        <TextArea
+          name="textNote"
+          ref={textNoteRef}
+          onChangeHandler={setTextNote}
+        />
         <div className="field-group-btns">
-          <button type="submit" className="btn-blue" disabled={titleText.length < 3}>
+          <button
+            type="submit"
+            className="btn-blue"
+            disabled={titleText.length < 3}
+          >
             Save
           </button>
-          <button type="button" className="btn-blue red" onClick={resetInputs} disabled={titleText.length === 0 && categorySelected === "none" && textNote === ""}>
+          <button
+            type="button"
+            className="btn-blue red"
+            onClick={resetInputs}
+            disabled={
+              titleText.length === 0 &&
+              categorySelected === "none" &&
+              textNote === ""
+            }
+          >
             Discard
           </button>
         </div>

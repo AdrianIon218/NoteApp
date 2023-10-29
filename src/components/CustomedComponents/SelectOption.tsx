@@ -59,6 +59,7 @@ function SelectOption(props: IProps, ref?: any) {
             value={option}
             onClick={optionClick}
             title={option}
+            className={option === currentOption ? "selected" : ""}
           >
             {option}
           </button>

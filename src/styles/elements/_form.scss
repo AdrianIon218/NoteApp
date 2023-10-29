@@ -377,12 +377,12 @@ div.field:has(> .btn-blue) {
   cursor: pointer;
   transition: all 0.6s;
 
-  &:disabled{
+  &:disabled {
     cursor: auto;
     opacity: 0.5;
   }
 
-  &:not(:disabled){
+  &:not(:disabled) {
     &:hover {
       text-shadow: 0 0 1.3px #777;
       box-shadow:
