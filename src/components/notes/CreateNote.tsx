@@ -1,10 +1,10 @@
 import { useRef, useContext, useState } from "react";
+import { nanoid } from "nanoid";
 import TextArea from "../CustomedComponents/FormElements/TextArea";
 import InputText from "../CustomedComponents/FormElements/InputText";
 import { NotesContext } from "../Contexts/NotesContext";
 import { CategoryContext } from "../Contexts/CategoryContext";
 import TemporalNotification from "../CustomedComponents/TemporalNotification";
-import { nanoid } from "nanoid";
 import SelectOption from "../CustomedComponents/SelectOption";
 import { ISelectOptionMethods } from "../stylingStructures";
 
@@ -12,11 +12,10 @@ function CreateNote() {
   const [showMessage, setShowMessage] = useState(false);
   const notesCtx = useContext(NotesContext);
   const categories = useContext(CategoryContext).getCategories();
-
-  const titleNote = useRef<HTMLInputElement>(null);
   const [categorySelected, setCategory] = useState("none");
-  const textNote = useRef<HTMLTextAreaElement>(null);
   const categoryBtnRef = useRef<ISelectOptionMethods>(null);
+  const titleNote = useRef<HTMLInputElement>(null);
+  const textNote = useRef<HTMLTextAreaElement>(null);
 
   function resetInputs() {
     titleNote.current!.value = "";
@@ -55,7 +54,7 @@ function CreateNote() {
           Note added !
         </TemporalNotification>
       )}
-      <h1>Create a note </h1>
+      <h1>Create a note</h1>
       <form onSubmit={submit}>
         <InputText
           ref={titleNote}
@@ -64,7 +63,6 @@ function CreateNote() {
           minLength={3}
           maxLength={30}
         />
-
         <div className="field">
           Choose a category{" "}
           <SelectOption
@@ -75,9 +73,7 @@ function CreateNote() {
             ref={categoryBtnRef}
           />
         </div>
-
         <TextArea name="textNote" ref={textNote} />
-
         <div className="field-group-btns">
           <button type="submit" className="btn-blue">
             {" "}

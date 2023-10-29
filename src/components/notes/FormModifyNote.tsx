@@ -75,7 +75,7 @@ export default function FormModifyNote({ note, closeEditMode }: IProps) {
         />
 
         <div className="field">
-        Change the category
+          Change the category
           <SelectOption
             options={categories}
             defaultOption={note.category}

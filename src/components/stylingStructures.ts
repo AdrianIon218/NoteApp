@@ -1,6 +1,6 @@
 export type NoteStructure = {
   title: string;
-  category: string;
+  category: String;
   text: string;
   id: string;
 };
@@ -29,6 +29,6 @@ export interface IDropDownMethods {
   blockCategories(arr: string[]): void;
 }
 
-export interface ISelectOptionMethods{
+export interface ISelectOptionMethods {
   resetSelectValue(): void;
 }

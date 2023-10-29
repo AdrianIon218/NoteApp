@@ -4,18 +4,20 @@ import { useImperativeHandle } from "react";
 interface IProps {
   options: string[];
   onSelection: (str: string) => void;
-  defaultOption?: string;
+  defaultOption?: String;
 }
 
-function SelectOption(props: IProps, ref?:any) {
-  const [currentOption, setCurrentOption] = useState(props.defaultOption ?? props.options[0]);
+function SelectOption(props: IProps, ref?: any) {
+  const [currentOption, setCurrentOption] = useState(
+    props.defaultOption ?? props.options[0],
+  );
   const [isOpen, setIsOpen] = useState(false);
   const listKey = useId();
 
-  useImperativeHandle(ref, ()=>({
+  useImperativeHandle(ref, () => ({
     resetSelectValue() {
-      setCurrentOption(props.defaultOption ?? props.options[0])
-    }
+      setCurrentOption(props.defaultOption ?? props.options[0]);
+    },
   }));
 
   function toggleBtn() {
@@ -38,7 +40,7 @@ function SelectOption(props: IProps, ref?:any) {
           isOpen ? "select-interactive__ctn--open" : ""
         }`}
         onClick={toggleBtn}
-        title={currentOption}
+        title={currentOption.toString()}
         role="button"
         tabIndex={0}
         onBlur={() => setIsOpen(false)}
