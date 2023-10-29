@@ -377,22 +377,29 @@ div.field:has(> .btn-blue) {
   cursor: pointer;
   transition: all 0.6s;
 
-  &:hover {
-    text-shadow: 0 0 1.3px #777;
-    box-shadow:
-      3px 1px 8px $color-blue,
-      -2px 1px 20px $color-blue-dark;
+  &:disabled{
+    cursor: auto;
+    opacity: 0.5;
   }
 
-  &:active {
-    transform: translateY(8px);
+  &:not(:disabled){
+    &:hover {
+      text-shadow: 0 0 1.3px #777;
+      box-shadow:
+        3px 1px 8px $color-blue,
+        -2px 1px 20px $color-blue-dark;
+    }
+
+    &:active {
+      transform: translateY(8px);
+    }
   }
 
   &.red {
     color: $color-red;
     background-color: lighten($color-red-fade, 10%);
 
-    &:hover {
+    &:not(:disabled):hover {
       box-shadow:
         3px 1px 8px $color-red-fade,
         -2px 1px 20px $color-red;

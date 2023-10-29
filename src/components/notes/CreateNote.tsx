@@ -1,4 +1,4 @@
-import { useRef, useContext, useState } from "react";
+import { useRef, useContext, useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 import TextArea from "../CustomedComponents/FormElements/TextArea";
 import InputText from "../CustomedComponents/FormElements/InputText";
@@ -12,14 +12,18 @@ function CreateNote() {
   const [showMessage, setShowMessage] = useState(false);
   const notesCtx = useContext(NotesContext);
   const categories = useContext(CategoryContext).getCategories();
-  const [categorySelected, setCategory] = useState("none");
   const categoryBtnRef = useRef<ISelectOptionMethods>(null);
-  const titleNote = useRef<HTMLInputElement>(null);
-  const textNote = useRef<HTMLTextAreaElement>(null);
+  const [categorySelected, setCategory] = useState("none");
+  const titleNoteRef = useRef<HTMLInputElement>(null);
+  const [titleText, setTitleText] = useState("");
+  const textNoteRef = useRef<HTMLTextAreaElement>(null);
+  const [textNote, setTextNote] = useState("");
 
   function resetInputs() {
-    titleNote.current!.value = "";
-    (textNote.current as HTMLTextAreaElement).value = "";
+    setTitleText("");
+    titleNoteRef.current!.value = "";
+    setTextNote("");
+    (textNoteRef.current as HTMLTextAreaElement).value = "";
     setCategory("none");
     categoryBtnRef.current?.resetSelectValue();
   }
@@ -27,13 +31,11 @@ function CreateNote() {
   function submit(event: React.FormEvent<HTMLFormElement>) {
     if (!showMessage) {
       event.preventDefault();
-      const titleNoteVal = titleNote.current!.value;
-      const textNoteVal = (textNote.current as HTMLTextAreaElement).value;
 
       const noteObj = {
-        title: titleNoteVal,
+        title: titleText,
         category: categorySelected,
-        text: textNoteVal,
+        text: textNote,
         id: nanoid(),
       };
 
@@ -57,11 +59,12 @@ function CreateNote() {
       <h1>Create a note</h1>
       <form onSubmit={submit}>
         <InputText
-          ref={titleNote}
+          ref={titleNoteRef}
           text="Title"
           customText="Insert a title between 3 and 30 characters"
           minLength={3}
           maxLength={30}
+          onChangeHandler={setTitleText}
         />
         <div className="field">
           Choose a category{" "}
@@ -73,15 +76,13 @@ function CreateNote() {
             ref={categoryBtnRef}
           />
         </div>
-        <TextArea name="textNote" ref={textNote} />
+        <TextArea name="textNote" ref={textNoteRef} onChangeHandler={setTextNote} />
         <div className="field-group-btns">
-          <button type="submit" className="btn-blue">
-            {" "}
-            Save{" "}
+          <button type="submit" className="btn-blue" disabled={titleText.length < 3}>
+            Save
           </button>
-          <button type="button" className="btn-blue red" onClick={resetInputs}>
-            {" "}
-            Discard{" "}
+          <button type="button" className="btn-blue red" onClick={resetInputs} disabled={titleText.length === 0 && categorySelected === "none" && textNote === ""}>
+            Discard
           </button>
         </div>
       </form>
