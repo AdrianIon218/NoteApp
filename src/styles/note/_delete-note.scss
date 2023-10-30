@@ -29,13 +29,12 @@
   @include animation(anim-out-down 0.3s ease-out 0s 1 normal forwards);
 }
 
-div:has(> .del-btn) {
+div:has(> .confirmation-btn) {
   display: flex;
-  flex-direction: row;
   justify-content: space-around;
 }
 
-.del-btn {
+.confirmation-btn {
   padding: 0.4rem;
   font-size: 1.4rem;
   font-weight: 800;

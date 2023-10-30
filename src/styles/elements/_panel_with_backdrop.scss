@@ -80,6 +80,17 @@
   }
 }
 
+.panel-mind-extended {
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  & > h1 {
+    text-align: center;
+  }
+}
+
 .panel-max-extended {
   height: 90vh;
   width: 80vw;

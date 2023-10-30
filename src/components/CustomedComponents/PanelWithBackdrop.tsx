@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useImperativeHandle, forwardRef } from "react";
 
 interface IProps {
   closePanel: () => void;
@@ -6,7 +6,11 @@ interface IProps {
   plusClass?: string;
 }
 
-export default function PanelWithBackdrop(props: IProps) {
+export interface PanelMethodes {
+  closeBackdrop: () => void;
+}
+
+function PanelWithBackdrop(props: IProps, ref?: any) {
   const backdropPanel = useRef<HTMLDivElement>(null);
   const formPanel = useRef<HTMLDivElement>(null);
 
@@ -16,6 +20,10 @@ export default function PanelWithBackdrop(props: IProps) {
       props.closePanel();
     }, 600);
   }
+
+  useImperativeHandle(ref, () => ({
+    closeBackdrop: exitForm,
+  }));
 
   return (
     <div className="backdrop" ref={backdropPanel} onClick={exitForm}>
@@ -31,3 +39,5 @@ export default function PanelWithBackdrop(props: IProps) {
     </div>
   );
 }
+
+export default forwardRef(PanelWithBackdrop);

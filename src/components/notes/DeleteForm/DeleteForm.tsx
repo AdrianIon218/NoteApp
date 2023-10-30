@@ -1,5 +1,8 @@
 import { useRef, useContext } from "react";
 import { NotesContext } from "../../Contexts/NotesContext";
+import PanelWithBackdrop, {
+  PanelMethodes,
+} from "../../CustomedComponents/PanelWithBackdrop";
 
 interface Iprops {
   closeDeleteForm: () => void;
@@ -7,40 +10,33 @@ interface Iprops {
 }
 
 export default function DeleteForm(props: Iprops) {
-  const deleteForm = useRef<HTMLDivElement>(null);
   const notesContext = useContext(NotesContext);
+  const panelRef = useRef<PanelMethodes>(null);
 
   function closeForm() {
-    deleteForm.current!.classList.add("anim-line-down-del");
-    setTimeout(props.closeDeleteForm, 350);
+    panelRef.current?.closeBackdrop();
   }
 
   function deleteItem() {
     notesContext.deleteNoteById(props.id);
-    deleteForm.current!.classList.add("anim-line-down-del");
-    setTimeout(props.closeDeleteForm, 350);
+    closeForm();
   }
 
   return (
-    <div className="backdrop" onClick={closeForm}>
-      <div
-        className="delete-form"
-        ref={deleteForm}
-        onClick={(event) => event.stopPropagation()}
-      >
-        <button className="close-btn" onClick={closeForm}>
-          &times;
+    <PanelWithBackdrop
+      closePanel={props.closeDeleteForm}
+      plusClass="panel-mind-extended"
+      ref={panelRef}
+    >
+      <h1>Do you really want to delete this note?</h1>
+      <div>
+        <button className="confirmation-btn" onClick={deleteItem}>
+          Yes
         </button>
-        <h2>Do you really want to delete this note ?</h2>
-        <div>
-          <button className="del-btn" onClick={deleteItem}>
-            Yes
-          </button>
-          <button className="del-btn btn-no" onClick={closeForm}>
-            No
-          </button>
-        </div>
+        <button className="confirmation-btn btn-no" onClick={closeForm}>
+          No
+        </button>
       </div>
-    </div>
+    </PanelWithBackdrop>
   );
 }

@@ -9,7 +9,6 @@ interface IProps {
 
 export default function NoteDisplay(props: IProps) {
   const { title, category, text } = props.note;
-  const noteRef = useRef<HTMLDivElement>(null);
 
   const textWithNewLines = text.split("\n").map((item, index) => {
     return (
