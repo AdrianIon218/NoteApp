@@ -1,13 +1,11 @@
 import { ISelectOptionMethods, NoteStructure } from "../stylingStructures";
 import { useRef, useContext, useState } from "react";
-import InputText from "../CustomedComponents/FormElements/InputText";
-import TextArea from "../CustomedComponents/FormElements/TextArea";
-import { NotesContext } from "../Contexts/NotesContext";
-import TemporalNotification from "../CustomedComponents/TemporalNotification";
-
 import PanelWithBackdrop from "../CustomedComponents/PanelWithBackdrop";
 import SelectOption from "../CustomedComponents/SelectOption";
+import InputText from "../CustomedComponents/FormElements/InputText";
+import TextArea from "../CustomedComponents/FormElements/TextArea";
 import { CategoryContext } from "../Contexts/CategoryContext";
+import { NotesContext } from "../Contexts/NotesContext";
 import { NotificationCtx } from "../Contexts/NotificationContext";
 
 interface IProps {
@@ -19,10 +17,20 @@ export default function FormModifyNote({ note, closeEditMode }: IProps) {
   const notificationCtx = useContext(NotificationCtx);
   const notesCtx = useContext(NotesContext);
   const categories = useContext(CategoryContext).getCategories();
-  const [categorySelected, setCategory] = useState(note.category);
+
   const categoryBtnRef = useRef<ISelectOptionMethods>(null);
+  const [categorySelected, setCategory] = useState(note.category);
+
   const titleNote = useRef<HTMLInputElement>(null);
+  const [titleTxt, setTitleTxt] = useState(note.title);
+
   const textNote = useRef<HTMLTextAreaElement>(null);
+  const [currentText, setCurrentText] = useState(note.text);
+
+  const readyToSaveOrDiscard =
+    titleTxt !== note.title ||
+    categorySelected !== note.category ||
+    currentText !== note.text;
 
   function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -45,9 +53,13 @@ export default function FormModifyNote({ note, closeEditMode }: IProps) {
 
   function resetNote() {
     titleNote.current!.value = note.title;
+    setTitleTxt(note.title);
+
     textNote.current!.value = note.text;
-    setCategory(note.category);
+    setCurrentText(note.text);
+
     categoryBtnRef.current?.resetSelectValue();
+    setCategory(note.category);
   }
 
   return (
@@ -64,8 +76,8 @@ export default function FormModifyNote({ note, closeEditMode }: IProps) {
           minLength={3}
           maxLength={30}
           value={note.title}
+          onChangeHandler={setTitleTxt}
         />
-
         <div className="field">
           Change the category
           <SelectOption
@@ -77,15 +89,22 @@ export default function FormModifyNote({ note, closeEditMode }: IProps) {
             ref={categoryBtnRef}
           />
         </div>
-
-        <TextArea name="textNote" ref={textNote} value={note.text} />
+        <TextArea
+          name="textNote"
+          ref={textNote}
+          value={note.text}
+          onChangeHandler={setCurrentText}
+        />
         <div className="field-group-btns">
-          <button className="btn-blue">Save</button>
+          <button className="btn-blue" disabled={!readyToSaveOrDiscard}>
+            Save
+          </button>
           <button
             type="button"
             onClick={resetNote}
             className="btn-blue red"
             title="Reset to the last saved content"
+            disabled={!readyToSaveOrDiscard}
           >
             Discard changes
           </button>

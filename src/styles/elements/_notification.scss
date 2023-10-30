@@ -22,6 +22,6 @@
   @include animation($animation-value);
 }
 
-body:has(.backdrop) .notification{
-  left: calc(50% - 8px);  
+body:has(.backdrop) .notification {
+  left: calc(50% - 8px);
 }
