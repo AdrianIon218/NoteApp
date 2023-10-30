@@ -8,6 +8,7 @@ import TemporalNotification from "../CustomedComponents/TemporalNotification";
 import PanelWithBackdrop from "../CustomedComponents/PanelWithBackdrop";
 import SelectOption from "../CustomedComponents/SelectOption";
 import { CategoryContext } from "../Contexts/CategoryContext";
+import { NotificationCtx } from "../Contexts/NotificationContext";
 
 interface IProps {
   note: NoteStructure;
@@ -15,7 +16,7 @@ interface IProps {
 }
 
 export default function FormModifyNote({ note, closeEditMode }: IProps) {
-  const [showMessage, setShowMessage] = useState(false);
+  const notificationCtx = useContext(NotificationCtx);
   const notesCtx = useContext(NotesContext);
   const categories = useContext(CategoryContext).getCategories();
   const [categorySelected, setCategory] = useState(note.category);
@@ -38,12 +39,8 @@ export default function FormModifyNote({ note, closeEditMode }: IProps) {
       modifiedNote.text !== note.text
     ) {
       notesCtx.modifyNote(modifiedNote);
-      setShowMessage(true);
+      notificationCtx.showNotification("Note changed !");
     }
-  }
-
-  function hideMessage() {
-    setShowMessage(false);
   }
 
   function resetNote() {
@@ -58,11 +55,6 @@ export default function FormModifyNote({ note, closeEditMode }: IProps) {
       closePanel={closeEditMode}
       plusClass="panel-max-extended"
     >
-      {showMessage && (
-        <TemporalNotification hideMessage={hideMessage} durationSeconds={2.2}>
-          Note changed !
-        </TemporalNotification>
-      )}
       <h2>Edit note </h2>
       <form onSubmit={submit}>
         <InputText

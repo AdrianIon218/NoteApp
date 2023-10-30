@@ -13,7 +13,7 @@
   border-radius: 10px;
   padding: 1rem;
   opacity: 0;
-  z-index: 30;
+  z-index: 130;
 
   $animation-value:
     fade-in 0.7s linear 0s 1 normal forwards,
@@ -22,20 +22,6 @@
   @include animation($animation-value);
 }
 
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fade-out {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
+body:has(.backdrop) .notification{
+  left: calc(50% - 8px);  
 }
