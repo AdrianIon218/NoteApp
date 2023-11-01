@@ -1,10 +1,11 @@
-import { useContext, useReducer } from "react";
+import { useContext, useReducer, useState } from "react";
 import { NotesContext } from "../../Contexts/NotesContext";
 import NoteEditCard from "./NoteEditCard";
 import useSortNotes from "../../CustomedComponents/useSortNotes";
 import { NoteStructure } from "../../stylingStructures";
 import FormModifyNote from "../FormModifyNote";
 import DeleteForm from "../DeleteForm/DeleteForm";
+import InputText from "../../CustomedComponents/FormElements/InputText";
 
 const enum StateHiddenPanel {
   hidden,
@@ -49,6 +50,9 @@ const reducer = (state: JSX.Element | undefined, action: IAction) => {
 export default function EditNote() {
   const [panelContent, dispatch] = useReducer(reducer, undefined);
   const allNotes = useSortNotes(useContext(NotesContext).getNotes());
+  const numOfNotes = allNotes.length;
+  const [searchedNoteTitle, setSearchNotetitle] = useState("");
+  const searchedNoteTitleLength = searchedNoteTitle.length;
 
   function modifyPanel(note: NoteStructure) {
     dispatch({
@@ -70,10 +74,11 @@ export default function EditNote() {
     dispatch({ type: StateHiddenPanel.hidden });
   }
 
-  const notesElements = allNotes.map((item, index) => (
+  const notesElements = allNotes.filter((item)=>item.title.startsWith(searchedNoteTitle)).map((item, index) => (
     <NoteEditCard
       key={index}
       title={item.title}
+      numOfFirstLetersToHighlight={searchedNoteTitleLength}
       category={item.category}
       text={item.text}
       modifyItem={() => {
@@ -88,18 +93,12 @@ export default function EditNote() {
   return (
     <div className="edit-note-container">
       {panelContent}
-      <h2>
-        {allNotes.length === 0
-          ? "You have no notes to edit ."
-          : allNotes.length === 1
-          ? "You have only 1 note ."
-          : "You have " +
-            allNotes.length.toString() +
-            " notes that can be modified ."}
-      </h2>
-      {allNotes.length > 0 && (
+      {numOfNotes === 0 && <h2>"You don't have any notes to edit!"</h2>}
+      {numOfNotes > 4 && <InputText text="Search the note by name" onChangeHandler={(str)=>{setSearchNotetitle(str)}} />}
+      {notesElements.length > 0 && (
         <div className="notes-container">{notesElements}</div>
       )}
+      {notesElements.length === 0 && searchedNoteTitleLength > 0 && <h2>You don't have any note with this name!</h2>}
     </div>
   );
 }
