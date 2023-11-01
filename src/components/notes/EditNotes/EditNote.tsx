@@ -74,31 +74,42 @@ export default function EditNote() {
     dispatch({ type: StateHiddenPanel.hidden });
   }
 
-  const notesElements = allNotes.filter((item)=>item.title.startsWith(searchedNoteTitle)).map((item, index) => (
-    <NoteEditCard
-      key={index}
-      title={item.title}
-      numOfFirstLetersToHighlight={searchedNoteTitleLength}
-      category={item.category}
-      text={item.text}
-      modifyItem={() => {
-        modifyPanel(item);
-      }}
-      deleteItem={() => {
-        deletePanel(item);
-      }}
-    />
-  ));
+  const notesElements = allNotes
+    .filter((item) => item.title.startsWith(searchedNoteTitle))
+    .map((item, index) => (
+      <NoteEditCard
+        key={index}
+        title={item.title}
+        numOfFirstLetersToHighlight={searchedNoteTitleLength}
+        category={item.category}
+        text={item.text}
+        modifyItem={() => {
+          modifyPanel(item);
+        }}
+        deleteItem={() => {
+          deletePanel(item);
+        }}
+      />
+    ));
 
   return (
     <div className="edit-note-container">
       {panelContent}
       {numOfNotes === 0 && <h2>"You don't have any notes to edit!"</h2>}
-      {numOfNotes > 3 && <InputText text="Search the note by name" onChangeHandler={(str)=>{setSearchNotetitle(str)}} />}
+      {numOfNotes > 3 && (
+        <InputText
+          text="Search the note by name"
+          onChangeHandler={(str) => {
+            setSearchNotetitle(str);
+          }}
+        />
+      )}
       {notesElements.length > 0 && (
         <div className="notes-container">{notesElements}</div>
       )}
-      {notesElements.length === 0 && searchedNoteTitleLength > 0 && <h2>You don't have any note with this name!</h2>}
+      {notesElements.length === 0 && searchedNoteTitleLength > 0 && (
+        <h2>You don't have any note with this name!</h2>
+      )}
     </div>
   );
 }
