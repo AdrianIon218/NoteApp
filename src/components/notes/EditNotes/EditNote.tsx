@@ -94,7 +94,7 @@ export default function EditNote() {
     <div className="edit-note-container">
       {panelContent}
       {numOfNotes === 0 && <h2>"You don't have any notes to edit!"</h2>}
-      {numOfNotes > 4 && <InputText text="Search the note by name" onChangeHandler={(str)=>{setSearchNotetitle(str)}} />}
+      {numOfNotes > 3 && <InputText text="Search the note by name" onChangeHandler={(str)=>{setSearchNotetitle(str)}} />}
       {notesElements.length > 0 && (
         <div className="notes-container">{notesElements}</div>
       )}
