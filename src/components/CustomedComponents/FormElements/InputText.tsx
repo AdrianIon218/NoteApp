@@ -14,6 +14,7 @@ interface IProps {
   value?: string;
   placeholder?: string;
   onChangeHandler?: (e: string) => void;
+  required?: boolean;
 }
 
 function InputText(props: IProps, ref: any) {
@@ -32,7 +33,7 @@ function InputText(props: IProps, ref: any) {
         minLength={props.minLength || 0}
         maxLength={props.maxLength || 100}
         title=""
-        required
+        required={props.required ?? true}
         defaultValue={props.value}
         placeholder={props.placeholder && `ex: ${props.placeholder}`}
         onChange={(e) => {

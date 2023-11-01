@@ -98,6 +98,7 @@ export default function EditNote() {
       {numOfNotes === 0 && <h2>"You don't have any notes to edit!"</h2>}
       {numOfNotes > 3 && (
         <InputText
+          required={false}
           text="Search the note by name"
           onChangeHandler={(str) => {
             setSearchNotetitle(str);
