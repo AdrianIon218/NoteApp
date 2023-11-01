@@ -95,7 +95,7 @@ export default function EditNote() {
   return (
     <div className="edit-note-container">
       {panelContent}
-      {numOfNotes === 0 && <h2>"You don't have any notes to edit!"</h2>}
+      {numOfNotes === 0 && <h2>You don't have any notes to edit!</h2>}
       {numOfNotes > 3 && (
         <InputText
           required={false}

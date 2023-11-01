@@ -29,15 +29,17 @@ export default function ViewNotes() {
 
   return (
     <div className="view-notes">
-      <h3>
-        <span>Select a category&nbsp;</span>
-        <SelectOption
-          options={["all", ...categories]}
-          onSelection={(option: string) => {
-            setSearchCategory(option);
-          }}
-        />
-      </h3>
+      {allNotes.length > 0 && (
+        <h3>
+          <span>Select a category&nbsp;</span>
+          <SelectOption
+            options={["all", ...categories]}
+            onSelection={(option: string) => {
+              setSearchCategory(option);
+            }}
+          />
+        </h3>
+      )}
       <h1>
         {numOfNotesToDisplay === 0
           ? searchCategory === "all"
