@@ -74,8 +74,11 @@ export default function EditNote() {
     dispatch({ type: StateHiddenPanel.hidden });
   }
 
+  const searchedNoteTitleLowerCase = searchedNoteTitle.toLowerCase();
   const notesElements = allNotes
-    .filter((item) => item.title.startsWith(searchedNoteTitle))
+    .filter((item) =>
+      item.title.toLowerCase().startsWith(searchedNoteTitleLowerCase),
+    )
     .map((item, index) => (
       <NoteEditCard
         key={index}
