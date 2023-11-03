@@ -4,6 +4,7 @@ interface IProps {
   hideMessage: () => void;
   children: React.ReactNode;
   durationSeconds?: number;
+  type?: string;
 }
 
 function TemporalNotification(props: IProps) {
@@ -27,13 +28,21 @@ function TemporalNotification(props: IProps) {
 
   return props.durationSeconds ? (
     <div
-      className="notification"
+      className={`notification ${
+        props.type === "warning" ? "notification--warning" : ""
+      }`}
       style={divStyleDuration(props.durationSeconds)}
     >
       {props.children}
     </div>
   ) : (
-    <div className="notification">{props.children}</div>
+    <div
+      className={`notification ${
+        props.type === "warning" ? "notification--warning" : ""
+      }`}
+    >
+      {props.children}
+    </div>
   );
 }
 

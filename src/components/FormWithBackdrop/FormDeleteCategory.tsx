@@ -1,91 +1,69 @@
-import DropDownBtn from "../CustomedComponents/FormElements/DropDownBtn";
-import {
-  useRef,
-  useContext,
-  useState,
-  useLayoutEffect,
-  useEffect,
-} from "react";
+import { useRef, useContext, useState } from "react";
 import { CategoryContext } from "../Contexts/CategoryContext";
-import { IDropDownMethods, categoryValues } from "../stylingStructures";
 import { NotesContext } from "../Contexts/NotesContext";
-import TemporalNotification from "../CustomedComponents/TemporalNotification";
-import ListCategories from "./ListCategories";
+import { NotificationCtx } from "../Contexts/NotificationContext";
+import SelectOption from "../CustomedComponents/SelectOption";
+
+const initialSelectCategoryText = "choose";
 
 export default function FormDeleteCategory() {
-  const category = useRef<IDropDownMethods>();
   const categoryContext = useContext(CategoryContext);
+  const categoriesToModify = categoryContext
+    .getCategories()
+    .filter((category) => category !== "none" && category !== "important");
+  const notificationCtx = useContext(NotificationCtx);
   const notesContext = useContext(NotesContext);
-  const [showNotification, setShowMessage] = useState<
-    JSX.Element | undefined
-  >();
-
-  useLayoutEffect(() => {
-    category.current!.blockCategories(categoryValues);
-  }, []);
+  const [categorySelected, setCategorySelected] = useState("");
+  const selectRef = useRef<any>(null);
 
   function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const selectedCategory = category.current!.getSelectValue();
-    if (
-      categoryValues.indexOf(selectedCategory) === -1 &&
-      categoryContext.getCategories().includes(selectedCategory)
-    ) {
-      categoryContext.deleteCategory(selectedCategory);
-      notesContext
-        .getNotes()
-        .filter((note) => note.category === selectedCategory)
-        .forEach((note) => {
-          notesContext.modifyNote({ ...note, ["category"]: "none" });
-        });
-      category.current!.setValue("none");
-      category.current!.updateCategory();
-      setShowMessage(
-        <TemporalNotification
-          hideMessage={() => setShowMessage(undefined)}
-          durationSeconds={1.5}
-        >
-          Category deleted !
-        </TemporalNotification>,
-      );
-    }
+    notesContext
+      .getNotes()
+      .filter((note) => note.category === categorySelected)
+      .forEach((note) => {
+        notesContext.modifyNote({ ...note, ["category"]: "none" });
+      });
+    categoryContext.deleteCategory(categorySelected);
+    notificationCtx.showNotification("Category deleted !", "warning");
+    setCategorySelected("");
+    selectRef.current?.resetSelectValue();
   }
 
   return (
-    <>
-      {showNotification}
-      <div className="div-scroll-Y">
-        <div className="form-display-flex">
-          <h2 className="txt-center">Select a category to delete</h2>
-          <form onSubmit={submit}>
-            <DropDownBtn
-              labelMessage="Select category"
-              ref={category}
-              isNeccessary={true}
+    <div className="flex-col-ctn">
+      {categoriesToModify.length !== 0 ? (
+        <form onSubmit={submit}>
+          <div className="flex-center">
+            <h2 className="txt-center">Select a category to delete</h2>
+            <SelectOption
+              options={categoriesToModify}
+              onSelection={setCategorySelected}
+              defaultOption={initialSelectCategoryText}
+              ref={selectRef}
             />
-            <h3 style={{ marginBottom: "5px" }} className="txt-red">
-              Rules :
-            </h3>
-            <ol className="small-margin">
-              <li>You cannot delete the "none" or "important" category.</li>
-              <li>
-                Category "none" will be associated for cards whose category is
-                deleted.
-              </li>
-            </ol>
             <button
               type="submit"
               className="btn-red"
-              disabled={categoryValues.includes(
-                category.current?.getSelectValue()!,
-              )}
+              disabled={categorySelected === ""}
             >
               Delete category
             </button>
-            <ListCategories />
-          </form>
-        </div>
+          </div>
+        </form>
+      ) : (
+        <h2 className="txt-center">You don't have any category to delete!</h2>
+      )}
+      <div className="rules-ctn">
+        <h3 className="txt-red">Rules :</h3>
+        <ol>
+          <li>You cannot delete the "none" or "important" category.</li>
+          <li>
+            Category "none" will be associated for cards whose category is
+            deleted.
+          </li>
+        </ol>
       </div>
-    </>
+    </div>
   );
 }

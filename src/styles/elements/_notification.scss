@@ -20,8 +20,13 @@
     fade-out 0.7s linear var(--display-time) 1 normal forwards;
 
   @include animation($animation-value);
+
+  &.notification--warning {
+    background-color: lighten($color-red-fade, 5%);
+    color: $color-red;
+  }
 }
 
-body:has(.backdrop) .notification {
-  left: calc(50% - 8px);
+body:not(.backdrop) .notification {
+  left: calc(50% + 15px);
 }

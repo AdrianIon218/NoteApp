@@ -31,7 +31,7 @@ export default function FormAddCategory() {
   return (
     <>
       {showNotification}
-      <form onSubmit={submit} className="form-display-flex">
+      <form onSubmit={submit} className="flex-col-ctn">
         <h2 className="txt-center" style={{ margin: "5px" }}>
           Add a new category
         </h2>

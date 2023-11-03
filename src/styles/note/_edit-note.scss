@@ -96,6 +96,10 @@
     grid-column: 1/-1;
     text-align: center;
     align-self: center;
+    padding-left: 10%;
+    padding-right: 10%;
+
+    @include ellipsis();
   }
 
   & > .edit-btn {

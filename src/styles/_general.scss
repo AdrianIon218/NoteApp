@@ -22,11 +22,13 @@
   color: $color-red;
 }
 
-.div-scroll-Y {
-  height: 100%;
-  overflow-y: auto;
-}
-
 .text-highlighted {
   background-color: $color-orange-fade;
+}
+
+.flex-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

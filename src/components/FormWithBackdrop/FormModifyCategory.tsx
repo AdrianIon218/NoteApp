@@ -53,7 +53,7 @@ export default function FormModifyCategory() {
   }
 
   return (
-    <div className="form-display-flex">
+    <div className="flex-col-ctn">
       {showNotification}
       <h2 className="txt-center">Change the name of a category</h2>
       <form onSubmit={submit}>
