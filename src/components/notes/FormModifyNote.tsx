@@ -1,4 +1,4 @@
-import { ISelectOptionMethods, NoteStructure } from "../stylingStructures";
+import { ISelectOptionMethods, NoteStructure } from "../CommonStructures";
 import { useRef, useContext, useState } from "react";
 import PanelWithBackdrop from "../CustomedComponents/PanelWithBackdrop";
 import SelectOption from "../CustomedComponents/SelectOption";

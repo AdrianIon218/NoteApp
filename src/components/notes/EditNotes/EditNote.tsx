@@ -2,7 +2,7 @@ import { useContext, useReducer, useState } from "react";
 import { NotesContext } from "../../Contexts/NotesContext";
 import NoteEditCard from "./NoteEditCard";
 import useSortNotes from "../../CustomedComponents/useSortNotes";
-import { NoteStructure } from "../../stylingStructures";
+import { NoteStructure } from "../../CommonStructures";
 import FormModifyNote from "../FormModifyNote";
 import DeleteForm from "../DeleteForm/DeleteForm";
 import InputText from "../../CustomedComponents/FormElements/InputText";

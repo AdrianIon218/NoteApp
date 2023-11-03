@@ -6,7 +6,7 @@ import { NotesContext } from "../Contexts/NotesContext";
 import { CategoryContext } from "../Contexts/CategoryContext";
 import TemporalNotification from "../CustomedComponents/TemporalNotification";
 import SelectOption from "../CustomedComponents/SelectOption";
-import { ISelectOptionMethods } from "../stylingStructures";
+import { ISelectOptionMethods } from "../CommonStructures";
 import { NotificationCtx } from "../Contexts/NotificationContext";
 
 function CreateNote() {

@@ -1,6 +1,6 @@
 import { createContext, useEffect } from "react";
 import useLocalStorage from "../CustomedComponents/useLocalStorage";
-import { ICategoryContext, categoryValues } from "../stylingStructures";
+import { ICategoryContext, categoryValues } from "../CommonStructures";
 
 export const CategoryContext = createContext<ICategoryContext>({
   getCategories: () => [],

@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import useLocalStorage from "../CustomedComponents/useLocalStorage";
-import { NoteStructure, INoteContext } from "../stylingStructures";
+import { NoteStructure, INoteContext } from "../CommonStructures";
 
 export const NotesContext = createContext<INoteContext>({
   addNote(newNote: NoteStructure) {},

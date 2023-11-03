@@ -1,4 +1,4 @@
-import { NoteStructure, categoryValues } from "../../stylingStructures";
+import { NoteStructure, categoryValues } from "../../CommonStructures";
 
 interface IProps extends Partial<NoteStructure> {
   modifyItem: () => void;

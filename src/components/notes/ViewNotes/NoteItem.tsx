@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NoteStructure } from "../../stylingStructures";
+import { NoteStructure } from "../../CommonStructures";
 import NoteDisplay from "./NoteDisplay";
 
 export default function NoteItem(props: NoteStructure) {

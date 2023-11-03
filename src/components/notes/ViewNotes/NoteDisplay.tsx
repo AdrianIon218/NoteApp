@@ -1,5 +1,5 @@
 import PanelWithBackdrop from "../../CustomedComponents/PanelWithBackdrop";
-import { NoteStructure } from "../../stylingStructures";
+import { NoteStructure } from "../../CommonStructures";
 import React, { useRef } from "react";
 
 interface IProps {

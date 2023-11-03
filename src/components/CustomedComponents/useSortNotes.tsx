@@ -1,4 +1,4 @@
-import { NoteStructure } from "../stylingStructures";
+import { NoteStructure } from "../CommonStructures";
 
 function compare2Notes(a: NoteStructure, b: NoteStructure) {
   const categoryA = a.category === "none" ? "" : a.category;

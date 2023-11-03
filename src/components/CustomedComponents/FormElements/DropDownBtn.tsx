@@ -8,7 +8,7 @@ import {
   useId,
   useContext,
 } from "react";
-import { categoryValues } from "../../stylingStructures";
+import { categoryValues } from "../../CommonStructures";
 
 interface IProps {
   labelMessage: string;
