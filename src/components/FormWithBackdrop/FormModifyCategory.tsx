@@ -5,92 +5,100 @@ import { categoryValues } from "../CommonStructures";
 import InputText from "../CustomedComponents/FormElements/InputText";
 import { CategoryContext } from "../Contexts/CategoryContext";
 import { NotesContext } from "../Contexts/NotesContext";
-import TemporalNotification from "../CustomedComponents/TemporalNotification";
+import { NotificationCtx } from "../Contexts/NotificationContext";
+import SelectOption from "../CustomedComponents/SelectOption";
 
 export default function FormModifyCategory() {
-  const category = useRef<IDropDownMethods>();
-  const inputRef = useRef<HTMLInputElement>();
-  const categoryCtx = useContext(CategoryContext);
   const notesCtx = useContext(NotesContext);
-  const [showNotification, setShowMessage] = useState<
-    JSX.Element | undefined
-  >();
-  const [isInputValid, setInputValid] = useState(false);
+  const categoryCtx = useContext(CategoryContext);
+  const notificationCtx = useContext(NotificationCtx);
 
-  useLayoutEffect(() => {
-    category.current!.blockCategories(categoryValues);
-  }, []);
+  const categoriesToModify = categoryCtx
+    .getCategories()
+    .filter((category) => category !== "none" && category !== "important");
+
+  const [categorySelected, setCategorySelected] = useState("");
+  const [newCategoryName, setNewCategoryName] = useState("");
+  const [isInputValid, setIsValid] = useState(false);
+
+  const categoryBtnRef = useRef<any>(null);
+  const inputRef = useRef<HTMLInputElement>();
 
   function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const oldCategoryName = category.current!.getSelectValue();
-    const newCategoryName = inputRef.current!.value.trim();
-    if (
-      oldCategoryName != "none" &&
-      categoryCtx.replaceCategory(oldCategoryName, newCategoryName)
-    ) {
+    if (categoryCtx.replaceCategory(categorySelected, newCategoryName)) {
       notesCtx
         .getNotes()
-        .filter((item) => item.category === oldCategoryName)
+        .filter((item) => item.category === categorySelected)
         .forEach((item) => {
           notesCtx.modifyNote({
             ...item,
             ["category"]: newCategoryName,
           });
         });
-      category.current!.setValue("none");
-      category.current!.updateCategory();
+
       inputRef.current!.value = "";
-      setShowMessage(
-        <TemporalNotification
-          hideMessage={() => setShowMessage(undefined)}
-          durationSeconds={1.5}
-        >
-          Category changed !
-        </TemporalNotification>,
-      );
+      categoryBtnRef.current!.resetSelectValue();
+      setCategorySelected("");
+      setNewCategoryName("");
+      setIsValid(false);
+      notificationCtx.showNotification("Category changed !");
+    } else {
+      notificationCtx.showNotification("Invalid name !", "warning");
     }
   }
 
   return (
-    <div className="flex-col-ctn">
-      {showNotification}
-      <h2 className="txt-center">Change the name of a category</h2>
-      <form onSubmit={submit}>
-        <DropDownBtn
-          labelMessage="Select category"
-          ref={category}
-          isNeccessary={true}
-        />
-        <h3
-          className="txt-red"
-          style={{ marginLeft: "0px", marginBottom: "5px" }}
-        >
-          Rules :
-        </h3>
-        <ol className="small-margin medium-margin-bot">
-          <li>You cannot modify the "none" or "important" category .</li>
-          <li>There cannot be two categories with the same name .</li>
+    <div className="flex-col-ctn setting-form">
+      {categoriesToModify.length === 0 ? (
+        <h2 className="txt-center">You don't have any category to modify!</h2>
+      ) : (
+        <form onSubmit={submit}>
+          <div className="flex-center">
+            <h2 className="txt-center">Modify a category</h2>
+            <div className="field" style={{ fontWeight: 900 }}>
+              Choose a category
+              <SelectOption
+                options={categoriesToModify}
+                onSelection={(str: string) => {
+                  setCategorySelected(str);
+                  setIsValid(newCategoryName.length >= 3);
+                }}
+                defaultOption={"select"}
+                ref={categoryBtnRef}
+              />
+            </div>
+
+            <InputText
+              text="Rename to"
+              customText="The category must be between 3 and 30 characters!"
+              ref={inputRef}
+              minLength={3}
+              maxLength={31}
+              required={false}
+              onChangeHandler={(str: string) => {
+                const name = str.trim();
+                setNewCategoryName(name);
+                setIsValid(name.length >= 3 && categorySelected !== "");
+              }}
+            />
+            <button
+              type="submit"
+              className="btn btn-green btn-styled"
+              disabled={!isInputValid}
+            >
+              Save
+            </button>
+          </div>
+        </form>
+      )}
+      <div className="rules-ctn">
+        <h3 className="txt-red">Rules :</h3>
+        <ol>
+          <li>You cannot modify the "none" or "important" category.</li>
+          <li>There cannot be two categories with the same name.</li>
         </ol>
-        <InputText
-          text="Insert a name"
-          customText="The category must be between 3 and 30 characters !"
-          ref={inputRef}
-          minLength={3}
-          maxLength={31}
-          onChangeHandler={(value: string) => {
-            setInputValid(value.length >= 3);
-          }}
-        />
-        <button
-          type="submit"
-          className="btn-green"
-          disabled={!isInputValid}
-          style={{ marginTop: "1rem" }}
-        >
-          Save
-        </button>
-      </form>
+      </div>
     </div>
   );
 }

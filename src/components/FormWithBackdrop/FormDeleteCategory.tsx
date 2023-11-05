@@ -31,7 +31,7 @@ export default function FormDeleteCategory() {
   }
 
   return (
-    <div className="flex-col-ctn">
+    <div className="flex-col-ctn setting-form">
       {categoriesToModify.length !== 0 ? (
         <form onSubmit={submit}>
           <div className="flex-center">
@@ -44,7 +44,7 @@ export default function FormDeleteCategory() {
             />
             <button
               type="submit"
-              className="btn-red"
+              className="btn btn-red"
               disabled={categorySelected === ""}
             >
               Delete category
