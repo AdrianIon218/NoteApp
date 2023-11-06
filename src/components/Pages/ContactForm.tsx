@@ -1,58 +1,65 @@
-import TemporalNotification from "../CustomedComponents/TemporalNotification";
 import InputText from "../CustomedComponents/FormElements/InputText";
 import TextArea from "../CustomedComponents/FormElements/TextArea";
 import InputEmail from "../CustomedComponents/FormElements/InputEmail";
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import axios from "axios";
+import { NotificationCtx } from "../Contexts/NotificationContext";
 
 function ContactForm() {
-  const [showMessage, setShowMessage] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [text, setText] = useState("");
   const userName = useRef<HTMLInputElement>(null);
   const inputEmail = useRef<HTMLInputElement>(null);
   const textMessage = useRef<HTMLTextAreaElement>(null);
+  const notificationCtx = useContext(NotificationCtx);
 
   function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!showMessage) {
-      const name = userName.current!.value;
-      const email = inputEmail.current!.value;
-      const text = textMessage.current!.value;
-      const data = { username: name, useremail: email, message: text };
+    const text = textMessage.current!.value;
+    const data = { username: name, useremail: email, message: text };
 
-      axios
-        .post(
-          "https://noteapp-9b1f0-default-rtdb.europe-west1.firebasedatabase.app/messages.json",
-          data,
-        )
-        .then((res) => {
-          setShowMessage(true);
-          userName.current!.value = "";
-          inputEmail.current!.value = "";
-          textMessage.current!.value = "";
-        })
-        .catch((err) => console.error(err));
-    }
-  }
+    axios
+      .post(
+        "https://noteapp-9b1f0-default-rtdb.europe-west1.firebasedatabase.app/messages.json",
+        data,
+      )
+      .then(() => {
+        notificationCtx.showNotification("Message sent !");
+        setName("");
+        setEmail("");
+        setText("");
 
-  function hideMessage() {
-    setShowMessage(false);
+        userName.current!.value = "";
+        inputEmail.current!.value = "";
+        textMessage.current!.value = "";
+      })
+      .catch((err) =>
+        notificationCtx.showNotification(
+          "Error, please try again later!",
+          "warning",
+        ),
+      );
   }
 
   return (
-    <>
-      {showMessage && (
-        <TemporalNotification hideMessage={hideMessage} durationSeconds={2.65}>
-          Message sent !
-        </TemporalNotification>
-      )}
-      <form className="contact-form" onSubmit={submit}>
-        <h2>Fill out the form for support </h2>
-        <InputText ref={userName} text="Name" placeholder="Andrew" />
-        <InputEmail ref={inputEmail} />
-        <TextArea name="textNote" ref={textMessage} />
-        <button className="btn">Send</button>
-      </form>
-    </>
+    <form className="panel-big contact-form" onSubmit={submit}>
+      <h2>Fill out the form for support </h2>
+      <InputText
+        ref={userName}
+        text="Name"
+        placeholder="Andrew"
+        onChangeHandler={setName}
+      />
+      <InputEmail ref={inputEmail} onChangeHandler={setEmail} />
+      <TextArea name="textNote" ref={textMessage} onChangeHandler={setText} />
+      <button
+        className="btn"
+        disabled={!(name.length > 0 && text.length > 0 && email.length > 0)}
+      >
+        Send
+      </button>
+    </form>
   );
 }
 

@@ -43,7 +43,7 @@ export default function Settings() {
   return (
     <>
       {form}
-      <div className="settings-panel">
+      <div className="panel-big">
         <div className="forms-panel">
           <h2>Categories settings</h2>
           {CategoryBtns.map((item, index) => (

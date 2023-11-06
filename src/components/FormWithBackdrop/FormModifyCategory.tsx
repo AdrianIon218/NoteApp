@@ -1,7 +1,4 @@
-import DropDownBtn from "../CustomedComponents/FormElements/DropDownBtn";
-import { IDropDownMethods } from "../CommonStructures";
-import { useRef, useLayoutEffect, useContext, useState } from "react";
-import { categoryValues } from "../CommonStructures";
+import { useRef, useContext, useState } from "react";
 import InputText from "../CustomedComponents/FormElements/InputText";
 import { CategoryContext } from "../Contexts/CategoryContext";
 import { NotesContext } from "../Contexts/NotesContext";

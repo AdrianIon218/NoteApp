@@ -16,6 +16,10 @@ function InputEmail(props: any, ref: any) {
         required
         placeholder="ex: name@yahoo.com"
         title=""
+        onChange={(e) => {
+          const txt = e.target.value;
+          props.onChangeHandler?.(txt);
+        }}
       ></input>
     </div>
   );
