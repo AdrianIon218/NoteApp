@@ -1,1 +1,0 @@
-import{r as c,j as t}from"./index.76618d22.js";function f(e,r){return t("div",{className:"field",children:t("textarea",{className:"textArea",placeholder:"Write here ...",autoComplete:"off",name:e.name,ref:r,defaultValue:e.value,onChange:n=>{var a;const l=n.currentTarget.value;(a=e.onChangeHandler)==null||a.call(e,l)}})})}const u=c.exports.forwardRef(f);export{u as T};
