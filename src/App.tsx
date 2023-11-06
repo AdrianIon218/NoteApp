@@ -15,7 +15,7 @@ function App() {
     { path: "/", component: <NoteComp /> },
     { path: "/notes", component: <NoteComp /> },
     { path: "/settings", component: <Settings></Settings> },
-    { path: "/support", component: <ContactForm></ContactForm> },
+    { path: "/contact", component: <ContactForm></ContactForm> },
     { path: "*", component: <NoPage /> },
   ];
 

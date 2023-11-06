@@ -44,7 +44,7 @@ function ContactForm() {
 
   return (
     <form className="panel-big contact-form" onSubmit={submit}>
-      <h2>Fill out the form for support </h2>
+      <h2>Send a message</h2>
       <InputText
         ref={userName}
         text="Name"

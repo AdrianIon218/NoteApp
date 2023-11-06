@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 const navPaths = [
   { path: ["notes", ""], navName: "Notes" },
   { path: ["settings"], navName: "Settings" },
-  { path: ["support"], navName: "Support" },
+  { path: ["contact"], navName: "Contact" },
 ];
 
 export default function Navcomp() {
