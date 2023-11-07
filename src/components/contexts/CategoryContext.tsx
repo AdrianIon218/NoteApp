@@ -1,6 +1,6 @@
-import { createContext, useEffect } from "react";
+import { createContext } from "react";
 import useLocalStorage from "../CustomedComponents/useLocalStorage";
-import { ICategoryContext, categoryValues } from "../CommonStructures";
+import { ICategoryContext } from "../CommonStructures";
 
 export const CategoryContext = createContext<ICategoryContext>({
   getCategories: () => [],
@@ -18,10 +18,6 @@ export default function CategoryContextProvider(props: IProps) {
     value: string[];
     setValue: (categories: string[]) => void;
   } = useLocalStorage("categories", ["none", "important"]);
-
-  useEffect(() => {
-    categories.value.push(...categoryValues);
-  }, []);
 
   function addNewCategory(newcategory: string) {
     if (categories.value.indexOf(newcategory) !== -1) {

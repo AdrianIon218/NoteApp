@@ -1,10 +1,9 @@
-import { useRef, useContext, useState, useEffect } from "react";
+import { useRef, useContext, useState } from "react";
 import { nanoid } from "nanoid";
 import TextArea from "../CustomedComponents/FormElements/TextArea";
 import InputText from "../CustomedComponents/FormElements/InputText";
 import { NotesContext } from "../Contexts/NotesContext";
 import { CategoryContext } from "../Contexts/CategoryContext";
-import TemporalNotification from "../CustomedComponents/TemporalNotification";
 import SelectOption from "../CustomedComponents/SelectOption";
 import { ISelectOptionMethods } from "../CommonStructures";
 import { NotificationCtx } from "../Contexts/NotificationContext";

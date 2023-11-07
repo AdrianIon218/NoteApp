@@ -232,24 +232,6 @@ div.field:has(> .btn) {
   }
 }
 
-@keyframes anim-lineUp {
-  0% {
-    opacity: 0;
-    transform: translateY(80%);
-  }
-  20% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-    transform: translateY(0%);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0%);
-  }
-}
-
 .note-text {
   background-color: rgba(white, 0.75);
   width: 100%;

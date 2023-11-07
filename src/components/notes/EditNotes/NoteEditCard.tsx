@@ -1,4 +1,4 @@
-import { NoteStructure, categoryValues } from "../../CommonStructures";
+import { NoteStructure } from "../../CommonStructures";
 
 interface IProps extends Partial<NoteStructure> {
   modifyItem: () => void;
@@ -20,7 +20,7 @@ export default function NoteEditCard(props: IProps) {
         </h2>
       )}
 
-      {props.category !== categoryValues[0] && <label>{props.category}</label>}
+      {props.category !== "none" && <label>{props.category}</label>}
       <div className="edit-btn" onClick={() => props.modifyItem()}>
         <button>edit</button>
       </div>

@@ -3,45 +3,26 @@ import { useEffect } from "react";
 interface IProps {
   hideMessage: () => void;
   children: React.ReactNode;
-  durationSeconds?: number;
   type?: string;
 }
 
-function TemporalNotification(props: IProps) {
+function TemporalNotification({ hideMessage, children, type }: IProps) {
   useEffect(() => {
-    let timeInMS = 2750; // the notfication is for 2s(fade in+) + 0.75s animation to fade out
-    if (props.durationSeconds) {
-      timeInMS = props.durationSeconds * 1000 + 750;
-    }
+    const timeInMS = 2750; // the notfication is for 2s(fade in+) + 0.75s animation to fade out
+
     const timer = setTimeout(() => {
-      props.hideMessage();
+      hideMessage();
     }, timeInMS);
     return () => clearTimeout(timer);
-  }, []);
+  }, [hideMessage]);
 
-  function divStyleDuration(duration: number) {
-    const divStyle = {
-      ["--display-time"]: duration.toString() + "s",
-    } as React.CSSProperties;
-    return divStyle;
-  }
-
-  return props.durationSeconds ? (
+  return (
     <div
       className={`notification ${
-        props.type === "warning" ? "notification--warning" : ""
-      }`}
-      style={divStyleDuration(props.durationSeconds)}
-    >
-      {props.children}
-    </div>
-  ) : (
-    <div
-      className={`notification ${
-        props.type === "warning" ? "notification--warning" : ""
+        type === "warning" ? "notification--warning" : ""
       }`}
     >
-      {props.children}
+      {children}
     </div>
   );
 }

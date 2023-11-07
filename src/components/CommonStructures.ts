@@ -19,16 +19,6 @@ export interface ICategoryContext {
   replaceCategory: (_: string, __: string) => boolean;
 }
 
-export const categoryValues = ["none", "important"];
-
-export interface IDropDownMethods {
-  getSelectValue(): string;
-  resetSelectValue(): void;
-  setValue(value: string): void;
-  updateCategory(): void;
-  blockCategories(arr: string[]): void;
-}
-
 export interface ISelectOptionMethods {
   resetSelectValue(): void;
 }
