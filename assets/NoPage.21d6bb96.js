@@ -1,1 +1,0 @@
-import{j as e,b as s}from"./index.60f06b2c.js";function c(){return e("section",{className:"no-page-ctn",children:s("div",{className:"no-page",children:[e("p",{className:"emoji",children:"\u{1F615}"}),s("h1",{children:["Sorry, the page you accessed does not exist"," ",e("span",{className:"red",children:"!"})]})]})})}export{c as default};
