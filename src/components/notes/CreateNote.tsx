@@ -2,14 +2,14 @@ import { useRef, useContext, useState } from "react";
 import { nanoid } from "nanoid";
 import TextArea from "../CustomedComponents/FormElements/TextArea";
 import InputText from "../CustomedComponents/FormElements/InputText";
-import { NotesContext } from "../Contexts/NotesContext";
+import { useNotes } from "../Contexts/NotesContext";
 import { CategoryContext } from "../Contexts/CategoryContext";
 import SelectOption from "../CustomedComponents/SelectOption";
 import { ISelectOptionMethods } from "../CommonStructures";
 import { NotificationCtx } from "../Contexts/NotificationContext";
 
 function CreateNote() {
-  const notesCtx = useContext(NotesContext);
+  const notesCtx = useNotes();
   const notificationCtx = useContext(NotificationCtx);
 
   const categories = useContext(CategoryContext).getCategories();

@@ -1,5 +1,5 @@
-import { useContext, useReducer, useState } from "react";
-import { NotesContext } from "../../Contexts/NotesContext";
+import { useReducer, useState } from "react";
+import { useNotes } from "../../Contexts/NotesContext";
 import NoteEditCard from "./NoteEditCard";
 import useSortNotes from "../../CustomedComponents/useSortNotes";
 import { NoteStructure } from "../../CommonStructures";
@@ -49,7 +49,7 @@ const reducer = (state: JSX.Element | undefined, action: IAction) => {
 
 export default function EditNote() {
   const [panelContent, dispatch] = useReducer(reducer, undefined);
-  const allNotes = useSortNotes(useContext(NotesContext).getNotes());
+  const allNotes = useSortNotes(useNotes().getNotes());
   const numOfNotes = allNotes.length;
   const [searchedNoteTitle, setSearchNotetitle] = useState("");
   const searchedNoteTitleLength = searchedNoteTitle.length;

@@ -1,5 +1,5 @@
-import { useRef, useContext } from "react";
-import { NotesContext } from "../../Contexts/NotesContext";
+import { useRef } from "react";
+import { useNotes } from "../../Contexts/NotesContext";
 import PanelWithBackdrop, {
   PanelMethodes,
 } from "../../CustomedComponents/PanelWithBackdrop";
@@ -10,7 +10,7 @@ interface Iprops {
 }
 
 export default function DeleteForm(props: Iprops) {
-  const notesContext = useContext(NotesContext);
+  const notesContext = useNotes();
   const panelRef = useRef<PanelMethodes>(null);
 
   function closeForm() {

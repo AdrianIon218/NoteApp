@@ -1,6 +1,6 @@
 import { useRef, useContext, useState } from "react";
 import { CategoryContext } from "../Contexts/CategoryContext";
-import { NotesContext } from "../Contexts/NotesContext";
+import { useNotes } from "../Contexts/NotesContext";
 import { NotificationCtx } from "../Contexts/NotificationContext";
 import SelectOption from "../CustomedComponents/SelectOption";
 
@@ -12,7 +12,7 @@ export default function FormDeleteCategory() {
     .getCategories()
     .filter((category) => category !== "none" && category !== "important");
   const notificationCtx = useContext(NotificationCtx);
-  const notesContext = useContext(NotesContext);
+  const notesContext = useNotes();
   const [categorySelected, setCategorySelected] = useState("");
   const selectRef = useRef<any>(null);
 

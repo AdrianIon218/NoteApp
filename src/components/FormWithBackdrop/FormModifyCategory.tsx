@@ -1,12 +1,12 @@
 import { useRef, useContext, useState } from "react";
 import InputText from "../CustomedComponents/FormElements/InputText";
 import { CategoryContext } from "../Contexts/CategoryContext";
-import { NotesContext } from "../Contexts/NotesContext";
+import { useNotes } from "../Contexts/NotesContext";
 import { NotificationCtx } from "../Contexts/NotificationContext";
 import SelectOption from "../CustomedComponents/SelectOption";
 
 export default function FormModifyCategory() {
-  const notesCtx = useContext(NotesContext);
+  const notesCtx = useNotes();
   const categoryCtx = useContext(CategoryContext);
   const notificationCtx = useContext(NotificationCtx);
 

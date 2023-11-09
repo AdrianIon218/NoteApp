@@ -5,7 +5,7 @@ import SelectOption from "../CustomedComponents/SelectOption";
 import InputText from "../CustomedComponents/FormElements/InputText";
 import TextArea from "../CustomedComponents/FormElements/TextArea";
 import { CategoryContext } from "../Contexts/CategoryContext";
-import { NotesContext } from "../Contexts/NotesContext";
+import { useNotes } from "../Contexts/NotesContext";
 import { NotificationCtx } from "../Contexts/NotificationContext";
 
 interface IProps {
@@ -15,7 +15,7 @@ interface IProps {
 
 export default function FormModifyNote({ note, closeEditMode }: IProps) {
   const notificationCtx = useContext(NotificationCtx);
-  const notesCtx = useContext(NotesContext);
+  const notesCtx = useNotes();
   const categories = useContext(CategoryContext).getCategories();
 
   const categoryBtnRef = useRef<ISelectOptionMethods>(null);
