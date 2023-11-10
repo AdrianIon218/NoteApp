@@ -1,9 +1,9 @@
 import InputText from "../CustomedComponents/FormElements/InputText";
 import TextArea from "../CustomedComponents/FormElements/TextArea";
 import InputEmail from "../CustomedComponents/FormElements/InputEmail";
-import { useState, useRef, useContext } from "react";
+import { useState, useRef } from "react";
 import axios from "axios";
-import { NotificationCtx } from "../Contexts/NotificationContext";
+import { useNotification } from "../Contexts/NotificationContext";
 
 function ContactForm() {
   const [name, setName] = useState("");
@@ -12,7 +12,7 @@ function ContactForm() {
   const userName = useRef<HTMLInputElement>(null);
   const inputEmail = useRef<HTMLInputElement>(null);
   const textMessage = useRef<HTMLTextAreaElement>(null);
-  const notificationCtx = useContext(NotificationCtx);
+  const notificationCtx = useNotification();
 
   function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();

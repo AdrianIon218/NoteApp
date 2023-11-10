@@ -1,18 +1,18 @@
-import { useRef, useContext, useState } from "react";
+import { useRef, useState } from "react";
 import { nanoid } from "nanoid";
 import TextArea from "../CustomedComponents/FormElements/TextArea";
 import InputText from "../CustomedComponents/FormElements/InputText";
 import { useNotes } from "../Contexts/NotesContext";
-import { CategoryContext } from "../Contexts/CategoryContext";
+import { useCategory } from "../Contexts/CategoryContext";
 import SelectOption from "../CustomedComponents/SelectOption";
 import { ISelectOptionMethods } from "../CommonStructures";
-import { NotificationCtx } from "../Contexts/NotificationContext";
+import { useNotification } from "../Contexts/NotificationContext";
 
 function CreateNote() {
   const notesCtx = useNotes();
-  const notificationCtx = useContext(NotificationCtx);
+  const notificationCtx = useNotification();
 
-  const categories = useContext(CategoryContext).getCategories();
+  const categories = useCategory().getCategories();
   const categoryBtnRef = useRef<ISelectOptionMethods>(null);
   const [categorySelected, setCategory] = useState("none");
 

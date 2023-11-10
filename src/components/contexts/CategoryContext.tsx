@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useContext } from "react";
 import useLocalStorage from "../CustomedComponents/useLocalStorage";
 import { ICategoryContext } from "../CommonStructures";
 
@@ -9,11 +9,19 @@ export const CategoryContext = createContext<ICategoryContext>({
   replaceCategory: () => false,
 });
 
+export function useCategory(){
+  const context = useContext(CategoryContext);
+  if(context === undefined){
+    throw new Error("CategoryContext was used outside of the CategoryProvider")
+  }
+  return context;
+}
+
 interface IProps {
   children: React.ReactNode;
 }
 
-export default function CategoryContextProvider(props: IProps) {
+export default function CategoryProvider(props: IProps) {
   const categories: {
     value: string[];
     setValue: (categories: string[]) => void;

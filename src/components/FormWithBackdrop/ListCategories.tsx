@@ -1,12 +1,11 @@
-import { CategoryContext } from "../Contexts/CategoryContext";
-import { useContext } from "react";
+import { useCategory } from "../Contexts/CategoryContext";
 
 interface IProps {
   title?: string;
 }
 
 export default function ListCategories(props: IProps) {
-  const categoryContext = useContext(CategoryContext);
+  const categoryContext = useCategory();
 
   return (
     <fieldset className="categories-group">

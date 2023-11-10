@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import TemporalNotification from "../CustomedComponents/TemporalNotification";
 
 export const NotificationCtx = createContext<{
@@ -7,11 +7,19 @@ export const NotificationCtx = createContext<{
   showNotification: (str: string, type?: string) => {},
 });
 
+export function useNotification(){
+  const context = useContext(NotificationCtx);
+  if(context === undefined){
+    throw new Error("NotificationContext was used outside of the NotificationProvider")
+  }
+  return context;
+}
+
 interface IProps {
   children: any;
 }
 
-function NotificationContextProvider(props: IProps) {
+function NotificationProvider(props: IProps) {
   const [showMessage, setShowMessage] = useState(false);
   const [notificationText, setNotificationText] = useState("");
   const [notificationType, setNotificationType] = useState("");
@@ -39,4 +47,4 @@ function NotificationContextProvider(props: IProps) {
   );
 }
 
-export default NotificationContextProvider;
+export default NotificationProvider;

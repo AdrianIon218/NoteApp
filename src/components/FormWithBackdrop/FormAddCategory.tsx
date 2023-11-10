@@ -1,12 +1,12 @@
-import { useRef, useContext, useState } from "react";
+import { useRef, useState } from "react";
 import InputText from "../CustomedComponents/FormElements/InputText";
-import { CategoryContext } from "../Contexts/CategoryContext";
+import { useCategory } from "../Contexts/CategoryContext";
 import ListCategories from "./ListCategories";
-import { NotificationCtx } from "../Contexts/NotificationContext";
+import { useNotification } from "../Contexts/NotificationContext";
 
 export default function FormAddCategory() {
-  const categoryContext = useContext(CategoryContext);
-  const notificationCtx = useContext(NotificationCtx);
+  const categoryContext = useCategory();
+  const notificationCtx = useNotification();
   const [newCategoryName, setNewCategoryName] = useState("");
   const inputRef = useRef<HTMLInputElement>();
 

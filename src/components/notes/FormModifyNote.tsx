@@ -1,12 +1,12 @@
 import { ISelectOptionMethods, NoteStructure } from "../CommonStructures";
-import { useRef, useContext, useState } from "react";
+import { useRef, useState } from "react";
 import PanelWithBackdrop from "../CustomedComponents/PanelWithBackdrop";
 import SelectOption from "../CustomedComponents/SelectOption";
 import InputText from "../CustomedComponents/FormElements/InputText";
 import TextArea from "../CustomedComponents/FormElements/TextArea";
-import { CategoryContext } from "../Contexts/CategoryContext";
+import { useCategory } from "../Contexts/CategoryContext";
 import { useNotes } from "../Contexts/NotesContext";
-import { NotificationCtx } from "../Contexts/NotificationContext";
+import { useNotification } from "../Contexts/NotificationContext";
 
 interface IProps {
   note: NoteStructure;
@@ -14,9 +14,9 @@ interface IProps {
 }
 
 export default function FormModifyNote({ note, closeEditMode }: IProps) {
-  const notificationCtx = useContext(NotificationCtx);
+  const notificationCtx = useNotification();
   const notesCtx = useNotes();
-  const categories = useContext(CategoryContext).getCategories();
+  const categories = useCategory().getCategories();
 
   const categoryBtnRef = useRef<ISelectOptionMethods>(null);
   const [categorySelected, setCategory] = useState(note.category);
