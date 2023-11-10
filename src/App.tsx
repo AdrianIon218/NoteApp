@@ -3,17 +3,18 @@ import { Suspense, lazy } from "react";
 import Layout from "./components/Layout/Layout";
 import LoadingSpinner from "./components/CustomedComponents/LoadingSpinner";
 
-const NoteComp = lazy(() => import("./components/notes/NoteComp"));
-const ContactForm = lazy(() => import("./components/Pages/ContactForm"));
-const Settings = lazy(() => import("./components/Pages/Settings"));
-const NoPage = lazy(() => import("./components/Pages/NoPage"));
+const NoteComp = lazy(() => import("./components/NotesPage/NoteComp"));
+const ContactForm = lazy(() => import("./components/OtherPages/ContactForm"));
+const Settings = lazy(() => import("./components/OtherPages/Settings"));
+const NoPage = lazy(() => import("./components/OtherPages/NoPage"));
 
 function App() {
   type route = { path: string; component: JSX.Element };
 
   const paths: route[] = [
-    { path: "/", component: <Navigate replace to="/notes" /> },
-    { path: "/notes", component: <NoteComp /> },
+    { path: "/", component: <Navigate replace to="/notes/view-notes" /> },
+    { path: "/notes", component: <Navigate replace to="/notes/view-notes" /> },
+    { path: "/notes/:option", component: <NoteComp /> },
     { path: "/settings", component: <Settings /> },
     { path: "/contact", component: <ContactForm /> },
     { path: "*", component: <NoPage /> },
