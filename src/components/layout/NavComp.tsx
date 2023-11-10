@@ -2,9 +2,9 @@ import { useId } from "react";
 import { NavLink } from "react-router-dom";
 
 const navPaths = [
-  { path: ["notes", ""], navName: "Notes" },
-  { path: ["settings"], navName: "Settings" },
-  { path: ["contact"], navName: "Contact" },
+  { path: "notes", navName: "Notes" },
+  { path: "settings", navName: "Settings" },
+  { path: "contact", navName: "Contact" },
 ];
 
 export default function Navcomp() {
@@ -14,7 +14,7 @@ export default function Navcomp() {
     const currKey = `${keyNav}-${index}`;
     return (
       <div key={currKey}>
-        <NavLink to={item.path[0]} className="nav_element">
+        <NavLink to={item.path} className="nav_element">
           {item.navName}
         </NavLink>
       </div>

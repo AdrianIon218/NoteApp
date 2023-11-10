@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import Layout from "./components/Layout/Layout";
 import LoadingSpinner from "./components/CustomedComponents/LoadingSpinner";
@@ -12,10 +12,10 @@ function App() {
   type route = { path: string; component: JSX.Element };
 
   const paths: route[] = [
-    { path: "/", component: <NoteComp /> },
+    { path: "/", component: <Navigate replace to="/notes" /> },
     { path: "/notes", component: <NoteComp /> },
-    { path: "/settings", component: <Settings></Settings> },
-    { path: "/contact", component: <ContactForm></ContactForm> },
+    { path: "/settings", component: <Settings /> },
+    { path: "/contact", component: <ContactForm /> },
     { path: "*", component: <NoPage /> },
   ];
 
