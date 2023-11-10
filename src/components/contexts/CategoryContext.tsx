@@ -9,10 +9,10 @@ export const CategoryContext = createContext<ICategoryContext>({
   replaceCategory: () => false,
 });
 
-export function useCategory(){
+export function useCategory() {
   const context = useContext(CategoryContext);
-  if(context === undefined){
-    throw new Error("CategoryContext was used outside of the CategoryProvider")
+  if (context === undefined) {
+    throw new Error("CategoryContext was used outside of the CategoryProvider");
   }
   return context;
 }

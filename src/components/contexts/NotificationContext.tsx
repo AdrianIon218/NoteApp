@@ -7,10 +7,12 @@ export const NotificationCtx = createContext<{
   showNotification: (str: string, type?: string) => {},
 });
 
-export function useNotification(){
+export function useNotification() {
   const context = useContext(NotificationCtx);
-  if(context === undefined){
-    throw new Error("NotificationContext was used outside of the NotificationProvider")
+  if (context === undefined) {
+    throw new Error(
+      "NotificationContext was used outside of the NotificationProvider",
+    );
   }
   return context;
 }

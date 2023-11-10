@@ -54,21 +54,21 @@
     }
   }
 
-  .nav_element.nav_selected,
-  .nav_element.nav_selected:hover {
+  .nav_element.active,
+  .nav_element.active:hover {
     font-size: 1.8em;
     text-decoration: none;
     text-shadow: none;
     cursor: default;
   }
 
-  .nav_element.nav_selected::before {
+  .nav_element.active::before {
     content: "|";
     content: "«";
     margin-right: 3px;
   }
 
-  .nav_element.nav_selected::after {
+  .nav_element.active::after {
     content: "|";
     content: "»";
     margin-left: 3px;

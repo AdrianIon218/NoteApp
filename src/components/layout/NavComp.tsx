@@ -1,5 +1,5 @@
 import { useId } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const navPaths = [
   { path: ["notes", ""], navName: "Notes" },
@@ -8,20 +8,15 @@ const navPaths = [
 ];
 
 export default function Navcomp() {
-  const pathname = useLocation().pathname.slice(1);
   const keyNav = useId();
 
   const navElements = navPaths.map((item, index) => {
     const currKey = `${keyNav}-${index}`;
-    return item.path.includes(pathname) ? (
+    return (
       <div key={currKey}>
-        <span className="nav_element nav_selected">{item.navName}</span>
-      </div>
-    ) : (
-      <div key={currKey}>
-        <Link to={item.path[0]} className="nav_element">
+        <NavLink to={item.path[0]} className="nav_element">
           {item.navName}
-        </Link>
+        </NavLink>
       </div>
     );
   });
