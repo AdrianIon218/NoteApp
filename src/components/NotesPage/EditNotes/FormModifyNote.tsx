@@ -1,12 +1,12 @@
-import { ISelectOptionMethods, NoteStructure } from "../CommonStructures";
+import { ISelectOptionMethods, NoteStructure } from "../../CommonStructures";
 import { useRef, useState } from "react";
-import PanelWithBackdrop from "../CustomedComponents/PanelWithBackdrop";
-import SelectOption from "../CustomedComponents/SelectOption";
-import InputText from "../CustomedComponents/FormElements/InputText";
-import TextArea from "../CustomedComponents/FormElements/TextArea";
-import { useCategory } from "../Contexts/CategoryContext";
-import { useNotes } from "../Contexts/NotesContext";
-import { useNotification } from "../Contexts/NotificationContext";
+import PanelWithBackdrop from "../../CustomedComponents/PanelWithBackdrop";
+import SelectOption from "../../CustomedComponents/SelectOption";
+import InputText from "../../CustomedComponents/FormElements/InputText";
+import TextArea from "../../CustomedComponents/FormElements/TextArea";
+import { useCategory } from "../../Contexts/CategoryContext";
+import { useNotes } from "../../Contexts/NotesContext";
+import { useNotification } from "../../Contexts/NotificationContext";
 
 interface IProps {
   note: NoteStructure;

@@ -1,19 +1,17 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 function getDataFromLocalStorage(key: string, initialValue: any): any {
   const ls: string | null = localStorage.getItem(key);
-
   if (ls) {
     return JSON.parse(ls);
   }
-
   return initialValue;
 }
 
 function useLocalStorage(key: string, initialValue: any) {
   const [value, setValue] = useState(initialValue);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const currentData = getDataFromLocalStorage(key, initialValue);
     if (currentData !== initialValue) {
       setValue(currentData);

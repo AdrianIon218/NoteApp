@@ -1,10 +1,10 @@
 import { useReducer, useState } from "react";
 import { useNotes } from "../../Contexts/NotesContext";
 import NoteEditCard from "./NoteEditCard";
-import useSortNotes from "../../CustomedComponents/useSortNotes";
+import sortNotes from "../../CustomedComponents/sortNotes";
 import { NoteStructure } from "../../CommonStructures";
-import FormModifyNote from "../FormModifyNote";
-import DeleteForm from "../DeleteForm/DeleteForm";
+import FormModifyNote from "./FormModifyNote";
+import DeleteForm from "./DeleteForm";
 import InputText from "../../CustomedComponents/FormElements/InputText";
 
 const enum StateHiddenPanel {
@@ -23,6 +23,7 @@ const reducer = (state: JSX.Element | undefined, action: IAction) => {
   switch (action.type) {
     case StateHiddenPanel.hidden:
       return;
+
     case StateHiddenPanel.modify:
       return (
         action.item &&
@@ -49,9 +50,9 @@ const reducer = (state: JSX.Element | undefined, action: IAction) => {
 
 export default function EditNote() {
   const [panelContent, dispatch] = useReducer(reducer, undefined);
-  const allNotes = useSortNotes(useNotes().getNotes());
-  const numOfNotes = allNotes.length;
   const [searchedNoteTitle, setSearchNotetitle] = useState("");
+  const allNotes = sortNotes(useNotes().getNotes());
+  const numOfNotes = allNotes.length;
   const searchedNoteTitleLength = searchedNoteTitle.length;
 
   function modifyPanel(note: NoteStructure) {

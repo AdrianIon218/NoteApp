@@ -1,6 +1,6 @@
+import React from "react";
 import PanelWithBackdrop from "../../CustomedComponents/PanelWithBackdrop";
 import { NoteStructure } from "../../CommonStructures";
-import React from "react";
 
 interface IProps {
   closeNote: () => void;

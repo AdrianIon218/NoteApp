@@ -1,12 +1,12 @@
 import { useState } from "react";
 import NoteItem from "./NoteItem";
-import useSortNotes from "../../CustomedComponents/useSortNotes";
+import sortNotes from "../../CustomedComponents/sortNotes";
 import { useNotes } from "../../Contexts/NotesContext";
 import { useCategory } from "../../Contexts/CategoryContext";
 import SelectOption from "../../CustomedComponents/SelectOption";
 
 export default function ViewNotes() {
-  const allNotes = useSortNotes(useNotes().getNotes());
+  const allNotes = sortNotes(useNotes().getNotes());
   const categories = useCategory().getCategories();
   const [searchCategory, setSearchCategory] = useState("all");
 

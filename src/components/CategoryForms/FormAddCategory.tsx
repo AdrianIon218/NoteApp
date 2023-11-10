@@ -1,8 +1,8 @@
 import { useRef, useState } from "react";
-import InputText from "../CustomedComponents/FormElements/InputText";
 import { useCategory } from "../Contexts/CategoryContext";
-import ListCategories from "./ListCategories";
 import { useNotification } from "../Contexts/NotificationContext";
+import ListCategories from "../CustomedComponents/ListCategories";
+import InputText from "../CustomedComponents/FormElements/InputText";
 
 export default function FormAddCategory() {
   const categoryContext = useCategory();

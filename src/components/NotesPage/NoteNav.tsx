@@ -13,7 +13,7 @@ const sideBarElements = [
   { path: "edit-notes", navTitle: "Edit Notes" },
 ];
 
-function NoteNav({ option }: { option: string | undefined }) {
+function NoteNav({ option }: { option: string }) {
   const listID = useId();
 
   const sideBar = sideBarElements.map((item, index) => (
