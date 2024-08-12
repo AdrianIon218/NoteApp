@@ -1,18 +1,28 @@
-* {
+*,
+*::after,
+*::before {
   box-sizing: border-box;
 }
 
-html {
-  padding: 0;
-  margin: 0;
-  height: 100%;
+:root {
+  font-size: 100%;
+
+  --dark-blue-3: rgb(22, 114, 167);
+  --dark-blue-0: rgb(25, 133, 200);
+  --light-blue-0: rgb(83, 166, 214);
+  --light-blue-1: rgb(67, 154, 204);
 }
 
 body {
-  padding: 0;
+  padding: 2rem;
   margin: 0;
   height: auto;
-  background-color: rgb(25, 133, 200);
+  background-color: var(--light-blue-0);
+  background-image: linear-gradient(
+    to bottom right,
+    var(--dark-blue-0),
+    var(--light-blue-0)
+  );
 }
 
 body::-webkit-scrollbar {
@@ -23,9 +33,9 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-thumb {
-  border: 2px rgb(67, 154, 204) solid;
-  border-radius: 14px;
-  background-color: rgb(22, 114, 167);
+  border: 2px var(--light-blue-1) solid;
+  border-radius: 1rem;
+  background-color: var(--dark-blue-3);
 }
 
 body:has(.backdrop) {
@@ -36,6 +46,13 @@ body:has(.backdrop) {
   min-height: 135vh;
   height: auto;
   margin: 0px;
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  border: 2px solid var(--dark-blue-3);
+  border-radius: 1rem;
+  overflow: hidden;
+
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -49,6 +66,12 @@ body:has(.backdrop) {
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url("/background.jpg");
+}
+
+@media all and (max-width: 600px) {
+  body {
+    padding: 0;
+  }
 }
 
 @media only screen and (hover: hover) {
