@@ -72,6 +72,10 @@ body:has(.backdrop) {
   body {
     padding: 0;
   }
+  #root {
+    border: none;
+    border-radius: 0;
+  }
 }
 
 @media only screen and (hover: hover) {
