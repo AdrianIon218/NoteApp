@@ -22,7 +22,7 @@
 
   @include scrollbar();
 
-  @media only screen and (max-width: $breakpoint-phone) {
+  @media only screen and (max-width: $breakpoint-tablet) {
     flex-basis: 100%;
   }
 }

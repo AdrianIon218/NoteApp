@@ -65,7 +65,6 @@ body:has(.backdrop) {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("/background.jpg");
 }
 
 @media all and (max-width: 600px) {

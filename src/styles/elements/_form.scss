@@ -173,12 +173,12 @@
     max-width: fit-content;
     transition: all 0.2s;
 
-    &:hover {
+    &:not(:disabled):hover {
       color: $color-green-fade;
       background-color: $color-green-dark;
     }
 
-    &:active {
+    &:not(:disabled):active {
       transform: translateY(10px);
     }
   }
