@@ -12,13 +12,19 @@
   border-top: 2px solid $color-blue;
   display: flex;
   flex-direction: row;
-  gap: 0.5rem;
+  justify-content: space-between;
   padding: 30px 5px;
   align-items: center;
   position: relative;
   overflow: hidden;
 
-  &__logo {
+  &__logoCtn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  &__logoImg {
     border-radius: 20%;
     height: 3em;
     width: 3rem;
@@ -38,11 +44,16 @@
 
   &__logo_name {
     color: darken($color-blue, 5%);
-    font-size: 1.7em;
     font-weight: 800;
+    font-size: 1.7em;
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
+  }
+
+  &__copyright {
+    color: darken($color-blue, 20%);
+    font-weight: 600;
   }
 
   // animation mouse hover only for desktop

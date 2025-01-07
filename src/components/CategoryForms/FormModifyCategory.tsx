@@ -30,7 +30,7 @@ export default function FormModifyCategory() {
         .forEach((item) => {
           notesCtx.modifyNote({
             ...item,
-            ["category"]: newCategoryName,
+            category: newCategoryName,
           });
         });
 

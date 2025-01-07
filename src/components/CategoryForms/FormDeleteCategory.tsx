@@ -22,7 +22,7 @@ export default function FormDeleteCategory() {
       .getNotes()
       .filter((note) => note.category === categorySelected)
       .forEach((note) => {
-        notesContext.modifyNote({ ...note, ["category"]: "none" });
+        notesContext.modifyNote({ ...note, category: "none" });
       });
     categoryContext.deleteCategory(categorySelected);
     notificationCtx.showNotification("Category deleted !", "warning");
