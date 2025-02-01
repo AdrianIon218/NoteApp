@@ -7,6 +7,7 @@ import { useCategory } from "../Contexts/CategoryContext";
 import SelectOption from "../CustomedComponents/SelectOption";
 import { ISelectOptionMethods } from "../CommonStructures";
 import { useNotification } from "../Contexts/NotificationContext";
+import { NoteCategoryTypes } from "../Interfaces/CategoryInterfaces";
 
 function CreateNote() {
   const notesCtx = useNotes();
@@ -14,7 +15,9 @@ function CreateNote() {
 
   const categories = useCategory().getCategories();
   const categoryBtnRef = useRef<ISelectOptionMethods>(null);
-  const [categorySelected, setCategory] = useState("none");
+  const [categorySelected, setCategory] = useState<NoteCategoryTypes | string>(
+    NoteCategoryTypes.NONE
+  );
 
   const titleNoteRef = useRef<HTMLInputElement>(null);
   const [titleText, setTitleText] = useState("");
@@ -27,7 +30,7 @@ function CreateNote() {
     titleNoteRef.current!.value = "";
     setTextNote("");
     (textNoteRef.current as HTMLTextAreaElement).value = "";
-    setCategory("none");
+    setCategory(NoteCategoryTypes.NONE);
     categoryBtnRef.current?.resetSelectValue();
   }
 
@@ -87,7 +90,7 @@ function CreateNote() {
             onClick={resetInputs}
             disabled={
               titleText.length === 0 &&
-              categorySelected === "none" &&
+              categorySelected === NoteCategoryTypes.NONE &&
               textNote === ""
             }
           >

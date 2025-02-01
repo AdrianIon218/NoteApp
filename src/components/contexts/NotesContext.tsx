@@ -20,10 +20,10 @@ export function useNotes() {
 }
 
 export default function NotesProvider(props: any) {
-  const notes: {
+  const notes = useLocalStorage("notes", []) as {
     value: NoteStructure[];
     setValue: (newNote: NoteStructure[]) => void;
-  } = useLocalStorage("notes", []);
+  };
 
   const addNewNote = (newNote: NoteStructure) => {
     notes.value.push(newNote);
@@ -44,7 +44,7 @@ export default function NotesProvider(props: any) {
 
   const modifyNote = (note: NoteStructure) => {
     const indexNoteToEdit = notes.value.findIndex(
-      (item) => item.id === note.id,
+      (item) => item.id === note.id
     );
     if (indexNoteToEdit !== -1) {
       notes.value[indexNoteToEdit].title = note.title;

@@ -1,6 +1,7 @@
 import { createContext, useContext } from "react";
 import useLocalStorage from "../CustomedComponents/useLocalStorage";
 import { ICategoryContext } from "../CommonStructures";
+import { NoteCategoryTypes } from "../Interfaces/CategoryInterfaces";
 
 export const CategoryContext = createContext<ICategoryContext>({
   getCategories: () => [],
@@ -22,10 +23,13 @@ interface IProps {
 }
 
 export default function CategoryProvider(props: IProps) {
-  const categories: {
+  const categories = useLocalStorage(
+    "categories",
+    Object.values(NoteCategoryTypes)
+  ) as {
     value: string[];
     setValue: (categories: string[]) => void;
-  } = useLocalStorage("categories", ["none", "important"]);
+  };
 
   function addNewCategory(newcategory: string) {
     if (categories.value.indexOf(newcategory) !== -1) {
@@ -39,7 +43,7 @@ export default function CategoryProvider(props: IProps) {
     const index = categories.value.indexOf(categoryName);
     if (index !== -1) {
       categories.value = categories.value.filter(
-        (item, indexToDeleted) => indexToDeleted !== index,
+        (item, indexToDeleted) => indexToDeleted !== index
       );
       categories.setValue([...categories.value]);
       return true;

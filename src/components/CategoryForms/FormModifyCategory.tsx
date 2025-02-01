@@ -4,6 +4,7 @@ import { useCategory } from "../Contexts/CategoryContext";
 import { useNotes } from "../Contexts/NotesContext";
 import { useNotification } from "../Contexts/NotificationContext";
 import SelectOption from "../CustomedComponents/SelectOption";
+import { NoteCategoryTypes } from "../Interfaces/CategoryInterfaces";
 
 export default function FormModifyCategory() {
   const notesCtx = useNotes();
@@ -12,7 +13,10 @@ export default function FormModifyCategory() {
 
   const categoriesToModify = categoryCtx
     .getCategories()
-    .filter((category) => category !== "none" && category !== "important");
+    .filter(
+      (category) =>
+        category !== NoteCategoryTypes.NONE && category !== "important"
+    );
 
   const [categorySelected, setCategorySelected] = useState("");
   const [newCategoryName, setNewCategoryName] = useState("");

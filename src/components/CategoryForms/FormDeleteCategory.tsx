@@ -3,6 +3,7 @@ import { useCategory } from "../Contexts/CategoryContext";
 import { useNotes } from "../Contexts/NotesContext";
 import { useNotification } from "../Contexts/NotificationContext";
 import SelectOption from "../CustomedComponents/SelectOption";
+import { NoteCategoryTypes } from "../Interfaces/CategoryInterfaces";
 
 const initialSelectCategoryText = "choose";
 
@@ -10,7 +11,10 @@ export default function FormDeleteCategory() {
   const categoryContext = useCategory();
   const categoriesToModify = categoryContext
     .getCategories()
-    .filter((category) => category !== "none" && category !== "important");
+    .filter(
+      (category) =>
+        category !== NoteCategoryTypes.NONE && category !== "important"
+    );
   const notificationCtx = useNotification();
   const notesContext = useNotes();
   const [categorySelected, setCategorySelected] = useState("");
@@ -22,7 +26,7 @@ export default function FormDeleteCategory() {
       .getNotes()
       .filter((note) => note.category === categorySelected)
       .forEach((note) => {
-        notesContext.modifyNote({ ...note, category: "none" });
+        notesContext.modifyNote({ ...note, category: NoteCategoryTypes.NONE });
       });
     categoryContext.deleteCategory(categorySelected);
     notificationCtx.showNotification("Category deleted !", "warning");
