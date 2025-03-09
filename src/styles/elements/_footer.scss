@@ -11,48 +11,26 @@
   height: 8vh;
   border-top: 2px solid $color-blue;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   padding: 30px 5px;
   align-items: center;
   position: relative;
   overflow: hidden;
 
-  &__logoCtn {
+  &__ctn {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: start;
     gap: 0.5rem;
   }
 
-  &__logoImg {
-    border-radius: 20%;
-    height: 3em;
-    width: 3rem;
-    background-color: darken($color-blue, 10%);
-    -webkit-mask-image: url("/notebook.svg");
-    mask-image: url("/notebook.svg");
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-    -webkit-mask-size: contain;
-    mask-size: contain;
-    -webkit-mask-position: center;
-    mask-position: left center;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-
-  &__logo_name {
-    color: darken($color-blue, 5%);
+  &__project {
+    color: darken($color-blue, 10%);
     font-weight: 800;
     font-size: 1.7em;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
   }
 
   &__copyright {
-    color: darken($color-blue, 20%);
+    color: darken($color-blue, 5%);
     font-weight: 600;
   }
 

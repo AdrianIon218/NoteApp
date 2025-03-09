@@ -1,19 +1,20 @@
 import ReactDOM from "react-dom/client";
-import App from "./App";
-import { HashRouter } from "react-router-dom";
 import NotesProvider from "./components/Contexts/NotesContext";
 import CategoryProvider from "./components/Contexts/CategoryContext";
+import NotificationProvider from "./components/Contexts/NotificationContext";
 import { StrictMode } from "react";
+import "@fontsource/roboto";
+import App from "./App";
 import "./styles/index.scss";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <NotesProvider>
-    <CategoryProvider>
-      <StrictMode>
-        <HashRouter>
+  <StrictMode>
+    <NotesProvider>
+      <CategoryProvider>
+        <NotificationProvider>
           <App />
-        </HashRouter>
-      </StrictMode>
-    </CategoryProvider>
-  </NotesProvider>,
+        </NotificationProvider>
+      </CategoryProvider>
+    </NotesProvider>
+  </StrictMode>
 );

@@ -16,11 +16,12 @@ export default function Footer() {
       onMouseMove={mouseHandler}
       style={footerPointerStyle}
     >
-      <div className="footer__logoCtn">
-        <div className="footer__logoImg" />
-        <div className="footer__logo_name">Notes</div>
+      <div className="footer__ctn">
+        <div className="footer__project">Notes App</div>
+        <div className="footer__copyright">
+          project made by &copy;Ion Adrian-Gabriel
+        </div>
       </div>
-      <div className="footer__copyright">&copy;Ion Adrian-Gabriel</div>
     </footer>
   );
 }

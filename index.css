@@ -20,8 +20,8 @@ body {
   background-color: var(--light-blue-0);
   background-image: linear-gradient(
     to bottom right,
-    var(--dark-blue-0),
-    var(--light-blue-0)
+    var(--light-blue-0),
+    var(--dark-blue-3)
   );
 }
 
