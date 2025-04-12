@@ -1,21 +1,4 @@
 .footer {
-  margin-top: auto;
-  background-color: $color-blue;
-  background: linear-gradient(
-    90deg,
-    rgba(197, 222, 230, 1) 0%,
-    rgba($color-blue, 1) 100%
-  );
-  border-top-left-radius: 10%;
-  border-top-right-radius: 10%;
-  height: 8vh;
-  border-top: 2px solid $color-blue;
-  display: flex;
-  padding: 30px 5px;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-
   &__ctn {
     display: flex;
     flex-direction: column;
@@ -23,36 +6,8 @@
     gap: 0.5rem;
   }
 
-  &__project {
-    color: darken($color-blue, 10%);
-    font-weight: 800;
-    font-size: 1.7em;
-  }
-
   &__copyright {
     color: darken($color-blue, 5%);
     font-weight: 600;
-  }
-
-  // animation mouse hover only for desktop
-  @media only screen and (pointer: fine) {
-    &::before {
-      --size: 0;
-      content: "";
-      position: absolute;
-      left: var(--x);
-      top: var(--y);
-      width: var(--size);
-      height: var(--size);
-      background: radial-gradient(circle closest-side, white, transparent);
-      transform: translate(-50%, -50%);
-      transition:
-        width 0.2s ease,
-        height 0.2s ease;
-    }
-
-    &:hover::before {
-      --size: 2.5rem;
-    }
   }
 }

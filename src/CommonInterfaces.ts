@@ -5,6 +5,19 @@ export type NoteStructure = {
   id: string;
 };
 
+export enum NotePagesAvailable {
+  VIEW_NOTES = "view-notes",
+  CREATE_NOTE = "create-note",
+  EDIT_NOTES = "edit-notes",
+}
+
+export enum NoteCategoryTypes {
+  NONE = "none",
+  IMPORTANT = "important",
+}
+
+export type ReplaceCategoryPayload = { target: string; newCategory: string };
+
 export interface INoteContext {
   addNote(newNote: NoteStructure): void;
   getNotes(): NoteStructure[];

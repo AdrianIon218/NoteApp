@@ -1,6 +1,6 @@
-import { createContext, useContext } from "react";
+import { createContext } from "react";
 import useLocalStorage from "../CustomedComponents/useLocalStorage";
-import { NoteStructure, INoteContext } from "../CommonStructures";
+import { NoteStructure, INoteContext } from "../../CommonInterfaces";
 
 const NotesContext = createContext<INoteContext>({
   addNote(newNote: NoteStructure) {},
@@ -10,14 +10,6 @@ const NotesContext = createContext<INoteContext>({
   deleteNoteById(id: string) {},
   modifyNote(note: NoteStructure) {},
 });
-
-export function useNotes() {
-  const context = useContext(NotesContext);
-  if (context === undefined) {
-    throw new Error("NotesContext was used outside of the NotesProvider");
-  }
-  return context;
-}
 
 export default function NotesProvider(props: any) {
   const notes = useLocalStorage("notes", []) as {

@@ -1,8 +1,9 @@
 import { useRef } from "react";
-import { useNotes } from "../../Contexts/NotesContext";
 import PanelWithBackdrop, {
   PanelMethodes,
 } from "../../CustomedComponents/PanelWithBackdrop";
+import { useDispatch } from "react-redux";
+import { deleteNoteById } from "../../../store/notesSlice";
 
 interface Iprops {
   closeDeleteForm: () => void;
@@ -10,15 +11,15 @@ interface Iprops {
 }
 
 export default function DeleteForm(props: Iprops) {
-  const notesContext = useNotes();
   const panelRef = useRef<PanelMethodes>(null);
+  const dispatch = useDispatch();
 
   function closeForm() {
     panelRef.current?.closeBackdrop();
   }
 
   function deleteItem() {
-    notesContext.deleteNoteById(props.id);
+    dispatch(deleteNoteById(props.id));
     closeForm();
   }
 

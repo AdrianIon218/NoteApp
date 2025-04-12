@@ -1,35 +1,32 @@
 import { useRef, useState } from "react";
-import { useCategory } from "../Contexts/CategoryContext";
-import { useNotes } from "../Contexts/NotesContext";
-import { useNotification } from "../Contexts/NotificationContext";
 import SelectOption from "../CustomedComponents/SelectOption";
-import { NoteCategoryTypes } from "../Interfaces/CategoryInterfaces";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteCategory } from "../../store/categorySlice";
+import { NoteCategoryTypes } from "../../CommonInterfaces";
+import { replaceAllNotesCategory } from "../../store/notesSlice";
+import { RootState } from "../../store/store";
+import toast from "react-hot-toast";
 
 const initialSelectCategoryText = "choose";
 
 export default function FormDeleteCategory() {
-  const categoryContext = useCategory();
-  const categoriesToModify = categoryContext
-    .getCategories()
-    .filter(
+  const categoriesToModify = useSelector<RootState>((store) =>
+    store.category.categories.filter(
       (category) =>
-        category !== NoteCategoryTypes.NONE && category !== "important"
-    );
-  const notificationCtx = useNotification();
-  const notesContext = useNotes();
+        category !== NoteCategoryTypes.NONE &&
+        category !== NoteCategoryTypes.IMPORTANT
+    )
+  ) as string[];
   const [categorySelected, setCategorySelected] = useState("");
   const selectRef = useRef<any>(null);
+  const dispatch = useDispatch();
 
   function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    notesContext
-      .getNotes()
-      .filter((note) => note.category === categorySelected)
-      .forEach((note) => {
-        notesContext.modifyNote({ ...note, category: NoteCategoryTypes.NONE });
-      });
-    categoryContext.deleteCategory(categorySelected);
-    notificationCtx.showNotification("Category deleted !", "warning");
+    dispatch(deleteCategory(categorySelected));
+    dispatch(replaceAllNotesCategory(categorySelected, NoteCategoryTypes.NONE));
+    toast.dismiss(); // in case there was another toast displayed before
+    toast.success("Category deleted !");
     setCategorySelected("");
     selectRef.current?.resetSelectValue();
   }

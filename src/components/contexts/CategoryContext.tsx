@@ -1,7 +1,6 @@
-import { createContext, useContext } from "react";
+import { createContext } from "react";
 import useLocalStorage from "../CustomedComponents/useLocalStorage";
-import { ICategoryContext } from "../CommonStructures";
-import { NoteCategoryTypes } from "../Interfaces/CategoryInterfaces";
+import { ICategoryContext, NoteCategoryTypes } from "../../CommonInterfaces";
 
 export const CategoryContext = createContext<ICategoryContext>({
   getCategories: () => [],
@@ -9,14 +8,6 @@ export const CategoryContext = createContext<ICategoryContext>({
   deleteCategory: () => false,
   replaceCategory: () => false,
 });
-
-export function useCategory() {
-  const context = useContext(CategoryContext);
-  if (context === undefined) {
-    throw new Error("CategoryContext was used outside of the CategoryProvider");
-  }
-  return context;
-}
 
 interface IProps {
   children: React.ReactNode;

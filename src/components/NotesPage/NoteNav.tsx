@@ -1,5 +1,6 @@
 import { useId } from "react";
 import { Link } from "react-router-dom";
+import { NotePagesAvailable } from "../../CommonInterfaces";
 
 export const enum ButtonSelected {
   viewNotes,
@@ -8,9 +9,9 @@ export const enum ButtonSelected {
 }
 
 const sideBarElements = [
-  { path: "view-notes", navTitle: "My Notes" },
-  { path: "create-note", navTitle: "New Note" },
-  { path: "edit-notes", navTitle: "Edit Notes" },
+  { path: NotePagesAvailable.VIEW_NOTES, navTitle: "My Notes" },
+  { path: NotePagesAvailable.CREATE_NOTE, navTitle: "New Note" },
+  { path: NotePagesAvailable.EDIT_NOTES, navTitle: "Edit Notes" },
 ];
 
 function NoteNav({ option }: { option: string }) {

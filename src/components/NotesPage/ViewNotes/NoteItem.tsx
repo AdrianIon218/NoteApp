@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { NoteStructure } from "../../CommonStructures";
+import { NoteCategoryTypes, NoteStructure } from "../../../CommonInterfaces";
 import NoteDisplay from "./NoteDisplay";
-import { NoteCategoryTypes } from "../../Interfaces/CategoryInterfaces";
 
 export default function NoteItem(props: NoteStructure) {
   const [isNoteShown, setNoteShown] = useState(false);

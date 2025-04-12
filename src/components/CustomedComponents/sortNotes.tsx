@@ -1,5 +1,4 @@
-import { NoteStructure } from "../CommonStructures";
-import { NoteCategoryTypes } from "../Interfaces/CategoryInterfaces";
+import { NoteCategoryTypes, NoteStructure } from "../../CommonInterfaces";
 
 function compare2Notes(a: NoteStructure, b: NoteStructure) {
   const categoryA = a.category === NoteCategoryTypes.NONE ? "" : a.category;
@@ -16,8 +15,8 @@ function compare2Notes(a: NoteStructure, b: NoteStructure) {
           : 0;
 }
 
-function useSortNotes(arr: NoteStructure[]) {
+function sortNotes(arr: NoteStructure[]) {
   return arr.sort(compare2Notes);
 }
 
-export default useSortNotes;
+export default sortNotes;

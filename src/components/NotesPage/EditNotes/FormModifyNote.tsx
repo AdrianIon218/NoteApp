@@ -1,12 +1,13 @@
-import { ISelectOptionMethods, NoteStructure } from "../../CommonStructures";
+import { ISelectOptionMethods, NoteStructure } from "../../../CommonInterfaces";
 import { useRef, useState } from "react";
 import PanelWithBackdrop from "../../CustomedComponents/PanelWithBackdrop";
 import SelectOption from "../../CustomedComponents/SelectOption";
 import InputText from "../../CustomedComponents/FormElements/InputText";
 import TextArea from "../../CustomedComponents/FormElements/TextArea";
-import { useCategory } from "../../Contexts/CategoryContext";
-import { useNotes } from "../../Contexts/NotesContext";
-import { useNotification } from "../../Contexts/NotificationContext";
+import { useDispatch, useSelector } from "react-redux";
+import { modifyNote } from "../../../store/notesSlice";
+import { RootState } from "../../../store/store";
+import toast from "react-hot-toast";
 
 interface IProps {
   note: NoteStructure;
@@ -14,9 +15,11 @@ interface IProps {
 }
 
 export default function FormModifyNote({ note, closeEditMode }: IProps) {
-  const notificationCtx = useNotification();
-  const notesCtx = useNotes();
-  const categories = useCategory().getCategories();
+  const allCategories = useSelector<RootState>(
+    (store) => store.category.categories
+  ) as string[];
+
+  const dispatch = useDispatch();
 
   const categoryBtnRef = useRef<ISelectOptionMethods>(null);
   const [categorySelected, setCategory] = useState(note.category);
@@ -46,8 +49,9 @@ export default function FormModifyNote({ note, closeEditMode }: IProps) {
       modifiedNote.category !== note.category ||
       modifiedNote.text !== note.text
     ) {
-      notesCtx.modifyNote(modifiedNote);
-      notificationCtx.showNotification("Note changed !");
+      toast.dismiss(); // in case there was another toast displayed before
+      dispatch(modifyNote(modifiedNote));
+      toast.success("Note changed !");
     }
   }
 
@@ -81,7 +85,7 @@ export default function FormModifyNote({ note, closeEditMode }: IProps) {
         <div className="field">
           Change the category
           <SelectOption
-            options={categories}
+            options={allCategories}
             defaultOption={note.category}
             onSelection={(str: string) => {
               setCategory(str);

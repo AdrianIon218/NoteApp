@@ -1,22 +1,28 @@
 import { useRef, useState } from "react";
 import InputText from "../CustomedComponents/FormElements/InputText";
-import { useCategory } from "../Contexts/CategoryContext";
-import { useNotes } from "../Contexts/NotesContext";
-import { useNotification } from "../Contexts/NotificationContext";
 import SelectOption from "../CustomedComponents/SelectOption";
-import { NoteCategoryTypes } from "../Interfaces/CategoryInterfaces";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  AppDispatch,
+  replaceCategoryInNotes,
+  RootState,
+} from "../../store/store";
+import { NoteCategoryTypes, NoteStructure } from "../../CommonInterfaces";
+import toast from "react-hot-toast";
 
 export default function FormModifyCategory() {
-  const notesCtx = useNotes();
-  const categoryCtx = useCategory();
-  const notificationCtx = useNotification();
+  const allNotes = useSelector<RootState>(
+    (store) => store.notes.notes
+  ) as NoteStructure[];
+  const dispatch = useDispatch<AppDispatch>();
 
-  const categoriesToModify = categoryCtx
-    .getCategories()
-    .filter(
+  const categoriesToModify = useSelector<RootState>((store) =>
+    store.category.categories.filter(
       (category) =>
-        category !== NoteCategoryTypes.NONE && category !== "important"
-    );
+        category !== NoteCategoryTypes.NONE &&
+        category !== NoteCategoryTypes.IMPORTANT
+    )
+  ) as string[];
 
   const [categorySelected, setCategorySelected] = useState("");
   const [newCategoryName, setNewCategoryName] = useState("");
@@ -27,25 +33,18 @@ export default function FormModifyCategory() {
 
   function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (categoryCtx.replaceCategory(categorySelected, newCategoryName)) {
-      notesCtx
-        .getNotes()
-        .filter((item) => item.category === categorySelected)
-        .forEach((item) => {
-          notesCtx.modifyNote({
-            ...item,
-            category: newCategoryName,
-          });
-        });
+    toast.dismiss(); // in case there was another toast displayed before
 
+    if (!categoriesToModify.includes(newCategoryName)) {
+      dispatch(replaceCategoryInNotes(categorySelected, newCategoryName));
       inputRef.current!.value = "";
       categoryBtnRef.current!.resetSelectValue();
       setCategorySelected("");
       setNewCategoryName("");
       setIsValid(false);
-      notificationCtx.showNotification("Category changed !");
+      toast.success("Category changed !");
     } else {
-      notificationCtx.showNotification("Invalid name !", "warning");
+      toast.error("Invalid name !");
     }
   }
 
@@ -83,11 +82,7 @@ export default function FormModifyCategory() {
                 setIsValid(name.length >= 3 && categorySelected !== "");
               }}
             />
-            <button
-              type="submit"
-              className="btn btn-green btn-styled"
-              disabled={!isInputValid}
-            >
+            <button type="submit" className="btn btn-green btn-styled">
               Save
             </button>
           </div>

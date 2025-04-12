@@ -1,6 +1,6 @@
 import React from "react";
 import PanelWithBackdrop from "../../CustomedComponents/PanelWithBackdrop";
-import { NoteStructure } from "../../CommonStructures";
+import { NoteStructure } from "../../../CommonInterfaces";
 
 interface IProps {
   closeNote: () => void;
@@ -24,7 +24,7 @@ export default function NoteDisplay(props: IProps) {
       closePanel={props.closeNote}
       plusClass="panel-max-extended"
     >
-      {category ?? category !== "" ? (
+      {(category ?? category !== "") ? (
         <label className="category-label">{category}</label>
       ) : null}
       <h2 title={title}>{title}</h2>

@@ -1,5 +1,4 @@
-import { NoteStructure } from "../../CommonStructures";
-import { NoteCategoryTypes } from "../../Interfaces/CategoryInterfaces";
+import { NoteCategoryTypes, NoteStructure } from "../../../CommonInterfaces";
 
 interface IProps extends Partial<NoteStructure> {
   modifyItem: () => void;

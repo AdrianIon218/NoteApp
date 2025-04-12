@@ -2,18 +2,22 @@ import { useRef, useState } from "react";
 import { nanoid } from "nanoid";
 import TextArea from "../CustomedComponents/FormElements/TextArea";
 import InputText from "../CustomedComponents/FormElements/InputText";
-import { useNotes } from "../Contexts/NotesContext";
-import { useCategory } from "../Contexts/CategoryContext";
 import SelectOption from "../CustomedComponents/SelectOption";
-import { ISelectOptionMethods } from "../CommonStructures";
-import { useNotification } from "../Contexts/NotificationContext";
-import { NoteCategoryTypes } from "../Interfaces/CategoryInterfaces";
+import {
+  ISelectOptionMethods,
+  NoteCategoryTypes,
+} from "../../CommonInterfaces";
+import { useDispatch, useSelector } from "react-redux";
+import { addNote } from "../../store/notesSlice";
+import { RootState } from "../../store/store";
+import toast from "react-hot-toast";
 
 function CreateNote() {
-  const notesCtx = useNotes();
-  const notificationCtx = useNotification();
+  const dispatch = useDispatch();
 
-  const categories = useCategory().getCategories();
+  const allCategories = useSelector<RootState>(
+    (store) => store.category.categories
+  ) as string[];
   const categoryBtnRef = useRef<ISelectOptionMethods>(null);
   const [categorySelected, setCategory] = useState<NoteCategoryTypes | string>(
     NoteCategoryTypes.NONE
@@ -44,8 +48,9 @@ function CreateNote() {
       id: nanoid(),
     };
 
-    notificationCtx.showNotification("Note added !");
-    notesCtx.addNote(noteObj);
+    toast.dismiss(); // in case there was another toast displayed before
+    toast.success("Note added !");
+    dispatch(addNote(noteObj));
     resetInputs();
   }
 
@@ -64,7 +69,7 @@ function CreateNote() {
         <div className="field">
           Choose a category{" "}
           <SelectOption
-            options={categories}
+            options={allCategories}
             onSelection={(str: string) => {
               setCategory(str);
             }}

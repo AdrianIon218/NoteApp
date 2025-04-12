@@ -1,11 +1,12 @@
 import { useReducer, useState } from "react";
-import { useNotes } from "../../Contexts/NotesContext";
 import NoteEditCard from "./NoteEditCard";
 import sortNotes from "../../CustomedComponents/sortNotes";
-import { NoteStructure } from "../../CommonStructures";
+import { NoteStructure } from "../../../CommonInterfaces";
 import FormModifyNote from "./FormModifyNote";
 import DeleteForm from "./DeleteForm";
 import InputText from "../../CustomedComponents/FormElements/InputText";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../store/store";
 
 const enum StateHiddenPanel {
   hidden,
@@ -51,7 +52,9 @@ const reducer = (state: JSX.Element | undefined, action: IAction) => {
 export default function EditNote() {
   const [panelContent, dispatch] = useReducer(reducer, undefined);
   const [searchedNoteTitle, setSearchNotetitle] = useState("");
-  const allNotes = sortNotes(useNotes().getNotes());
+  const allNotes = useSelector<RootState>((store) =>
+    sortNotes(store.notes.notes)
+  ) as NoteStructure[];
   const numOfNotes = allNotes.length;
   const searchedNoteTitleLength = searchedNoteTitle.length;
 
@@ -78,7 +81,7 @@ export default function EditNote() {
   const searchedNoteTitleLowerCase = searchedNoteTitle.toLowerCase();
   const notesElements = allNotes
     .filter((item) =>
-      item.title.toLowerCase().startsWith(searchedNoteTitleLowerCase),
+      item.title.toLowerCase().startsWith(searchedNoteTitleLowerCase)
     )
     .map((item, index) => (
       <NoteEditCard

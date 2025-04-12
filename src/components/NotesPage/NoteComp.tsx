@@ -1,8 +1,10 @@
 import { Navigate, useParams } from "react-router-dom";
 import NoteNav from "./NoteNav";
 import NoteBox from "./NoteBox";
+import { NotePagesAvailable } from "../../CommonInterfaces";
+import { Grid2 } from "@mui/material";
 
-const optionsAvailable = ["view-notes", "create-note", "edit-notes"];
+const optionsAvailable: string[] = Object.values(NotePagesAvailable);
 
 export default function NoteComp() {
   const { option } = useParams();
@@ -12,9 +14,9 @@ export default function NoteComp() {
   }
 
   return (
-    <section className="note-container">
+    <Grid2 className="note-container">
       <NoteNav option={option} />
       <NoteBox option={option} />
-    </section>
+    </Grid2>
   );
 }

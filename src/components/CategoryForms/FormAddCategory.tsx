@@ -1,23 +1,31 @@
 import { useRef, useState } from "react";
-import { useCategory } from "../Contexts/CategoryContext";
-import { useNotification } from "../Contexts/NotificationContext";
 import ListCategories from "../CustomedComponents/ListCategories";
 import InputText from "../CustomedComponents/FormElements/InputText";
+import { useDispatch, useSelector } from "react-redux";
+import { addCategory } from "../../store/categorySlice";
+import { AppDispatch, RootState } from "../../store/store";
+import toast from "react-hot-toast";
 
 export default function FormAddCategory() {
-  const categoryContext = useCategory();
-  const notificationCtx = useNotification();
+  const allCategories = useSelector<RootState>(
+    (store) => store.category.categories
+  ) as string[];
   const [newCategoryName, setNewCategoryName] = useState("");
   const inputRef = useRef<HTMLInputElement>();
+  const dispatch = useDispatch<AppDispatch>();
 
   function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (categoryContext.addCategory(newCategoryName)) {
+    toast.dismiss(); // in case there was another toast displayed before
+
+    if (!allCategories.includes(newCategoryName)) {
       inputRef.current!.value = "";
       setNewCategoryName("");
-      notificationCtx.showNotification("Category added !");
+      dispatch(addCategory(newCategoryName));
+
+      toast.success("Category added !");
     } else {
-      notificationCtx.showNotification("Invalid name !", "warning");
+      toast.error("Invalid name !");
     }
   }
 

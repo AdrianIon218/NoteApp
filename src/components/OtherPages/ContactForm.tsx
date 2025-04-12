@@ -3,7 +3,7 @@ import TextArea from "../CustomedComponents/FormElements/TextArea";
 import InputEmail from "../CustomedComponents/FormElements/InputEmail";
 import { useState, useRef } from "react";
 import axios from "axios";
-import { useNotification } from "../Contexts/NotificationContext";
+import toast from "react-hot-toast";
 
 function ContactForm() {
   const [name, setName] = useState("");
@@ -12,7 +12,6 @@ function ContactForm() {
   const userName = useRef<HTMLInputElement>(null);
   const inputEmail = useRef<HTMLInputElement>(null);
   const textMessage = useRef<HTMLTextAreaElement>(null);
-  const notificationCtx = useNotification();
 
   function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -22,10 +21,11 @@ function ContactForm() {
     axios
       .post(
         "https://noteapp-9b1f0-default-rtdb.europe-west1.firebasedatabase.app/messages.json",
-        data,
+        data
       )
       .then(() => {
-        notificationCtx.showNotification("Message sent !");
+        toast.dismiss(); // in case there was another toast displayed before
+        toast.success("Message sent !");
         setName("");
         setEmail("");
         setText("");
@@ -34,12 +34,10 @@ function ContactForm() {
         inputEmail.current!.value = "";
         textMessage.current!.value = "";
       })
-      .catch((err) =>
-        notificationCtx.showNotification(
-          "Error, please try again later!",
-          "warning",
-        ),
-      );
+      .catch(() => {
+        toast.dismiss(); // in case there was another toast displayed before
+        toast.success("Error, please try again later !");
+      });
   }
 
   return (
