@@ -1,4 +1,4 @@
-import { Box, Button, IconButton, styled, Typography } from "@mui/material";
+import { Box, Button, styled, Typography } from "@mui/material";
 import { LinkedIn } from "@mui/icons-material";
 
 const CustomFooter = styled(Box)(({ theme }) => ({
@@ -19,7 +19,7 @@ const CustomFooter = styled(Box)(({ theme }) => ({
   background: `linear-gradient(90deg, rgb(197, 222, 230) 0%, ${theme.palette.customBlue.main} 100%)`,
   display: "flex",
   justifyContent: "space-between",
-  alignItems: "center",
+  alignItems: "baseline",
   gap: "1rem",
 
   "@media (pointer:fine)": {
@@ -28,7 +28,8 @@ const CustomFooter = styled(Box)(({ theme }) => ({
     },
   },
 
-  [theme.breakpoints.down(360)]: {
+  [theme.breakpoints.down(400)]: {
+    alignItems: "center",
     flexDirection: "column",
     paddingBottom: "1em",
   },
@@ -53,7 +54,7 @@ export default function Footer() {
             fontSize: "1.1rem",
             color: styles.palette.customBlue.contrastText,
 
-            [styles.breakpoints.down(360)]: {
+            [styles.breakpoints.down(400)]: {
               color: styles.palette.customBlue.dark,
               fontWeight: 900,
             },
