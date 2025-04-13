@@ -7,9 +7,11 @@ import {
 declare module "@mui/material/styles" {
   interface Palette {
     customBlue: PaletteColor;
+    customBackground: PaletteColor;
   }
   interface PaletteOptions {
     customBlue: PaletteColorOptions;
+    customBackground: PaletteColorOptions;
   }
 }
 
@@ -20,6 +22,10 @@ let customColors = createTheme({
       light: "rgb(154, 207, 239)",
       dark: "rgb(15, 112, 172)",
       contrastText: "rgb(190, 225, 246)",
+    },
+    customBackground: {
+      main: "rgb(27, 145, 219)",
+      light: "rgb(172, 216, 243)",
     },
   },
 });

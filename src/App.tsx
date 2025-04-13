@@ -6,7 +6,7 @@ import Footer from "./components/Layout/Footer";
 import { Grid2, ThemeProvider } from "@mui/material";
 import AppTheme from "./AppTheme";
 
-const NoteComp = lazy(() => import("./components/NotesPage/NoteComp"));
+const NotePage = lazy(() => import("./components/NotesPage/NotePage"));
 const ContactForm = lazy(() => import("./components/OtherPages/ContactForm"));
 const Settings = lazy(() => import("./components/OtherPages/Settings"));
 const NoPage = lazy(() => import("./components/OtherPages/NoPage"));
@@ -16,7 +16,7 @@ type RouteItem = { path: string; component: JSX.Element };
 const paths: RouteItem[] = [
   { path: "/", component: <Navigate replace to="/notes/view-notes" /> },
   { path: "/notes", component: <Navigate replace to="/notes/view-notes" /> },
-  { path: "/notes/:option", component: <NoteComp /> },
+  { path: "/notes/:option", component: <NotePage /> },
   { path: "/settings", component: <Settings /> },
   { path: "/contact", component: <ContactForm /> },
   { path: "*", component: <NoPage /> },
@@ -30,7 +30,7 @@ function App() {
           m={0}
           p={1}
           color="customBlue.dark"
-          sx={(style) => ({
+          sx={(styles) => ({
             minHeight: "135vh",
             pt: 15,
             pb: 20,
@@ -42,17 +42,17 @@ function App() {
             flexDirection: "column",
             rowGap: "3rem",
             backgroundColor: "white",
-            background:
-              "radial-gradient( circle, rgba(255, 255, 255, 1) 0%, rgba(148, 187, 233, 1) 100%)",
+            background: `linear-gradient(50deg, ${styles.palette.customBackground.main} 0%, ${styles.palette.customBackground.main} 45%, ${styles.palette.customBackground.light} 45%  )`,
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
             position: "relative",
             overflow: "hidden",
 
-            [style.breakpoints.down("sm")]: {
+            [styles.breakpoints.down("sm")]: {
               borderRadius: 0,
               pt: 37,
+              background: `radial-gradient(circle, ${styles.palette.customBackground.light} 0%, ${styles.palette.customBackground.main} 100%)`,
             },
           })}
         >

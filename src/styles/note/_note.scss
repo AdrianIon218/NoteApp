@@ -30,8 +30,6 @@
 .note-nav {
   margin: 1.2em;
   padding: 2em;
-  background-color: rgba($color-blue-fade, 0.85);
-  border: 6px solid $color-blue;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -78,22 +76,6 @@
   border-radius: 7px;
   position: relative;
   pointer-events: none;
-
-  &::before,
-  &::after {
-    position: absolute;
-    color: $color-blue;
-  }
-
-  &::before {
-    left: -15px;
-    content: "-";
-  }
-
-  &::after {
-    right: -15px;
-    content: "-";
-  }
 
   &:hover {
     border-radius: 13px;
