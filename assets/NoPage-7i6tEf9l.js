@@ -1,0 +1,1 @@
+import{j as e}from"./index-C4vhbmW1.js";function a(){return e.jsx("section",{className:"no-page-ctn",children:e.jsxs("div",{className:"no-page",children:[e.jsx("p",{className:"emoji",children:"😕"}),e.jsxs("h1",{children:["Sorry, the page you accessed does not exist"," ",e.jsx("span",{className:"red",children:"!"})]})]})})}export{a as default};
