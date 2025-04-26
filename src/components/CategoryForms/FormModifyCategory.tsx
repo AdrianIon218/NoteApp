@@ -7,13 +7,10 @@ import {
   replaceCategoryInNotes,
   RootState,
 } from "../../store/store";
-import { NoteCategoryTypes, NoteStructure } from "../../CommonInterfaces";
+import { NoteCategoryTypes } from "../../CommonInterfaces";
 import toast from "react-hot-toast";
 
 export default function FormModifyCategory() {
-  const allNotes = useSelector<RootState>(
-    (store) => store.notes.notes
-  ) as NoteStructure[];
   const dispatch = useDispatch<AppDispatch>();
 
   const categoriesToModify = useSelector<RootState>((store) =>

@@ -21,6 +21,8 @@ const CustomNavContainer = styled(Box)(({ theme }) => ({
   gap: "2rem",
   borderBottomLeftRadius: "5%",
   borderBottomRightRadius: "5%",
+  borderBottom: "2px solid blue",
+  borderBottomColor: theme.palette.customBlue.dark,
   backgroundColor: theme.palette.customBlue.main,
   color: theme.palette.customBlue.light,
   transition: "box-shadow 0.7s",

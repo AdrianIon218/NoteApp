@@ -1,5 +1,5 @@
 import { Navigate, useParams } from "react-router-dom";
-import NoteNav from "./NoteNav";
+import NoteSidebar from "./NoteSidebar";
 import NoteBox from "./NoteBox";
 import { NotePagesAvailable } from "../../CommonInterfaces";
 import { Grid2, styled } from "@mui/material";
@@ -10,7 +10,13 @@ const NotePageCtn = styled(Grid2)(({ theme }) => ({
   padding: "2rem",
   display: "flex",
   flexWrap: "wrap",
-  justifyContent: "space-between",
+  justifyContent: "space-around",
+  gap: "2rem",
+
+  [theme.breakpoints.down("lg")]: {
+    paddingTop: 0,
+    gap: "3rem",
+  },
 }));
 
 export default function NotePage() {
@@ -22,7 +28,7 @@ export default function NotePage() {
 
   return (
     <NotePageCtn className="note-container">
-      <NoteNav option={option} />
+      <NoteSidebar option={option} />
       <NoteBox option={option} />
     </NotePageCtn>
   );
