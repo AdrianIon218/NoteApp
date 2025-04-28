@@ -42,7 +42,7 @@ function App() {
             flexDirection: "column",
             rowGap: "3rem",
             backgroundColor: "white",
-            background: `linear-gradient(50deg, ${styles.palette.customBackground.main} 0%, ${styles.palette.customBackground.main} 45%, ${styles.palette.customBackground.light} 45%  )`,
+            background: `linear-gradient(50deg, ${styles.palette.primaryBackground.main} 0%, ${styles.palette.primaryBackground.main} 45%, ${styles.palette.primaryBackground.light} 45%  )`,
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
@@ -52,7 +52,7 @@ function App() {
             [styles.breakpoints.down("sm")]: {
               borderRadius: 0,
               pt: 37,
-              background: `radial-gradient(circle, ${styles.palette.customBackground.light} 0%, ${styles.palette.customBackground.main} 100%)`,
+              background: `radial-gradient(circle, ${styles.palette.primaryBackground.light} 0%, ${styles.palette.primaryBackground.main} 100%)`,
             },
           })}
         >

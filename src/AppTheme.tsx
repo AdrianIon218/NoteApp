@@ -7,11 +7,13 @@ import {
 declare module "@mui/material/styles" {
   interface Palette {
     customBlue: PaletteColor;
-    customBackground: PaletteColor;
+    primaryBackground: PaletteColor;
+    secondaryBackground: PaletteColor;
   }
   interface PaletteOptions {
     customBlue: PaletteColorOptions;
-    customBackground: PaletteColorOptions;
+    primaryBackground: PaletteColorOptions;
+    secondaryBackground: PaletteColorOptions;
   }
 }
 
@@ -23,9 +25,13 @@ let customColors = createTheme({
       dark: "rgb(15, 112, 172)",
       contrastText: "rgb(190, 225, 246)",
     },
-    customBackground: {
+    primaryBackground: {
       main: "rgb(27, 145, 219)",
       light: "rgb(172, 216, 243)",
+    },
+    secondaryBackground: {
+      main: "rgba(118, 198, 245, 0.8)", //"rgba(70, 183, 253, 0.8)",
+      light: "rgba(172, 216, 243, 0.6)",
     },
   },
 });

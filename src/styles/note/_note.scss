@@ -24,52 +24,6 @@
   }
 }
 
-.note-nav {
-  & > a {
-    padding: 0.25em;
-    color: white;
-    font-size: 1.4em;
-    font-weight: 700;
-    text-decoration: none;
-    background-color: $color-blue;
-    border: 2px solid;
-    border-radius: 13px;
-    text-align: center;
-    font-family: "Arial";
-    cursor: pointer;
-    outline: none;
-    transition: border-radius 0.5s;
-    -webkit-transition: border-radius 0.5s;
-    -moz-transition: border-radius 0.5s;
-    -ms-transition: border-radius 0.5s;
-    -o-transition: border-radius 0.5s;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    -moz-user-select: none;
-    -o-user-select: none;
-    user-select: none;
-
-    &:hover {
-      color: $color-blue;
-      background-color: white;
-      border-radius: 7px;
-    }
-  }
-}
-
-.note-nav > a.note-nav__selected {
-  border-color: rgba($color-blue-fade, 0.85);
-  color: $color-blue;
-  background-color: white;
-  border-radius: 7px;
-  position: relative;
-  pointer-events: none;
-
-  &:hover {
-    border-radius: 13px;
-  }
-}
-
 div.field:has(> .btn) {
   margin-top: 2em;
 }
