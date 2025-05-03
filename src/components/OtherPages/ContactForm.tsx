@@ -8,6 +8,7 @@ import { CustomTextarea } from "../CustomedComponents/styledComponents";
 import { useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 import { GridPanelCustom } from "../CustomedComponents/styledComponentsMUI";
+import { PROJECT_MODE } from "../../interfaces/EnumTypes";
 
 const defaultValues = {
   name: "",
@@ -15,17 +16,20 @@ const defaultValues = {
   message: "",
 };
 
+const isProjectInDevelopmentMode = import.meta.env.DEV as boolean;
+const isProjectInProductionMode = import.meta.env.PROD as boolean;
+
 function ContactForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const userName = useRef<HTMLInputElement>(null);
   const inputEmail = useRef<HTMLInputElement>(null);
-  const textMessageRef = useRef<HTMLTextAreaElement>(null);
 
   const {
     register,
     handleSubmit,
     control,
+    reset,
     formState: { dirtyFields },
   } = useForm({
     defaultValues,
@@ -46,14 +50,14 @@ function ContactForm() {
         data
       )
       .then(() => {
-        toast.dismiss(); // in case there was another toast displayed before
+        toast.dismiss(); // in case there was another toast displayed already
         toast.success("Message sent !");
         setName("");
         setEmail("");
 
         userName.current!.value = "";
         inputEmail.current!.value = "";
-        textMessageRef.current!.value = "";
+        reset();
       })
       .catch(() => {
         toast.dismiss(); // in case there was another toast displayed before
@@ -91,7 +95,7 @@ function ContactForm() {
           Send
         </Button>
       </form>
-      <DevTool control={control} />
+      {isProjectInDevelopmentMode && <DevTool control={control} />}
     </GridPanelCustom>
   );
 }
