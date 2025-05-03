@@ -1,48 +1,44 @@
 import InputText from "../CustomedComponents/FormElements/InputText";
-import TextArea from "../CustomedComponents/FormElements/TextArea";
 import InputEmail from "../CustomedComponents/FormElements/InputEmail";
 import { useState, useRef } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
-import {
-  Button,
-  Stack,
-  styled,
-  TextareaAutosize,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Button, Typography } from "@mui/material";
+import { CustomTextarea } from "../CustomedComponents/styledComponents";
+import { useForm } from "react-hook-form";
+import { DevTool } from "@hookform/devtools";
+import { GridPanelCustom } from "../CustomedComponents/styledComponentsMUI";
 
-export const GridPanelCustom = styled(Stack)(({ theme }) => ({
-  marginLeft: "auto",
-  marginRight: "auto",
-  width: "70%",
-  gap: "0.5rem",
-  padding: theme.spacing(3),
-  paddingTop: theme.spacing(5),
-
-  backgroundColor: theme.palette.secondaryBackground.main,
-  borderRadius: ".5rem",
-  border: ".15rem solid black",
-  borderColor: theme.palette.customBlue.main,
-
-  [theme.breakpoints.down("md")]: {
-    width: "90%",
-  },
-}));
+const defaultValues = {
+  name: "",
+  email: "",
+  message: "",
+};
 
 function ContactForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [text, setText] = useState("");
   const userName = useRef<HTMLInputElement>(null);
   const inputEmail = useRef<HTMLInputElement>(null);
-  const textMessage = useRef<HTMLTextAreaElement>(null);
+  const textMessageRef = useRef<HTMLTextAreaElement>(null);
 
-  function submit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const text = textMessage.current!.value;
-    const data = { username: name, useremail: email, message: text };
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { dirtyFields },
+  } = useForm({
+    defaultValues,
+    mode: "onChange",
+  });
+
+  function submit(formData: typeof defaultValues) {
+    const data = {
+      username: name,
+      useremail: email,
+      message: formData.message,
+    };
+    console.log("Adi", data);
 
     axios
       .post(
@@ -54,11 +50,10 @@ function ContactForm() {
         toast.success("Message sent !");
         setName("");
         setEmail("");
-        setText("");
 
         userName.current!.value = "";
         inputEmail.current!.value = "";
-        textMessage.current!.value = "";
+        textMessageRef.current!.value = "";
       })
       .catch(() => {
         toast.dismiss(); // in case there was another toast displayed before
@@ -68,7 +63,7 @@ function ContactForm() {
 
   return (
     <GridPanelCustom>
-      <form className="contact-form" onSubmit={submit}>
+      <form className="contact-form" onSubmit={handleSubmit(submit)}>
         <Typography variant="h5" textAlign="center" fontWeight={600} pb={5}>
           Write a message
         </Typography>
@@ -79,17 +74,24 @@ function ContactForm() {
           onChangeHandler={setName}
         />
         <InputEmail ref={inputEmail} onChangeHandler={setEmail} />
-        <TextArea name="textNote" ref={textMessage} onChangeHandler={setText} />
+        <CustomTextarea
+          placeholder="Write here ..."
+          autoComplete="off"
+          {...register("message")}
+        />
 
         <Button
           variant="contained"
           color="primary"
           sx={{ mt: 3 }}
-          disabled={!(name.length > 0 && text.length > 0 && email.length > 0)}
+          disabled={
+            !(name.length > 0 && dirtyFields.message && email.length > 0)
+          }
         >
           Send
         </Button>
       </form>
+      <DevTool control={control} />
     </GridPanelCustom>
   );
 }

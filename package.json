@@ -28,11 +28,13 @@
     "nanoid": "^5.1.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hook-form": "^7.55.0",
+    "react-hook-form": "^7.56.1",
     "react-hot-toast": "^2.5.2",
-    "react-redux": "^9.2.0"
+    "react-redux": "^9.2.0",
+    "styled-components": "^6.1.17"
   },
   "devDependencies": {
+    "@hookform/devtools": "^4.4.0",
     "@types/react": "^18.0.24",
     "@types/react-dom": "^18.0.8",
     "@vitejs/plugin-react": "^4.3.4",

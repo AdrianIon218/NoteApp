@@ -6,9 +6,11 @@ import App from "./App";
 import "@fontsource/roboto";
 import "./styles/index.scss";
 import { Toaster } from "react-hot-toast";
+import { GlobalStyles } from "./components/CustomedComponents/styledComponents";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <StrictMode>
+    <GlobalStyles />
     <Provider store={store}>
       <Toaster
         toastOptions={{
