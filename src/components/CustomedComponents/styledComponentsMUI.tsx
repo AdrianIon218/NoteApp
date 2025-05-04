@@ -1,4 +1,4 @@
-import { Stack, styled } from "@mui/material";
+import { Box, Stack, styled, Typography } from "@mui/material";
 
 export const GridPanelCustom = styled(Stack)(({ theme }) => ({
   marginLeft: "auto",
@@ -16,4 +16,16 @@ export const GridPanelCustom = styled(Stack)(({ theme }) => ({
   [theme.breakpoints.down("md")]: {
     width: "90%",
   },
+}));
+
+export const FieldContainer = styled(Box)({
+  display: "flex",
+  alignItems: "baseline",
+  flexWrap: "wrap",
+});
+
+export const ErrorFieldMessage = styled(Typography)(({ theme }) => ({
+  color: theme.palette.error.main,
+  height: "1.2rem",
+  fontSize: ".9rem",
 }));

@@ -59,3 +59,38 @@ export const CustomTextarea = styled.textarea`
     background-color: var(--color-blue-fade);
   }
 `;
+
+export const CustomLabel = styled.label`
+  font-weight: 600;
+  margin-right: 1rem;
+
+  &::after {
+    content: "*";
+    color: rgb(220, 86, 52);
+  }
+
+  @media all and (max-width: 320px) {
+    width: max-content;
+  }
+`;
+
+export const CustomInput = styled.input`
+  border: 2px solid var(--color-blue-dark);
+  padding: 3px;
+  border-radius: 5px;
+  color: $color-gray-2;
+
+  &:focus {
+    outline: none;
+    -moz-box-shadow: 0 0 5px var(--color-blue);
+    -webkit-box-shadow: 0 0 5px var(--color-blue);
+    -o-box-shadow: 0 0 5px var(--color-blue);
+    -ms-box-shadow: 0 0 5px var(--color-blue);
+    box-shadow: 0 0 5px var(--color-blue);
+  }
+
+  &::placeholder {
+    color: var(--color-gray-1);
+    opacity: 0.7;
+  }
+`;

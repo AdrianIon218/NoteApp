@@ -60,38 +60,6 @@
   }
 }
 
-.email-input {
-  border: 2px solid $color-blue-dark;
-  padding: 3px;
-  border-radius: 5px;
-  color: $color-gray-2;
-  font-weight: 600;
-
-  &:focus {
-    outline: none;
-    -moz-box-shadow: 0 0 5px $color-blue;
-    -webkit-box-shadow: 0 0 5px $color-blue;
-    -o-box-shadow: 0 0 5px $color-blue;
-    -ms-box-shadow: 0 0 5px $color-blue;
-    box-shadow: 0 0 5px $color-blue;
-  }
-
-  &::placeholder {
-    color: rgba($color-gray-1, 0.7);
-  }
-}
-
-.label-email {
-  @media all and (max-width: 320px) {
-    width: max-content;
-  }
-
-  &::after {
-    content: "*";
-    color: rgb(220, 86, 52);
-  }
-}
-
 .inputDiv {
   & > input[type="text"] {
     position: relative;

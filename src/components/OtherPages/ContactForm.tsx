@@ -1,14 +1,22 @@
-import InputText from "../CustomedComponents/FormElements/InputText";
-import InputEmail from "../CustomedComponents/FormElements/InputEmail";
-import { useState, useRef } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { Button, Typography } from "@mui/material";
-import { CustomTextarea } from "../CustomedComponents/styledComponents";
+import { Button, Stack, Typography } from "@mui/material";
+import {
+  CustomInput,
+  CustomLabel,
+  CustomTextarea,
+} from "../CustomedComponents/styledComponents";
 import { useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
-import { GridPanelCustom } from "../CustomedComponents/styledComponentsMUI";
-import { PROJECT_MODE } from "../../interfaces/EnumTypes";
+import {
+  ErrorFieldMessage,
+  FieldContainer,
+  GridPanelCustom,
+} from "../CustomedComponents/styledComponentsMUI";
+import {
+  ContactFirebaseURL,
+  isProjectInDevelopmentMode,
+} from "../../interfaces/GlobalConstants";
 
 const defaultValues = {
   name: "",
@@ -16,47 +24,27 @@ const defaultValues = {
   message: "",
 };
 
-const isProjectInDevelopmentMode = import.meta.env.DEV as boolean;
-const isProjectInProductionMode = import.meta.env.PROD as boolean;
-
 function ContactForm() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const userName = useRef<HTMLInputElement>(null);
-  const inputEmail = useRef<HTMLInputElement>(null);
-
   const {
     register,
     handleSubmit,
     control,
     reset,
-    formState: { dirtyFields },
+    formState: { dirtyFields, isValid, errors },
   } = useForm({
     defaultValues,
     mode: "onChange",
   });
 
   function submit(formData: typeof defaultValues) {
-    const data = {
-      username: name,
-      useremail: email,
-      message: formData.message,
-    };
-    console.log("Adi", data);
+    console.log(formData);
 
     axios
-      .post(
-        "https://noteapp-9b1f0-default-rtdb.europe-west1.firebasedatabase.app/messages.json",
-        data
-      )
+      .post(ContactFirebaseURL, formData)
       .then(() => {
         toast.dismiss(); // in case there was another toast displayed already
         toast.success("Message sent !");
-        setName("");
-        setEmail("");
 
-        userName.current!.value = "";
-        inputEmail.current!.value = "";
         reset();
       })
       .catch(() => {
@@ -67,29 +55,74 @@ function ContactForm() {
 
   return (
     <GridPanelCustom>
+      <Typography variant="h5" textAlign="center" fontWeight={600} mb={7}>
+        Write a message
+      </Typography>
       <form className="contact-form" onSubmit={handleSubmit(submit)}>
-        <Typography variant="h5" textAlign="center" fontWeight={600} pb={5}>
-          Write a message
-        </Typography>
-        <InputText
-          ref={userName}
-          text="Name"
-          placeholder="Andrew"
-          onChangeHandler={setName}
-        />
-        <InputEmail ref={inputEmail} onChangeHandler={setEmail} />
-        <CustomTextarea
-          placeholder="Write here ..."
-          autoComplete="off"
-          {...register("message")}
-        />
+        <Stack gap={1} mb={3}>
+          <FieldContainer>
+            <CustomLabel htmlFor="name">Name</CustomLabel>
+            <Stack alignItems="flex-start">
+              <CustomInput
+                type="text"
+                id="name"
+                placeholder="ex: Andrew"
+                title=""
+                {...register("name", {
+                  required: "The name is required !",
+                  validate: (name) =>
+                    name.trim().length > 0 || "The name cannot be empty !",
+                })}
+              />
+              <ErrorFieldMessage>{errors.name?.message}</ErrorFieldMessage>
+            </Stack>
+          </FieldContainer>
+
+          <FieldContainer>
+            <CustomLabel htmlFor="email">Email address</CustomLabel>
+            <Stack alignItems="flex-start">
+              <CustomInput
+                type="email"
+                id="email"
+                placeholder="ex: name@yahoo.com"
+                title=""
+                {...register("email", {
+                  required: "The email address is required !",
+                  pattern: {
+                    value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                    message: "You must provide a valid email address !",
+                  },
+                })}
+              />
+              <ErrorFieldMessage>{errors.email?.message}</ErrorFieldMessage>
+            </Stack>
+          </FieldContainer>
+
+          <Stack>
+            <CustomTextarea
+              placeholder="Write here ..."
+              autoComplete="off"
+              {...register("message", {
+                required: "You need to provide a message !",
+                validate: (message) =>
+                  message.trim().length > 0 || "The message cannot be empty !",
+              })}
+            />
+            <ErrorFieldMessage>{errors.message?.message}</ErrorFieldMessage>
+          </Stack>
+        </Stack>
 
         <Button
+          type="submit"
           variant="contained"
           color="primary"
-          sx={{ mt: 3 }}
           disabled={
-            !(name.length > 0 && dirtyFields.message && email.length > 0)
+            !(
+              dirtyFields.name &&
+              dirtyFields.message &&
+              dirtyFields.email &&
+              isValid
+            )
           }
         >
           Send
