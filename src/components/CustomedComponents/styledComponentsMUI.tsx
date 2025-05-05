@@ -18,6 +18,16 @@ export const GridPanelCustom = styled(Stack)(({ theme }) => ({
   },
 }));
 
+export const GridPanelLightBlueCustom = styled(Stack)(({ theme }) => ({
+  padding: theme.spacing(1.2),
+  paddingBottom: theme.spacing(10),
+  borderRadius: theme.spacing(1.2),
+  border: "3px solid black",
+  borderColor: theme.palette.customBlue.dark,
+  backgroundColor: "rgba(190, 225, 246, .55)",
+  gap: "1rem",
+}));
+
 export const FieldContainer = styled(Box)({
   display: "flex",
   alignItems: "baseline",

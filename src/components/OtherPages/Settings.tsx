@@ -3,6 +3,11 @@ import PanelWithBackdrop from "../CustomedComponents/PanelWithBackdrop";
 import FormAddCategory from "../CategoryForms/FormAddCategory";
 import FormDeleteCategory from "../CategoryForms/FormDeleteCategory";
 import FormModifyCategory from "../CategoryForms/FormModifyCategory";
+import {
+  GridPanelCustom,
+  GridPanelLightBlueCustom,
+} from "../CustomedComponents/styledComponentsMUI";
+import { Stack, Typography } from "@mui/material";
 
 enum CategoryBtnState {
   Add,
@@ -36,16 +41,28 @@ export default function Settings() {
         {btn === CategoryBtnState.Add && <FormAddCategory />}
         {btn === CategoryBtnState.Delete && <FormDeleteCategory />}
         {btn === CategoryBtnState.Modify && <FormModifyCategory />}
-      </PanelWithBackdrop>,
+      </PanelWithBackdrop>
     );
   }
 
   return (
     <>
       {form}
-      <div className="panel-big">
-        <div className="forms-panel">
-          <h2>Categories settings</h2>
+      <GridPanelCustom>
+        <GridPanelLightBlueCustom>
+          <Typography
+            variant="h5"
+            textAlign="center"
+            fontWeight={800}
+            mb={3}
+            sx={{
+              textDecoration: "underline dotted",
+              textUnderlinePosition: "under",
+              textUnderlineOffset: 2,
+            }}
+          >
+            Categories settings
+          </Typography>
           {CategoryBtns.map((item, index) => (
             <button
               className="btn-to-form"
@@ -55,8 +72,8 @@ export default function Settings() {
               {item.btnText}
             </button>
           ))}
-        </div>
-      </div>
+        </GridPanelLightBlueCustom>
+      </GridPanelCustom>
     </>
   );
 }
