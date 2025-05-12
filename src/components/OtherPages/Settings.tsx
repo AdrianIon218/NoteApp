@@ -3,11 +3,8 @@ import PanelWithBackdrop from "../CustomedComponents/PanelWithBackdrop";
 import FormAddCategory from "../CategoryForms/FormAddCategory";
 import FormDeleteCategory from "../CategoryForms/FormDeleteCategory";
 import FormModifyCategory from "../CategoryForms/FormModifyCategory";
-import {
-  GridPanelCustom,
-  GridPanelLightBlueCustom,
-} from "../CustomedComponents/styledComponentsMUI";
-import { Stack, Typography } from "@mui/material";
+import { GridPanelCustom } from "../CustomedComponents/styledComponentsMUI";
+import { Typography } from "@mui/material";
 
 enum CategoryBtnState {
   Add,
@@ -49,30 +46,28 @@ export default function Settings() {
     <>
       {form}
       <GridPanelCustom>
-        <GridPanelLightBlueCustom>
-          <Typography
-            variant="h5"
-            textAlign="center"
-            fontWeight={800}
-            mb={3}
-            sx={{
-              textDecoration: "underline dotted",
-              textUnderlinePosition: "under",
-              textUnderlineOffset: 2,
-            }}
+        <Typography
+          variant="h5"
+          textAlign="center"
+          fontWeight={800}
+          mb={3}
+          sx={{
+            textDecoration: "underline dotted",
+            textUnderlinePosition: "under",
+            textUnderlineOffset: 2,
+          }}
+        >
+          Categories settings
+        </Typography>
+        {CategoryBtns.map((item, index) => (
+          <button
+            className="btn-to-form"
+            onClick={() => showCorespondingCategoryPanel(item.categoryState)}
+            key={`${btnRootKey}-${index}`}
           >
-            Categories settings
-          </Typography>
-          {CategoryBtns.map((item, index) => (
-            <button
-              className="btn-to-form"
-              onClick={() => showCorespondingCategoryPanel(item.categoryState)}
-              key={`${btnRootKey}-${index}`}
-            >
-              {item.btnText}
-            </button>
-          ))}
-        </GridPanelLightBlueCustom>
+            {item.btnText}
+          </button>
+        ))}
       </GridPanelCustom>
     </>
   );

@@ -61,7 +61,7 @@ export const CustomTextarea = styled.textarea`
 `;
 
 export const CustomLabel = styled.label`
-  font-weight: 600;
+  font-weight: 700;
   margin-right: 1rem;
 
   &::after {

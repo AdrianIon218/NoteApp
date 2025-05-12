@@ -48,7 +48,7 @@ function ContactForm() {
         reset();
       })
       .catch(() => {
-        toast.dismiss(); // in case there was another toast displayed before
+        toast.dismiss();
         toast.success("Error, please try again later !");
       });
   }

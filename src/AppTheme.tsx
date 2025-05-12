@@ -30,8 +30,8 @@ let customColors = createTheme({
       light: "rgb(172, 216, 243)",
     },
     secondaryBackground: {
-      main: "rgba(118, 198, 245, 0.8)", //"rgba(70, 183, 253, 0.8)",
-      light: "rgba(172, 216, 243, 0.6)",
+      main: "rgba(118, 198, 245, 0.8)",
+      light: "rgba(190, 225, 246, 0.85)",
     },
   },
 });

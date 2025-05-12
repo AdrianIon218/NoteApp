@@ -50,6 +50,10 @@ body:has(.backdrop) {
   user-select: none;
 }
 
+.spanRed {
+  color: red;
+}
+
 @media all and (max-width: 600px) {
   body {
     padding: 0;
